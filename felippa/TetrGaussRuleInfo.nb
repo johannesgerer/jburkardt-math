@@ -1,0 +1,148 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      5646,        139]
+NotebookOptionsPosition[      5341,        124]
+NotebookOutlinePosition[      5733,        141]
+CellTagsIndexPosition[      5690,        138]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+TetrGaussRuleInfo [ { rule_, numer_ }, point_ ] := Module [ {
+  jk6 = {{1,2},{1,3},{1,4},{2,3},{2,4},{3,4}},
+  jk12= {{1,2},{1,3},{1,4},{2,3},{2,4},{3,4},
+         {2,1},{3,1},{4,1},{3,2},{4,2},{4,3}},
+  i = point, j, k, g1, g2, g3, g4, h1, w1, w2, w3, eps=10.^(-16),
+  info = {{Null,Null,Null,Null}, 0} },
+  If [ rule == 1, info = {{1/4,1/4,1/4,1/4},1}];
+
+  If [ rule == 4, g1 = (5-Sqrt[5])/20; h1=(5+3*Sqrt[5])/20;
+    info={{g1,g1,g1,g1},1/4}; info[[1,i]]=h1];
+
+  If [ rule == 8, j= i - 4;
+    g1=(55-3*Sqrt[17]+Sqrt[1022-134*Sqrt[17]])/196;
+    g2=(55-3*Sqrt[17]-Sqrt[1022-134*Sqrt[17]])/196;
+    w1=1/8+Sqrt[(1715161837-406006699*Sqrt[17])/23101]/3120;
+    w2=1/8-Sqrt[(1715161837-406006699*Sqrt[17])/23101]/3120;
+    If [ j <= 0, info={{g1,g1,g1,g1},w1}; info[[1,i]]=1-3*g1];
+    If [ j >  0, info={{g2,g2,g2,g2},w2}; info[[1,j]]=1-3*g2]];
+
+  If [ rule == -8, j=i-4;
+    If [ j <= 0, info={{0,0,0,0},   1/40}; info[[1,i]]=1];
+    If [ j >  0, info={{1,1,1,1}/3, 9/40}; info[[1,j]]=0]];
+
+  If [ rule==14, 
+    g1 = 0.09273525031089122640232391373703060;
+    g2 = 0.31088591926330060979734573376345783;
+    g3 = 0.45449629587435035050811947372066056;
+    If [ !numer, {g1,g2,g3}=Rationalize[{g1,g2,g3},eps]];
+    w1=(-1+6*g2*(2+g2*(-7+8*g2))+14*g3-60*g2*(3+4*g2*
+        (-3+4*g2))*g3+4*(-7+30*g2*(3+4*g2*(-3+4*g2)))*g3^2)/
+        (120*(g1-g2)*(g2*(-3+8*g2)+6*g3+8*g2*(-3+4*g2)*g3-4*
+        (3+4*g2*(-3+4*g2))*g3^2+8*g1^2*(1+12*g2*
+        (-1+2*g2)+4*g3-8*g3^2)+g1*(-3-96*g2^2+24*g3*(-1+2*g3)+
+        g2*(44+32*(1-2*g3)*g3))));
+    w2=(-1-20*(1+12*g1*(2*g1-1))*w1+20*g3*(2*g3-1)*(4*w1-1))/
+       (20*(1+12*g2*(2*g2-1)+4*g3-8*g3^2));
+    If [ i<5,      info={{g1,g1,g1,g1},w1}; info[[1,i]]  =1-3*g1];
+    If [ i>4&&i<9, info={{g2,g2,g2,g2},w2}; info[[1,i-4]]=1-3*g2];
+    If [ i > 8,    info={{g3,g3,g3,g3},1/6-2*(w1+w2)/3};
+       {j,k}=jk6[[i-8]]; info[[1,j]]=info[[1,k]]=1/2-g3] ];
+
+  If [ rule == -14,
+    g1=(243-51*Sqrt[11]+2*Sqrt[16486-9723*Sqrt[11]/2])/356; 
+    g2=(243-51*Sqrt[11]-2*Sqrt[16486-9723*Sqrt[11]/2])/356;
+    w1=31/280+Sqrt[(13686301-3809646*Sqrt[11])/5965]/600;
+    w2=31/280-Sqrt[(13686301-3809646*Sqrt[11])/5965]/600;
+    If [ i<5,       info={{g1,g1,g1,g1},w1}; info[[1,i]]  =1-3*g1];
+    If [ i>4&&i<9,  info={{g2,g2,g2,g2},w2}; info[[1,i-4]]=1-3*g2];
+    If [ i>8&&i<15, info={{0,0,0,0},2/105};
+       {j,k}=jk6[[i-8]]; info[[1,j]]=info[[1,k]]=1/2] ];
+
+  If [ rule == 15,
+    g1=(7-Sqrt[15])/34;  g2=7/17-g1; g3=(10-2*Sqrt[15])/40;
+    w1=(2665+14*Sqrt[15])/37800; w2=(2665-14*Sqrt[15])/37800;
+    If [i<5,      info={{g1,g1,g1,g1},w1};info[[1,i]]=1-3*g1];
+    If [i>4&&i<9, info={{g2,g2,g2,g2},w2};info[[1,i-4]]=1-3*g2];
+    If [i>8&&i<15,info={{g3,g3,g3,g3},10/189};
+      {j,k}=jk6[[i-8]]; info[[1,j]]=info[[1,k]]=1/2-g3];
+    If [i==15,info={{1/4,1/4,1/4,1/4},16/135}] ];
+    
+  If [ rule==-15, g1=(13-Sqrt[91])/52;
+    If [i<5,      info={{1,1,1,1}/3,81/2240};info[[1,i]]=0];
+    If [i>4&&i<9, info={{1,1,1,1}/11,161051/2304960};
+                  info[[1,i-4]]=8/11];
+    If[i>8&&i<15, info={{g1,g1,g1,g1},338/5145};
+      {j,k}=jk6[[i-8]]; info[[1,j]]=info[[1,k]]=1/2-g1];
+    If [i==15,info={{1/4,1/4,1/4,1/4},6544/36015}] ];
+
+  If [ rule == 24, 
+    g1 = 0.214602871259915202928839219386284991;
+    g2 = 0.040673958534611353115579448956410059;
+    g3 = 0.322337890142275510343994470762492125;
+    If [ !numer, {g1,g2,g3}=Rationalize[{g1,g2,g3},eps]];
+    w1 = (85+2*g2*(-319+9*Sqrt[5]+624*g2)-638*g3-
+          24*g2*(-229+472*g2)*g3+96*(13+118*g2*(-1+2*g2))*g3^2+
+          9*Sqrt[5]*(-1+2*g3))/(13440*(g1-g2)*(g1-g3)*(3-8*g2+
+          8*g1*(-1+2*g2)-8*g3+16*(g1+g2)*g3));
+    w2 = -(85+2*g1*(-319+9*Sqrt[5]+624*g1)-638*g3-
+          24*g1*(-229+472*g1)*g3+96*(13+118*g1*(-1+2*g1))*g3^2+
+          9*Sqrt[5]*(-1+2*g3))/(13440*(g1-g2)*(g2-g3)*(3-8*g2+
+          8*g1*(-1+2*g2)-8*g3+16*(g1+g2)*g3));
+    w3 = (85+2*g1*(-319+9*Sqrt[5]+624*g1)-638*g2-
+          24*g1*(-229+472*g1)*g2+96*(13+118*g1*(-1+2*g1))*g2^2+
+          9*Sqrt[5]*(-1+2*g2))/(13440*(g1-g3)*(g2-g3)*(3-8*g2+
+          8*g1*(-1+2*g2)-8*g3+16*(g1+g2)*g3));
+    g4 = (3-Sqrt[5])/12; h4=(5+Sqrt[5])/12; p4=(1+Sqrt[5])/12;
+    If [i<5,      info={{g1,g1,g1,g1},w1};info[[1,i]]=1-3*g1];
+    If [i>4&&i<9, info={{g2,g2,g2,g2},w2};info[[1,i-4]]=1-3*g2];
+    If [i>8&&i<13,info={{g3,g3,g3,g3},w3};info[[1,i-8]]=1-3*g3];
+    If [i>12,     info={{g4,g4,g4,g4},27/560};
+       {j,k}=jk12[[i-12]];info[[1,j]]=h4; info[[1,k]]=p4] ];
+
+  If [ numer, Return [N[info,20]], Return[Simplify[info]]];
+];
+
+\
+\>", "Input",
+ CellChangeTimes->{{3.4176931647890797`*^9, 3.417693174125593*^9}, 
+   3.4176932152915907`*^9, {3.4477670053262863`*^9, 3.447767005911394*^9}, {
+   3.447767610657526*^9, 3.447767614506521*^9}, {3.449172494673306*^9, 
+   3.4491724972433643`*^9}}]
+},
+WindowSize->{640, 750},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 4769, 101, 1262, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

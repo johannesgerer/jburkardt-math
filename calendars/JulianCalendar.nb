@@ -1,0 +1,389 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     12510,        380]
+NotebookOptionsPosition[     11544,        344]
+NotebookOutlinePosition[     11877,        359]
+CellTagsIndexPosition[     11834,        356]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+MyQuotient[n_Integer, list_List ] :=
+  Quotient[n, First[list]] + 1 /; Length[list] == 1
+
+MyQuotient[n_Integer, list_List] :=
+Block[ { s = First[list], q = 1 },
+  While[n > s, q++; s += list[[q]]]; q] /; Length[list] > 1\
+\>", "Input",
+ CellChangeTimes->{{3.44148692276476*^9, 3.441486928398254*^9}, {
+   3.441487018962034*^9, 3.4414870570997057`*^9}, {3.4414884751393137`*^9, 
+   3.441488499771881*^9}, 3.442095786675331*^9}],
+
+Cell["\<\
+MyMod[n_Integer, list_List ] :=
+  Mod[n, First[list]] /; Length[list] == 1
+
+MyMod[n_Integer, list_List ] :=
+  n - Fold[Plus, 0, Take[list, MyQuotient[n,list]-1]] /; Length[list] > 1\
+\>", "Input",
+ CellChangeTimes->{{3.44148692276476*^9, 3.441486928398254*^9}, {
+   3.441487018962034*^9, 3.4414870570997057`*^9}, {3.441488518259666*^9, 
+   3.4414885190762873`*^9}, 3.4414888043425283`*^9, 3.442095790361054*^9, {
+   3.442095832434112*^9, 3.442095835786477*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"MyDigitsInit", " ", "[", " ", 
+   RowBox[{"n_", ",", " ", 
+    RowBox[{"{", "}"}], ",", " ", "_"}], "]"}], " ", ":=", " ", 
+  RowBox[{"{", "n", "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MyDigitsInit", "[", 
+   RowBox[{"n_", ",", " ", "list_List", ",", " ", "path_"}], " ", "]"}], " ", 
+  ":=", "\[IndentingNewLine]", 
+  RowBox[{"Block", "[", " ", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"r", " ", "=", " ", 
+      RowBox[{"MyQuotient", "[", 
+       RowBox[{"n", ",", 
+        RowBox[{
+         RowBox[{"First", "[", "list", "]"}], "[", "path", "]"}]}], "]"}]}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Prepend", "[", 
+     RowBox[{
+      RowBox[{"MyDigits", "[", 
+       RowBox[{
+        RowBox[{"MyMod", "[", 
+         RowBox[{"n", ",", 
+          RowBox[{
+           RowBox[{"First", "[", "list", "]"}], " ", "[", "path", "]"}]}], 
+         "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Rest", "[", "list", "]"}], ",", " ", 
+        RowBox[{"Append", "[", 
+         RowBox[{"path", ",", "r"}], "]"}]}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"MyQuotient", "[", 
+       RowBox[{"n", ",", " ", 
+        RowBox[{
+         RowBox[{"First", "[", "list", "]"}], "[", "path", "]"}]}], "]"}]}], 
+     "]"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.442185486618387*^9, 3.442185576221126*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MyDigits", "[", 
+   RowBox[{"n_", ",", " ", "list_List", ",", " ", "path_"}], "]"}], " ", ":=",
+   "\[IndentingNewLine]", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"md", " ", "=", " ", 
+      RowBox[{"MyDigitsInit", "[", 
+       RowBox[{"n", ",", " ", "list", ",", " ", "path"}], "]"}]}], "}"}], ",",
+     "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Last", "[", "md", "]"}], " ", "\[NotEqual]", " ", "0"}], ",", 
+      "\[IndentingNewLine]", "md", ",", "\[IndentingNewLine]", 
+      RowBox[{"MapAt", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", " ", "+", " ", "1"}], "&"}], ",", "\[IndentingNewLine]",
+         
+        RowBox[{"MyDigitsInit", "[", 
+         RowBox[{
+          RowBox[{"n", "-", "1"}], ",", "list", ",", "path"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"-", "1"}], "}"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}],
+    "]"}]}]], "Input",
+ CellChangeTimes->{{3.441576885055641*^9, 3.44157697562319*^9}, {
+  3.441577007898692*^9, 3.44157700814607*^9}, {3.442185442347872*^9, 
+  3.442185452324684*^9}, {3.442185598647482*^9, 3.442185679283413*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"MyDigits", "[", 
+    RowBox[{"n_", ",", " ", "b_List"}], "]"}], " ", ":=", " ", 
+   RowBox[{
+    RowBox[{"{", "n", "}"}], " ", "/;", " ", 
+    RowBox[{
+     RowBox[{"b", " ", "\[Equal]", " ", 
+      RowBox[{"{", "}"}]}], " ", "||", " ", 
+     RowBox[{"0", " ", "<", " ", "n", " ", "<", " ", 
+      RowBox[{"Last", "[", "b", "]"}]}]}]}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MyDigits", "[", 
+   RowBox[{"n_", ",", " ", "b_List"}], "]"}], " ", ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"Append", "[", 
+   RowBox[{
+    RowBox[{"MyDigits", "[", 
+     RowBox[{
+      RowBox[{"Quotient", "[", 
+       RowBox[{"n", ",", 
+        RowBox[{"Last", "[", "b", "]"}]}], "]"}], ",", " ", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"b", ",", 
+        RowBox[{"-", "1"}]}], "]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Mod", "[", 
+     RowBox[{"n", ",", 
+      RowBox[{"Last", "[", "b", "]"}]}], "]"}]}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.4421856905399227`*^9, 3.442185766025752*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"DigitsToNumber", "[", " ", 
+    RowBox[{"date_", ",", " ", "list_", ",", " ", "path_"}], " ", "]"}], " ", 
+   ":=", "\n", 
+   RowBox[{"1", " ", "+", " ", 
+    RowBox[{
+     RowBox[{"date", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"list", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "[", 
+       RowBox[{"path", "+", "1"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], " ", "+", " ", 
+    RowBox[{"Last", "[", "date", "]"}], " ", "+", "\n", 
+    RowBox[{"(", " ", 
+     RowBox[{"Plus", " ", "@@", "\n", 
+      RowBox[{"(", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Fold", "[", 
+          RowBox[{"Plus", ",", " ", "0", ",", " ", 
+           RowBox[{"Take", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"list", "[", 
+               RowBox[{"[", "#", "]"}], "]"}], "[", 
+              RowBox[{"path", "+", "1"}], "]"}], ",", " ", 
+             RowBox[{"date", "[", 
+              RowBox[{"[", "#", "]"}], "]"}]}], "]"}]}], "]"}], "&"}], " ", "/@",
+         "\n", "  ", 
+        RowBox[{"Range", "[", 
+         RowBox[{"2", ",", " ", 
+          RowBox[{"Length", "[", "list", "]"}]}], "]"}]}], ")"}]}], ")"}]}]}],
+   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DigitsToNumber", "[", 
+    RowBox[{
+     RowBox[{"{", "n_", "}"}], ",", " ", "b_"}], "]"}], ":=", " ", "n"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DigitsToNumber", "[", 
+   RowBox[{"digits_List", ",", " ", "b_"}], "]"}], " ", ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"DigitsToNumber", "[", 
+     RowBox[{
+      RowBox[{"Drop", "[", 
+       RowBox[{"digits", ",", 
+        RowBox[{"-", "1"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Drop", "[", 
+       RowBox[{"b", ",", 
+        RowBox[{"-", "1"}]}], "]"}]}], "]"}], " ", 
+    RowBox[{"Last", "[", "b", "]"}]}], " ", "+", " ", 
+   RowBox[{"Last", "[", "digits", "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.441577430871319*^9, 3.441577442366661*^9}, {
+  3.442185258187387*^9, 3.442185337572706*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DigitsToNumber", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"438", ",", "4", ",", "9", ",", "3"}], "}"}], ",", 
+   "JulianCalendar", ",", 
+   RowBox[{"{", " ", 
+    RowBox[{"438", ",", " ", "4", ",", " ", "9", ",", " ", "3"}], "}"}]}], 
+  " ", "]"}]], "Input",
+ CellChangeTimes->{{3.441576612985437*^9, 3.441576630203985*^9}, {
+  3.441577161842018*^9, 3.441577165208325*^9}, {3.441577235050026*^9, 
+  3.441577248021635*^9}, {3.441577501898485*^9, 3.441577519802472*^9}}],
+
+Cell[BoxData["641657"], "Output",
+ CellChangeTimes->{
+  3.441576631518793*^9, 3.441576687812224*^9, 3.44157708216501*^9, 
+   3.441577168602902*^9, 3.441577254841528*^9, {3.44157750402874*^9, 
+   3.441577532469818*^9}, 3.442093745555484*^9, 3.442093988877462*^9, 
+   3.442185806397785*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+JulianCalendar = { JulianFourYears, JulianYears, JulianMonths }
+
+JulianFourYears[_] := { 1461 }
+
+JulianYears[_] := { 365, 365, 365, 366 }
+
+JulianMonths[path_List] := 
+{ 31, 28+Quotient[path[[2]],4], 
+31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }
+\
+\>", "Input",
+ CellChangeTimes->{{3.44148692276476*^9, 3.441486928398254*^9}, 
+   3.441487018962034*^9, {3.442184989231225*^9, 3.442185042098691*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"JulianFourYears", ",", "JulianYears", ",", "JulianMonths"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.4420937329495907`*^9, 3.442093965062851*^9, 
+  3.442185802642239*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NumberToDate", " ", "[", " ", 
+   RowBox[{"n_", ",", " ", "Julian"}], " ", "]"}], " ", ":=", "\n", "  ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Prepend", " ", "[", " ", 
+     RowBox[{
+      RowBox[{"Drop", "[", 
+       RowBox[{"#", ",", "2"}], "]"}], ",", "\n", "    ", 
+      RowBox[{
+       RowBox[{"DigitsToNumber", "[", 
+        RowBox[{
+         RowBox[{"Take", "[", 
+          RowBox[{
+           RowBox[{"#", "-", "1"}], ",", "2"}], "]"}], ",", " ", 
+         RowBox[{"{", "4", "}"}]}], "]"}], " ", "+", " ", "1"}]}], "]"}], 
+    "&"}], " ", "@", "\n", "    ", 
+   RowBox[{"MyDigits", "[", 
+    RowBox[{"n", ",", " ", "JulianCalendar", ",", " ", 
+     RowBox[{"{", "}"}]}], " ", "]"}]}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NumberToDate", "[", 
+  RowBox[{"639799", ",", "Julian"}], "]"}]], "Input",
+ CellChangeTimes->{{3.441572758823887*^9, 3.4415727804431562`*^9}, {
+  3.441572832372018*^9, 3.441572863603237*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1752", ",", "9", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.442093752282992*^9, 3.4420939947412567`*^9, 
+  3.442185823780225*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DateToNumber", " ", "[", " ", 
+   RowBox[{"date_", ",", " ", "Julian"}], "]"}], " ", ":=", "\n", 
+  RowBox[{"Block", " ", "[", " ", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{"d", " ", "=", " ", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"MyDigits", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"First", "[", "date", "]"}], "-", "1"}], ",", " ", 
+          RowBox[{"{", "4", "}"}]}], "]"}], ",", "\n", "  ", 
+        RowBox[{
+         RowBox[{"Rest", "[", "date", "]"}], "-", "1"}]}], "]"}]}], "}"}], 
+    ",", "\n", "  ", 
+    RowBox[{
+     RowBox[{"d", " ", "=", " ", 
+      RowBox[{"Join", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"4", "-", 
+            RowBox[{"Length", "[", "d", "]"}]}], "}"}]}], "]"}], ",", " ", 
+        "d"}], "]"}]}], ";", "\n", "  ", 
+     RowBox[{"DigitsToNumber", "[", 
+      RowBox[{"d", ",", " ", "JulianCalendar", ",", " ", "d"}], " ", 
+      "]"}]}]}], "]"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DateToNumber", " ", "[", " ", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"1752", ",", "9", ",", "3"}], "}"}], ",", " ", "Julian"}], " ", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.441486966075244*^9, 3.4414869831111383`*^9}, {
+  3.442185933635305*^9, 3.4421859344322433`*^9}}],
+
+Cell[BoxData["639799"], "Output",
+ CellChangeTimes->{3.442093765893593*^9, 3.4421858326267653`*^9, 
+  3.442185936301602*^9}]
+}, Open  ]]
+},
+WindowSize->{640, 750},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (May 21, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 436, 10, 92, "Input"],
+Cell[1007, 33, 471, 10, 79, "Input"],
+Cell[1481, 45, 1381, 37, 103, "Input"],
+Cell[2865, 84, 1234, 31, 133, "Input"],
+Cell[4102, 117, 1077, 30, 88, "Input"],
+Cell[5182, 149, 2171, 60, 178, "Input"],
+Cell[CellGroupData[{
+Cell[7378, 213, 497, 11, 27, "Input"],
+Cell[7878, 226, 288, 5, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8203, 236, 403, 13, 144, "Input"],
+Cell[8609, 251, 212, 5, 27, "Output"]
+}, Open  ]],
+Cell[8836, 259, 739, 20, 73, "Input"],
+Cell[CellGroupData[{
+Cell[9600, 283, 215, 4, 27, "Input"],
+Cell[9818, 289, 177, 4, 27, "Output"]
+}, Open  ]],
+Cell[10010, 296, 1069, 30, 88, "Input"],
+Cell[CellGroupData[{
+Cell[11104, 330, 297, 7, 27, "Input"],
+Cell[11404, 339, 124, 2, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

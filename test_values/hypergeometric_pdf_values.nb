@@ -1,0 +1,466 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     17896,        457]
+NotebookOptionsPosition[     16826,        421]
+NotebookOutlinePosition[     17167,        436]
+CellTagsIndexPosition[     17124,        433]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"hypergeometric_pdf", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "hypergeometric", " ", "PDF"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{"at", " ", "selected", " ", "argument", " ", "values"}], ","}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"08", " ", "January", " ", "2008"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.408793690064899*^9, 3.408793711566845*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"samvec", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "10", ",", "10", ",", "10", ",", "10", ",", "\[IndentingNewLine]", "6", 
+     ",", " ", "7", ",", " ", "8", ",", " ", "9", ",", "\[IndentingNewLine]", 
+     "10", ",", "10", ",", "10", ",", "10", ",", "\[IndentingNewLine]", "10", 
+     ",", "10", ",", "10", ",", "10"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sucvec", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "90", ",", "90", ",", "90", ",", "90", ",", "\[IndentingNewLine]", "90", 
+     ",", "90", ",", "90", ",", "90", ",", "\[IndentingNewLine]", " ", "10", 
+     ",", " ", "30", ",", " ", "50", ",", " ", "70", ",", 
+     "\[IndentingNewLine]", "90", ",", "90", ",", "90", ",", "90"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"popvec", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "100", ",", "100", ",", "100", ",", "100", ",", "\[IndentingNewLine]", 
+     "100", ",", "100", ",", "100", ",", "100", ",", "\[IndentingNewLine]", 
+     "100", ",", "100", ",", "100", ",", "100", ",", "\[IndentingNewLine]", 
+     "90", ",", " ", "200", ",", "1000", ",", "10000"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nvec", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "7", ",", "8", ",", "9", ",", "10", ",", "\[IndentingNewLine]", "6", ",", 
+     " ", "6", ",", " ", "6", ",", " ", "6", ",", "\[IndentingNewLine]", "6", 
+     ",", "6", ",", "6", ",", "6", ",", "\[IndentingNewLine]", "0", ",", " ", 
+     "0", ",", " ", "0", ",", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "nvec", " ", "]"}]}], ";"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{
+      RowBox[{"sam", " ", "=", " ", 
+       RowBox[{"samvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+      RowBox[{"suc", " ", "=", " ", 
+       RowBox[{"sucvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+      RowBox[{"pop", "=", 
+       RowBox[{"popvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+      RowBox[{"n", "=", 
+       RowBox[{"nvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"dist", " ", "=", " ", 
+       RowBox[{"HypergeometricDistribution", "[", 
+        RowBox[{"sam", ",", "suc", ",", "pop"}], "]"}]}], ",", " ", 
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"N", "[", 
+        RowBox[{
+         RowBox[{"PDF", "[", 
+          RowBox[{"dist", ",", "n"}], "]"}], ",", "16"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"fvec", " ", "=", " ", 
+       RowBox[{"Append", " ", "[", " ", 
+        RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<HyperPDF[\>\"", ",", "sam", ",", "\"\<,\>\"", ",", "suc", ",", 
+        "\"\<,\>\"", ",", "pop", ",", "\"\<](\>\"", ",", "n", ",", 
+        "\"\<)=\>\"", ",", "f"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+    " ", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", " ", "1", ",", " ", "num", ",", "1"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.4087937185736027`*^9, 3.4087937238131104`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.05179370533242827369901015359`16."}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 90, ",", 100, "](", 7, ")=", 0.051793705332428274`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4087939553397837`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.20150988480897875236021137882`15.999999999999998"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 90, ",", 100, "](", 8, ")=", 
+   0.20150988480897875`15.999999999999998],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.40879395534438*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.40799532232929031342067489045`16.000000000000004"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 90, ",", 100, "](", 9, ")=", 
+   0.40799532232929031`16.000000000000004],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955349929*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.33047621108672515387074666127`16.000000000000004"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 90, ",", 100, "](", 10, ")=", 
+   0.33047621108672515`16.000000000000004],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955356921*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.52230474935497801942263611902`16.000000000000004"}],
+  SequenceForm[
+  "HyperPDF[", 6, ",", 90, ",", 100, "](", 6, ")=", 
+   0.52230474935497802`16.000000000000004],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4087939553627157`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.38895034526434533361260136523`16.000000000000004"}],
+  SequenceForm[
+  "HyperPDF[", 7, ",", 90, ",", 100, "](", 6, ")=", 
+   0.38895034526434533`16.000000000000004],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955368547*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.15056142397329496785003923815`16."}],
+  SequenceForm[
+  "HyperPDF[", 8, ",", 90, ",", 100, "](", 6, ")=", 0.15056142397329497`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955437585*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.03927689321042477422174936647`16."}],
+  SequenceForm[
+  "HyperPDF[", 9, ",", 90, ",", 100, "](", 6, ")=", 0.039276893210424774`16.],
+  
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4087939554726887`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.00003099828465518108036021469520755548`16.000000000000004"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 10, ",", 100, "](", 6, ")=", 
+   0.00003099828465518108`16.000000000000004],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955499878*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "30", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.03145116093938196601969932657`16.000000000000004"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 30, ",", 100, "](", 6, ")=", 
+   0.031451160939381966`16.000000000000004],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4087939555312843`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "50", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.21141321703168621762079133475`15.999999999999998"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 50, ",", 100, "](", 6, ")=", 
+   0.21141321703168622`15.999999999999998],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4087939555650473`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "70", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.20757766219992097573001555534`16."}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 70, ",", 100, "](", 6, ")=", 0.20757766219992098`16.],
+  
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955598473*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["HyperPDF[", 10, ",", 90, ",", 90, "](", 0, ")=", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955633378*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "200", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.0020888881396345047383379242`15.999999999999998"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 90, ",", 200, "](", 0, ")=", 
+   0.0020888881396345047`15.999999999999998],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955666863*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1000", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.38767529924488428861768512191`15.999999999999998"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 90, ",", 1000, "](", 0, ")=", 
+   0.38767529924488429`15.999999999999998],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955700941*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"HyperPDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "10000", 
+   "\[InvisibleSpace]", "\<\"](\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\")=\"\>", "\[InvisibleSpace]", 
+   "0.9135215248834895863739523194`15.999999999999998"}],
+  SequenceForm[
+  "HyperPDF[", 10, ",", 90, ",", 10000, "](", 0, ")=", 
+   0.91352152488348959`15.999999999999998],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.408793955752636*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fileout", "=", 
+   RowBox[{
+   "OpenWrite", "[", 
+    "\"\</Users/burkardt/public_html/math_src/test_values/hypergeometric_pdf_\
+values.txt\>\"", "]"}]}], ";", 
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"fileout", ",", 
+    RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#  hypergeometric_pdf_values.txt\>\""}], 
+   "]"}], ";", 
+  RowBox[{"today", "=", 
+   RowBox[{"DateList", "[", "]"}]}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], "]"}], 
+  ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#  sam  suc  pop  n  f\>\""}], "]"}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";", 
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"sam", "=", 
+       RowBox[{
+       "samvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+      ";", 
+      RowBox[{"suc", "=", 
+       RowBox[{
+       "sucvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+      ";", 
+      RowBox[{"pop", "=", 
+       RowBox[{
+       "popvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+      ";", 
+      RowBox[{"n", "=", 
+       RowBox[{
+       "nvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], ";", 
+      
+      RowBox[{"f", "=", 
+       RowBox[{
+       "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], ";", 
+      
+      RowBox[{"Write", "[", 
+       RowBox[{
+       "fileout", ",", "sam", ",", "\"\<  \>\"", ",", "suc", ",", 
+        "\"\<  \>\"", ",", "pop", ",", "\"\<  \>\"", ",", "n", ",", 
+        "\"\<  \>\"", ",", 
+        RowBox[{"N", "[", 
+         RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], " ", 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Close", "[", "fileout", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.408793728175514*^9, 3.4087937708059998`*^9}, {
+   3.4087939721120577`*^9, 3.408794040641758*^9}, 3.47829143138325*^9}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 400}, {Automatic, 22}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1158, 27, 148, "Input"],
+Cell[1706, 49, 1903, 40, 343, "Input"],
+Cell[CellGroupData[{
+Cell[3634, 93, 1583, 40, 148, "Input"],
+Cell[CellGroupData[{
+Cell[5242, 137, 562, 11, 20, "Print"],
+Cell[5807, 150, 592, 12, 20, "Print"],
+Cell[6402, 164, 593, 12, 20, "Print"],
+Cell[6998, 178, 595, 12, 20, "Print"],
+Cell[7596, 192, 593, 12, 20, "Print"],
+Cell[8192, 206, 591, 12, 20, "Print"],
+Cell[8786, 220, 557, 11, 20, "Print"],
+Cell[9346, 233, 563, 12, 20, "Print"],
+Cell[9912, 247, 605, 12, 20, "Print"],
+Cell[10520, 261, 596, 12, 20, "Print"],
+Cell[11119, 275, 595, 12, 20, "Print"],
+Cell[11717, 289, 562, 12, 20, "Print"],
+Cell[12282, 303, 494, 9, 20, "Print"],
+Cell[12779, 314, 594, 12, 20, "Print"],
+Cell[13376, 328, 595, 12, 20, "Print"],
+Cell[13974, 342, 596, 12, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[14597, 358, 2225, 61, 253, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

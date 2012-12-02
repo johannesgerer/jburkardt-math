@@ -1,0 +1,1866 @@
+<html>
+
+  <head>
+    <title>
+      TEST_VALUES - Sample Function Values
+    </title>
+  </head>
+ 
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      TEST_VALUES <br> Sample Function Values
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>TEST_VALUES</b> is a MATHEMATICA library
+      which computes and stores a few selected values of various functions.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>TEST_VALUES</b> is available in
+      <a href = "../../c_src/test_values/test_values.html">a C version</a> and
+      <a href = "../../cpp_src/test_values/test_values.html">a C++ version</a> and
+      <a href = "../../f77_src/test_values/test_values.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/test_values/test_values.html">a FORTRAN90 version</a> and
+      <a href = "../../math_src/test_values/test_values.html">a MATHEMATICA version</a> and
+      <a href = "../../m_src/test_values/test_values.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Programs:
+    </h3>
+
+    <p>
+      <a href = "../../cpp_src/gsl/gsl.html">
+      GSL</a>,
+      a C++ library which
+      includes many routines for evaluating various special functions.
+    </p>
+
+    <p>
+      <a href = "../../c_src/polpak/polpak.html">
+      POLPAK</a>,
+      a C library which 
+      computes various mathematical functions;
+      test values for many of these functions are available in
+      TEST_VALUES.
+    </p>
+
+    <p>
+      <a href = "../../f_src/prob/prob.html">
+      PROB</a>,
+      a FORTRAN90 library which
+      computes various 
+      statistical functions;
+      test values for many of these functions are available in
+      TEST_VALUES.
+    </p>
+
+    <p>
+      <a href = "../../f77_src/specfun/specfun.html">
+      SPECFUN</a>,
+      a FORTRAN77 library which
+      computes various special functions, particularly Bessel functions.
+    </p>
+
+    <p>
+      <a href = "../../f_src/steam/steam.html">
+      STEAM</a>,
+      a FORTRAN90 library which
+      computes various functions related
+      to the physical properties of water; test values for many of these
+      functions are available in TEST_VALUES.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Lester Haar, John Gallagher, George Kell,<br>
+          NBS/NRC Steam Tables:<br>
+          Thermodynamic and Transport Properties and Computer Programs
+          for Vapor and Liquid States of Water in SI Units,<br>
+          Hemisphere Publishing Corporation, Washington, 1984,<br>
+          ISBN: 0-89116-353-0,<br>
+          LC: TJ270.H3.
+        </li>
+        <li>
+          Brian Hayes,<br>
+          Why W?,<br>
+          American Scientist,<br>
+          Volume 93, Number 2, March-April 2005, pages 104-108.
+        </li>
+        <li>
+          Kanti Mardia, Peter Jupp,<br>
+          Directional Statistics,<br>
+          Wiley, 2000,<br>
+          ISBN: 0471953334,<br>
+          LC: QA276.M335
+        </li>
+        <li>
+          Allan McLeod,<br>
+          Algorithm 757:
+          MISCFUN: A software package to compute uncommon
+          special functions,<br>
+          ACM Transactions on Mathematical Software,<br>
+          Volume 22, Number 3, September 1996, pages 288-301.
+        </li>
+        <li>
+          Karl Pearson,<br>
+          Tables of the Incomplete Beta Function,<br>
+          Cambridge University Press, 1968.
+        </li>
+        <li>
+          Frank Powell,<br>
+          Statistical Tables for Sociology, Biology and Physical Sciences,<br>
+          Cambridge University Press, 1982,<br>
+          ISBN: 0521284732.
+        </li>
+        <li>
+          Edward Reingold, Nachum Dershowitz,<br>
+          Calendrical Calculations: The Millennium Edition,<br>
+          Cambridge University Press, 2001,<br>
+          ISBN: 0-521-77752-6.
+        </li>
+        <li>
+          Eric Weisstein,<br>
+          CRC Concise Encyclopedia of Mathematics,<br>
+          CRC Press, 2002,<br>
+          Second edition,<br>
+          ISBN: 1584883472,<br>
+          LC: QA5.W45
+        </li>
+        <li>
+          Stephen Wolfram,<br>
+          The Mathematica Book,<br>
+          Fourth Edition,<br>
+          Cambridge University Press, 1999,<br>
+          ISBN: 0-521-64314-7,<br>
+          LC: QA76.95.W65.
+        </li>
+        <li>
+          Daniel Zwillinger, editor,<br>
+          CRC Standard Mathematical Tables and Formulae,<br>
+          30th Edition,<br>
+          CRC Press, 1996,<br>
+          ISBN: 0-8493-2479-3.
+        </li>
+        <li>
+          Daniel Zwillinger, Steven Kokoska,<br>
+          Standard Probability and Statistical Tables,<br>
+          CRC Press, 2000,<br>
+          ISBN: 1-58488-059-7.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "agm_values.nb">agm_values.nb</a>, 
+          evaluates the arithmetic geometric mean;
+        </li>
+        <li>
+          <a href = "airy_ai_prime_values.nb">airy_ai_prime_values.nb</a>, 
+          evaluates the derivative of the Airy Ai function;
+        </li>
+        <li>
+          <a href = "airy_ai_values.nb">airy_ai_values.nb</a>, 
+          evaluates the Airy Ai function;
+        </li>
+        <li>
+          <a href = "airy_bi_prime_values.nb">airy_bi_prime_values.nb</a>, 
+          evaluates the derivative of the Airy Bi function;
+        </li>
+        <li>
+          <a href = "airy_bi_values.nb">airy_bi_values.nb</a>, 
+          evaluates the Airy Bi function;
+        </li>
+        <li>
+          <a href = "airy_cai_values.nb">airy_cai_values.nb</a>, 
+          evaluates the Airy Ai function with COMPLEX argument;
+        </li>
+        <li>
+          <a href = "airy_cbi_values.nb">airy_cbi_values.nb</a>, 
+          evaluates the Airy Bi function with COMPLEX argument;
+        </li>
+        <li>
+          <a href = "arccos_values.nb">arccos_values.nb</a>, 
+          evaluates the inverse cosine function;
+        </li>
+        <li>
+          <a href = "arccosh_values.nb">arccosh_values.nb</a>, 
+          evaluates the inverse hyperbolic cosine function;
+        </li>
+        <li>
+          <a href = "arcsin_values.nb">arcsin_values.nb</a>, 
+          evaluates the inverse sine function;
+        </li>
+        <li>
+          <a href = "arcsinh_values.nb">arcsinh_values.nb</a>, 
+          evaluates the inverse hyperbolic sine function;
+        </li>
+        <li>
+          <a href = "arctan_values.nb">arctan_values.nb</a>, 
+          evaluates the inverse tangent function;
+        </li>
+        <li>
+          <a href = "arctan2_values.nb">arctan2_values.nb</a>, 
+          evaluates the inverse tangent function of two arguments;
+        </li>
+        <li>
+          <a href = "arctanh_values.nb">arctanh_values.nb</a>, 
+          evaluates the inverse hyperbolic tangent function;
+        </li>
+        <li>
+          <a href = "bei0_values.nb">bei0_values.nb</a>, 
+          evaluates the Kelvin function bei(0,x);
+        </li>
+        <li>
+          <a href = "bei1_values.nb">bei1_values.nb</a>, 
+          evaluates the Kelvin function bei(1,x);
+        </li>
+        <li>
+          <a href = "bell_values.nb">bell_values.nb</a>, 
+          evaluates the Bell numbers;
+        </li>
+        <li>
+          <a href = "ber0_values.nb">ber0_values.nb</a>, 
+          evaluates the Kelvin function ber(0,x);
+        </li>
+        <li>
+          <a href = "ber1_values.nb">ber1_values.nb</a>, 
+          evaluates the Kelvin function ber(1,x);
+        </li>
+        <li>
+          <a href = "bernoulli_number_values.nb">bernoulli_number_values.nb</a>, 
+          evaluates the Bernoulli numbers;
+        </li>
+        <li>
+          <a href = "bernoulli_poly_values.nb">bernoulli_poly_values.nb</a>, 
+          evaluates the Bernoulli polynomials;
+        </li>
+        <li>
+          <a href = "bernstein_poly_values.nb">bernstein_poly_values.nb</a>, 
+          evaluates the Bernstein polynomials;
+        </li>
+        <li>
+          <a href = "bessel_i0_spherical_values.nb">
+          bessel_i0_spherical_values.nb</a>, 
+          evaluates the spherical Bessel function i0;
+        </li>
+        <li>
+          <a href = "bessel_i0_values.nb">bessel_i0_values.nb</a>, 
+          evaluates the Bessel I0 function;
+        </li>
+        <li>
+          <a href = "bessel_i1_spherical_values.nb">
+          bessel_i1_spherical_values.nb</a>, 
+          evaluates the spherical Bessel function i1;
+        </li>
+        <li>
+          <a href = "bessel_i1_values.nb">bessel_i1_values.nb</a>, 
+          evaluates the Bessel I1 function;
+        </li>
+        <li>
+          <a href = "bessel_in_values.nb">bessel_in_values.nb</a>, 
+          evaluates the Bessel In function;
+        </li>
+        <li>
+          <a href = "bessel_ix_values.nb">bessel_ix_values.nb</a>, 
+          evaluates the Bessel In function for various NON-INTEGER 
+          values of the order;
+        </li>
+        <li>
+          <a href = "bessel_j0_spherical_values.nb">
+          bessel_j0_spherical_values.nb</a>, 
+          evaluates the spherical Bessel function j0;
+        </li>
+        <li>
+          <a href = "bessel_j0_values.nb">bessel_j0_values.nb</a>, 
+          evaluates the Bessel J0 function;
+        </li>
+        <li>
+          <a href = "bessel_j1_spherical_values.nb">
+          bessel_j1_spherical_values.nb</a>, 
+          evaluates the spherical Bessel function j1;
+        </li>
+        <li>
+          <a href = "bessel_j1_values.nb">bessel_j1_values.nb</a>, 
+          evaluates the Bessel J1 function;
+        </li>
+        <li>
+          <a href = "bessel_jn_values.nb">bessel_jn_values.nb</a>, 
+          evaluates the Bessel Jn function for various values of n;
+        </li>
+        <li>
+          <a href = "bessel_jx_values.nb">bessel_jx_values.nb</a>, 
+          evaluates the Bessel Jn function for various NON-INTEGER 
+          values of the order;
+        </li>
+        <li>
+          <a href = "bessel_k0_values.nb">bessel_k0_values.nb</a>, 
+          evaluates the Bessel K0 function;
+        </li>
+        <li>
+          <a href = "bessel_k1_values.nb">bessel_k1_values.nb</a>, 
+          evaluates the Bessel K1 function;
+        </li>
+        <li>
+          <a href = "bessel_kn_values.nb">bessel_kn_values.nb</a>, 
+          evaluates the Bessel Kn function for various values of n;
+        </li>
+        <li>
+          <a href = "bessel_kx_values.nb">bessel_kx_values.nb</a>, 
+          evaluates the Bessel Kn function for various NON-INTEGER 
+          values of the order;
+        </li>
+        <li>
+          <a href = "bessel_y0_spherical_values.nb">
+          bessel_y0_spherical_values.nb</a>, 
+          evaluates the spherical Bessel function y0;
+        </li>
+        <li>
+          <a href = "bessel_y0_values.nb">bessel_y0_values.nb</a>, 
+          evaluates the Bessel Y0 function;
+        </li>
+        <li>
+          <a href = "bessel_y1_spherical_values.nb">
+          bessel_y1_spherical_values.nb</a>, 
+          evaluates the spherical Bessel function y1;
+        </li>
+        <li>
+          <a href = "bessel_y1_values.nb">bessel_y1_values.nb</a>, 
+          evaluates the Bessel Y1 function;
+        </li>
+        <li>
+          <a href = "bessel_yn_values.nb">bessel_yn_values.nb</a>, 
+          evaluates the Bessel Yn function for various values of n;
+        </li>
+        <li>
+          <a href = "bessel_yx_values.nb">bessel_yx_values.nb</a>, 
+          evaluates the Bessel Yn function for various NON-INTEGER 
+          values of the order;
+        </li>
+        <li>
+          <a href = "beta_inc_values.nb">beta_inc_values.nb</a>, 
+          evaluates the incomplete Beta function;
+        </li>
+        <li>
+          <a href = "beta_log_values.nb">beta_log_values.nb</a>, 
+          evaluates the logarithm of the Beta function;
+        </li>
+        <li>
+          <a href = "beta_values.nb">beta_values.nb</a>, 
+          evaluates the Beta function;
+        </li>
+        <li>
+          <a href = "binomial_cdf_values.nb">binomial_cdf_values.nb</a>, 
+          evaluates the binomial CDF;
+        </li>
+        <li>
+          <a href = "binomial_values.nb">binomial_values.nb</a>, 
+          evaluates the binomial function;
+        </li>
+        <li>
+          <a href = "bivariate_normal_cdf_values.nb">bivariate_normal_cdf_values.nb</a>, 
+          evaluates the bivariate normal CDF;
+        </li>
+        <li>
+          <a href = "catalan_values.nb">catalan_values.nb</a>, 
+          evaluates the Catalan numbers;
+        </li>
+        <li>
+          <a href = "cauchy_cdf_values.nb">cauchy_cdf_values.nb</a>, 
+          evaluates the Cauchy CDF;
+        </li>
+        <li>
+          <a href = "cbrt_values.nb">
+          cbrt_values.nb</a>, 
+          evaluates the cube root function;
+        </li>
+        <li>
+          <a href = "chebyshev_t_values.nb">chebyshev_t_values.nb</a>, 
+          evaluates the Chebyshev polynomials T(n,x);
+        </li>
+        <li>
+          <a href = "chebyshev_u_values.nb">chebyshev_u_values.nb</a>, 
+          evaluates the Chebyshev polynomials U(n,x);
+        </li>
+        <li>
+          <a href = "chebyshev_v_values.nb">chebyshev_v_values.nb</a>, 
+          evaluates the Chebyshev polynomials V(n,x);
+        </li>
+        <li>
+          <a href = "chebyshev_w_values.nb">chebyshev_w_values.nb</a>, 
+          evaluates the Chebyshev polynomials W(n,x);
+        </li>
+        <li>
+          <a href = "chi_values.nb">chi_values.nb</a>, 
+          evaluates the hyperbolic cosine integral function;
+        </li>
+        <li>
+          <a href = "chi_square_cdf_values.nb">chi_square_cdf_values.nb</a>, 
+          evaluates the Chi Square CDF;
+        </li>
+        <li>
+          <a href = "chi_square_noncentral_cdf_values.nb">
+          chi_square_noncentral_cdf_values.nb</a>, 
+          evaluates the noncentral Chi Square CDF;
+        </li>
+        <li>
+          <a href = "ci_values.nb">ci_values.nb</a>, 
+          evaluates the cosine integral function;
+        </li>
+        <li>
+          <a href = "cin_values.nb">cin_values.nb</a>, 
+          evaluates the alternate cosine integral function;
+        </li>
+        <li>
+          <a href = "cinh_values.nb">cinh_values.nb</a>, 
+          evaluates the alternate hyperbolic cosine integral.
+        </li>
+        <li>
+          <a href = "clebsch_gordan_values.nb">clebsch_gordan_values.nb</a>, 
+          evaluates the Clebsch-Gordan coefficients;
+        </li>
+        <li>
+          <a href = "constant_values.nb">constant_values.nb</a>, 
+          evaluates certain mathematical constants.
+        </li>
+        <li>
+          <a href = "cos_values.nb">cos_values.nb</a>, 
+          evaluates the cosine function;
+        </li>
+        <li>
+          <a href = "cos_degree_values.nb">cos_degree_values.nb</a>, 
+          evaluates the cosine function with the argument given in degrees;
+        </li>
+        <li>
+          <a href = "cos_power_int_values.nb">
+          cos_power_int_values.nb</a>, 
+          evaluates the cosine power integral function;
+        </li>
+        <li>
+          <a href = "cosh_values.nb">cosh_values.nb</a>, 
+          evaluates the hyperbolic cosine function;
+        </li>
+        <li>
+          <a href = "cot_values.nb">cot_values.nb</a>, 
+          evaluates the cotangent function;
+        </li>
+        <li>
+          <a href = "dawson_values.nb">dawson_values.nb</a>, 
+          evaluates the Dawson function;
+        </li>
+        <li>
+          <a href = "dilogarithm_values.nb">dilogarithm_values.nb</a>, 
+          evaluates the dilogarithm function;
+        </li>
+        <li>
+          <a href = "e1_values.nb">e1_values.nb</a>, 
+          evaluates the exponential integral function E1;
+        </li>
+        <li>
+          <a href = "ei_values.nb">ei_values.nb</a>, 
+          evaluates the exponential integral function Ei;
+        </li>
+        <li>
+          <a href = "elliptic_ea_values.nb">elliptic_ea_values.nb</a>, 
+          evaluates the elliptic EA function;
+        </li>
+        <li>
+          <a href = "elliptic_em_values.nb">elliptic_em_values.nb</a>, 
+          evaluates the elliptic EM function;
+        </li>
+        <li>
+          <a href = "elliptic_ka_values.nb">elliptic_ka_values.nb</a>, 
+          evaluates the elliptic KA function;
+        </li>
+        <li>
+          <a href = "elliptic_km_values.nb">elliptic_km_values.nb</a>, 
+          evaluates the elliptic KM function;
+        </li>
+        <li>
+          <a href = "erf_values.nb">erf_values.nb</a>, 
+          evaluates the error function;
+        </li>
+        <li>
+          <a href = "erfc_values.nb">erfc_values.nb</a>, 
+          evaluates the complementary error function;
+        </li>
+        <li>
+          <a href = "euler_number_values.nb">euler_number_values.nb</a>, 
+          evaluates the Euler numbers;
+        </li>
+        <li>
+          <a href = "euler_poly_values.nb">euler_poly_values.nb</a>, 
+          evaluates the Euler polynomials;
+        </li>
+        <li>
+          <a href = "exp_values.nb">exp_values.nb</a>, 
+          evaluates the exponential function;
+        </li>
+        <li>
+          <a href = "exponential_cdf_values.nb">exponential_cdf_values.nb</a>, 
+          evaluates the exponential CDF;
+        </li>
+        <li>
+          <a href = "extreme_cdf_values.nb">extreme_cdf_values.nb</a>, 
+          evaluates the extreme values CDF;
+        </li>
+        <li>
+          <a href = "f_cdf_values.nb">f_cdf_values.nb</a>, 
+          evaluates the F CDF;
+        </li>
+        <li>
+          <a href = "f_noncentral_cdf_values.nb">f_noncentral_cdf_values.nb</a>, 
+          evaluates the noncentral F CDF;
+        </li>
+        <li>
+          <a href = "factorial_values.nb">factorial_values.nb</a>, 
+          evaluates the factorial function;
+        </li>
+        <li>
+          <a href = "factorial2_values.nb">factorial2_values.nb</a>, 
+          evaluates the double factorial function;
+        </li>
+        <li>
+          <a href = "factorial_rising_values.nb">
+          factorial_rising_values.nb</a>, 
+          evaluates the Pochhammer function;
+        </li>
+        <li>
+          <a href = "fresnel_cos_values.nb">fresnel_cos_values.nb</a>, 
+          evaluates the Fresnel cosine integral function;
+        </li>
+        <li>
+          <a href = "fresnel_sin_values.nb">fresnel_sin_values.nb</a>, 
+          evaluates the Fresnel sine integral function;
+        </li>
+        <li>
+          <a href = "frobenius_number_order2_values.nb">frobenius_number_order2_values.nb</a>, 
+          evaluates the Frobenius number for the order 2 case;
+        </li>
+        <li>
+          <a href = "gamma_cdf_values.nb">gamma_cdf_values.nb</a>, 
+          evaluates the Gamma CDF;
+        </li>
+        <li>
+          <a href = "gamma_inc_values.nb">gamma_inc_values.nb</a>, 
+          evaluates the incomplete Gamma function;
+        </li>
+        <li>
+          <a href = "gamma_inc_p_values.nb">gamma_inc_p_values.nb</a>, 
+          evaluates the incomplete Gamma ratio P(a,x);
+        </li>
+        <li>
+          <a href = "gamma_inc_q_values.nb">gamma_inc_q_values.nb</a>, 
+          evaluates the incomplete Gamma ratio Q(a,x);
+        </li>
+        <li>
+          <a href = "gamma_inc_tricomi_values.nb">gamma_inc_tricomi_values.nb</a>, 
+          evaluates Tricomi's incomplete Gamma function;
+        </li>
+        <li>
+          <a href = "gamma_log_values.nb">gamma_log_values.nb</a>, 
+          evaluates the logarithm of the Gamma function;
+        </li>
+        <li>
+          <a href = "gamma_values.nb">gamma_values.nb</a>, 
+          evaluates the Gamma function;
+        </li>
+        <li>
+          <a href = "gegenbauer_poly_values.nb">gegenbauer_poly_values.nb</a>, 
+          evaluates the Gegenbauer polynomials;
+        </li>
+        <li>
+          <a href = "geometric_cdf_values.nb">geometric_cdf_values.nb</a>, 
+          evaluates the geometric CDF;
+        </li>
+        <li>
+          <a href = "gud_values.nb">gud_values.nb</a>, 
+          evaluates the Gudermannian function;
+        </li>
+        <li>
+          <a href = "hermite_function_values.nb">hermite_function_values.nb</a>, 
+          evaluates the Hermite functions;
+        </li>
+        <li>
+          <a href = "hermite_poly_phys_values.nb">hermite_poly_phys_values.nb</a>, 
+          evaluates the physicist's Hermite polynomials;
+        </li>
+        <li>
+          <a href = "hermite_poly_prob_values.nb">hermite_poly_prob_values.nb</a>, 
+          evaluates the probabilist's Hermite polynomials;
+        </li>
+        <li>
+          <a href = "hyper_1f1_values.nb">hyper_1f1_values.nb</a>, 
+          evaluates the 1F1 hypergeometric function;
+        </li>
+        <li>
+          <a href = "hyper_2f1_values.nb">hyper_2f1_values.nb</a>, 
+          evaluates the 2F1 hypergeometric function;
+        </li>
+        <li>
+          <a href = "hypergeometric_pdf_values.nb">
+          hypergeometric_pdf_values.nb</a>, 
+          evaluates the hypergeometric PDF;
+        </li>
+        <li>
+          <a href = "hypergeometric_cdf_values.nb">
+          hypergeometric_cdf_values.nb</a>, 
+          evaluates the hypergeometric CDF;
+        </li>
+        <li>
+          <a href = "hypergeometric_u_values.nb">
+          hypergeometric_u_values.nb</a>, 
+          evaluates the hypergeometric function U(a,b,x);
+        </li>
+        <li>
+          <a href = "i_partition_count_values.nb">
+          i_partition_count_values.nb</a>, 
+          evaluates the partition count function;
+        </li>
+        <li>
+          <a href = "i_partition_distinct_count_values.nb">
+          i_partition_distinct_count_values.nb</a>, 
+          evaluates the partition count function with distinct parts;
+        </li>
+        <li>
+          <a href = "jacobi_cn_values.nb">jacobi_cn_values.nb</a>, 
+          evaluates the Jacobi CN function;
+        </li>
+        <li>
+          <a href = "jacobi_dn_values.nb">jacobi_dn_values.nb</a>, 
+          evaluates the Jacobi DN function;
+        </li>
+        <li>
+          <a href = "jacobi_poly_values.nb">jacobi_poly_values.nb</a>, 
+          evaluates the Jacobi polynomials;
+        </li>
+        <li>
+          <a href = "jacobi_sn_values.nb">jacobi_sn_values.nb</a>, 
+          evaluates the Jacobi SN function;
+        </li>
+	  <li>
+          <a href = "kei0_values.nb">kei0_values.nb</a>, 
+          evaluates the Kelvin function kei(0,x);
+        </li>
+        <li>
+          <a href = "kei1_values.nb">kei1_values.nb</a>, 
+          evaluates the Kelvin function kei(1,x);
+        </li>
+	  <li>
+          <a href = "ker0_values.nb">ker0_values.nb</a>, 
+          evaluates the Kelvin function ker(0,x);
+        </li>
+        <li>
+          <a href = "ker1_values.nb">ker1_values.nb</a>, 
+          evaluates the Kelvin function ker(1,x);
+        </li>
+        <li>
+          <a href = "laguerre_associated_values.nb">
+          laguerre_associated_values.nb</a>, 
+          evaluates the associated Laguerre function;
+        </li>
+        <li>
+          <a href = "laguerre_general_values.nb">
+          laguerre_general_values.nb</a>, 
+          evaluates the generalized Laguerre function;
+        </li>
+        <li>
+          <a href = "laguerre_poly_values.nb">
+          laguerre_poly_values.nb</a>, 
+          evaluates the Laguerre polynomials;
+        </li>
+        <li>
+          <a href = "lambert_w_values.nb">
+          lambert_w_values.nb</a>, 
+          evaluates the Lambert W function;
+        </li>
+        <li>
+          <a href = "laplace_cdf_values.nb">
+          laplace_cdf_values.nb</a>, 
+          evaluates the Laplace CDF;
+        </li>
+        <li>
+          <a href = "legendre_associated_values.nb">
+          legendre_associated_values.nb</a>, 
+          evaluates the associated Legendre function;
+        </li>
+        <li>
+          <a href = "legendre_associated_normalized_values.nb">
+          legendre_associated_normalized_values.nb</a>, 
+          evaluates the normalized associated Legendre function;
+        </li>
+        <li>
+          <a href = "legendre_associated_normalized_sphere_values.nb">
+          legendre_associated_normalized_sphere_values.nb</a>, 
+          evaluates the associated Legendre function, normalized for the unit sphere;
+        </li>
+        <li>
+          <a href = "legendre_function_q_values.nb">
+          legendre_function_q_values.nb</a>, 
+          evaluates the Legendre Q function;
+        </li>
+        <li>
+          <a href = "legendre_poly_values.nb">
+          legendre_poly_values.nb</a>, 
+          evaluates the Legendre polynomials;
+        </li>
+        <li>
+          <a href = "lerch_values.nb">
+          lerch_values.nb</a>, 
+          evaluates the Lerch function;
+        </li>
+        <li>
+          <a href = "ln_values.nb">ln_values.nb</a>, 
+          evaluates the natural logarithm function;
+        </li>
+        <li>
+          <a href = "log_integral_values.nb">
+          log_integral_values.nb</a>, 
+          evaluates the logarithmic integral function;
+        </li>
+        <li>
+          <a href = "log_normal_cdf_values.nb">
+          log_normal_cdf_values.nb</a>, 
+          evaluates the lognormal CDF;
+        </li>
+        <li>
+          <a href = "log_series_cdf_values.nb">
+          log_series_cdf_values.nb</a>, 
+          evaluates the logseries CDF;
+        </li>
+        <li>
+          <a href = "log10_values.nb">log10_values.nb</a>, 
+          evaluates the logarithm base 10 function;
+        </li>
+        <li>
+          <a href = "logistic_cdf_values.nb">
+          logistic_cdf_values.nb</a>, 
+          evaluates the logistic CDF;
+        </li>
+        <li>
+          <a href = "mathieu_even_values.nb">
+          mathieu_even_values.nb</a>, 
+          evaluates Mathieu equation eigenvalues associated with even solutions;
+        </li>
+        <li>
+          <a href = "mathieu_odd_values.nb">
+          mathieu_odd_values.nb</a>, 
+          evaluates Mathieu equation eigenvalues associated with odd solutions;
+        </li>
+        <li>
+          <a href = "moebius_values.nb">
+          moebius_values.nb</a>, 
+          evaluates the Moebius function;
+        </li>
+        <li>
+          <a href = "negative_binomial_cdf_values.nb">
+          negative_binomial_cdf_values.nb</a>, 
+          evaluates the negative binomial CDF;
+        </li>
+        <li>
+          <a href = "normal_01_cdf_values.nb">
+          normal_01_cdf_values.nb</a>, 
+          evaluates the standard Normal CDF;
+        </li>
+        <li>
+          <a href = "normal_cdf_values.nb">
+          normal_cdf_values.nb</a>, 
+          evaluates the Normal CDF;
+        </li>
+        <li>
+          <a href = "omega_values.nb">
+          omega_values.nb</a>, 
+          evaluates the Omega function;
+        </li>
+        <li>
+          <a href = "owen_values.nb">
+          owen_values.nb</a>, 
+          evaluates the Owen function;
+        </li>
+        <li>
+          <a href = "partition_count_values.nb">
+          partition_count_values.nb</a>, 
+          counts the number of partitions of an integer;
+        </li>
+        <li>
+          <a href = "partition_distinct_count_values.nb">
+          partition_distinct_count_values.nb</a>, 
+          counts the number of partitions of an integer into distinct parts;
+        </li>
+        <li>
+          <a href = "phi_values.nb">
+          phi_values.nb</a>, 
+          evaluates the Phi function;
+        </li>
+        <li>
+          <a href = "pi_values.nb">
+          pi_values.nb</a>, 
+          evaluates the Pi function;
+        </li>
+        <li>
+          <a href = "pochhammer_values.nb">
+          pochhammer_values.nb</a>, 
+          evaluates the Pochhammer function for real arguments;
+        </li>
+        <li>
+          <a href = "poisson_cdf_values.nb">
+          poisson_cdf_values.nb</a>, 
+          evaluates the Poisson CDF;
+        </li>
+        <li>
+          <a href = "polylogarithm_values.nb">
+          polylogarithm_values.nb</a>, 
+          evaluates the polylogarithm function;
+        </li>
+        <li>
+          <a href = "prime_values.nb">
+          prime_values.nb</a>, 
+          evaluates the Prime function;
+        </li>
+        <li>
+          <a href = "psi_values.nb">
+          psi_values.nb</a>, 
+          evaluates the Psi function;
+        </li>
+        <li>
+          <a href = "rayleigh_cdf_values.nb">
+          rayleigh_cdf_values.nb</a>, 
+          evaluates the Rayleigh CDF;
+        </li>
+        <li>
+          <a href = "r_factorial_log_values.nb">
+          r_factorial_log_values.nb</a>, 
+          evaluates the logarithm of the factorial function;
+        </li>
+        <li>
+          <a href = "r_factorial_values.nb">
+          r_factorial_values.nb</a>, 
+          evaluates the factorial function;
+        </li>
+        <li>
+          <a href = "sigma_values.nb">
+          sigma_values.nb</a>, 
+          evaluates the Sigma function;
+        </li>
+        <li>
+          <a href = "sin_values.nb">sin_values.nb</a>, 
+          evaluates the sine function;
+        </li>
+        <li>
+          <a href = "sin_degree_values.nb">sin_degree_values.nb</a>, 
+          evaluates the sine function for arguments in degrees;
+        </li>
+        <li>
+          <a href = "sin_integral_values.nb">
+          sin_integral_values.nb</a>, 
+          evaluates the sine integral function;
+        </li>
+        <li>
+          <a href = "sin_power_int_values.nb">
+          sin_power_int_values.nb</a>, 
+          evaluates the sine power integral function;
+        </li>
+        <li>
+          <a href = "sinh_values.nb">sinh_values.nb</a>, 
+          evaluates the hyperbolic sine function;
+        </li>
+        <li>
+          <a href = "sinh_integral_values.nb">
+          sinh_integral_values.nb</a>, 
+          evaluates the hyperbolic sine integral function;
+        </li>
+        <li>
+          <a href = "six_j_values.nb">
+          six_j_values.nb</a>, 
+          evaluates the Wigner 6J function;
+        </li>
+        <li>
+          <a href = "sphere_unit_area_values.nb">
+          sphere_unit_area_values.nb</a>, 
+          evaluates the unit sphere area function;
+        </li>
+        <li>
+          <a href = "sphere_unit_volume_values.nb">
+          sphere_unit_volume_values.nb</a>, 
+          evaluates the unit sphere volume function;
+        </li>
+        <li>
+          <a href = "spherical_harmonic_values.nb">
+          spherical_harmonic_values.nb</a>, 
+          evaluates the spherical harmonic function;
+        </li>
+        <li>
+          <a href = "sqrt_values.nb">
+          sqrt_values.nb</a>, 
+          evaluates the square root function;
+        </li>
+        <li>
+          <a href = "stirling1_values.nb">
+          stirling1_values.nb</a>, 
+          evaluates the Stirling numbers of the first kind;
+        </li>
+        <li>
+          <a href = "stirling2_values.nb">
+          stirling2_values.nb</a>, 
+          evaluates the Stirling numbers of the second kind;
+        </li>
+        <li>
+          <a href = "struve_h0_values.nb">
+          struve_h0_values.nb</a>, 
+          evaluates the Struve H0 function;
+        </li>
+        <li>
+          <a href = "struve_h1_values.nb">
+          struve_h1_values.nb</a>, 
+          evaluates the Struve H1 function;
+        </li>
+        <li>
+          <a href = "struve_l0_values.nb">
+          struve_l0_values.nb</a>, 
+          evaluates the Struve L0 function;
+        </li>
+        <li>
+          <a href = "struve_l1_values.nb">
+          struve_l1_values.nb</a>, 
+          evaluates the Struve L1 function;
+        </li>
+        <li>
+          <a href = "student_cdf_values.nb">
+          student_cdf_values.nb</a>, 
+          evaluates the Student CDF;
+        </li>
+        <li>
+          <a href = "student_noncentral_cdf_values.nb">
+          student_noncentral_cdf_values.nb</a>, 
+          evaluates the noncentral Student CDF;
+        </li>
+        <li>
+          <a href = "subfactorial_values.nb">
+          subfactorial_values.nb</a>, 
+          evaluates the subfactorial function, which counts derangments;
+        </li>
+        <li>
+          <a href = "tan_values.nb">tan_values.nb</a>, 
+          evaluates the tangent function;
+        </li>
+        <li>
+          <a href = "tanh_values.nb">tanh_values.nb</a>, 
+          evaluates the hyperbolic tangent function;
+        </li>
+        <li>
+          <a href = "tau_values.nb">
+          tau_values.nb</a>, 
+          evaluates the Tau function;
+        </li>
+        <li>
+          <a href = "three_j_values.nb">
+          three_j_values.nb</a>, 
+          evaluates the Wigner 3J function;
+        </li>
+        <li>
+          <a href = "trigamma_values.nb">
+          trigamma_values.nb</a>, 
+          evaluates the Trigamma function;
+        </li>
+        <li>
+          <a href = "von_mises_cdf_values.nb">
+          von_mises_cdf_values.nb</a>, 
+          evaluates the von Mises CDF;
+        </li>
+        <li>
+          <a href = "weibull_cdf_values.nb">
+          weibull_cdf_values.nb</a>, 
+          evaluates the Weibull CDF;
+        </li>
+        <li>
+          <a href = "zeta_values.nb">
+          zeta_values.nb</a>, 
+          evaluates the Zeta function;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Data Files:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "agm_values.txt">agm_values.txt</a>, 
+          a table of the arithmetic geometric mean;
+        </li>
+        <li>
+          <a href = "airy_ai_prime_values.txt">airy_ai_prime_values.txt</a>, 
+          a table of the derivative of the Airy Ai function;
+        </li>
+        <li>
+          <a href = "airy_ai_values.txt">airy_ai_prime_values.txt</a>, 
+          a table of the Airy Ai function;
+        </li>
+        <li>
+          <a href = "airy_bi_prime_values.txt">airy_bi_prime_values.txt</a>, 
+          a table of the derivative of the Airy Bi function;
+        </li>
+        <li>
+          <a href = "airy_bi_values.txt">airy_bi_values.txt</a>, 
+          a table of the Airy Bi function;
+        </li>
+        <li>
+          <a href = "airy_cai_values.txt">airy_cai_prime_values.txt</a>, 
+          a table of the Airy Ai function with COMPLEX argument;
+        </li>
+        <li>
+          <a href = "airy_cbi_values.txt">airy_cbi_prime_values.txt</a>, 
+          a table of the Airy Bi function with COMPLEX argument;
+        </li>
+        <li>
+          <a href = "arccos_values.txt">arccos_values.txt</a>, 
+          a table of the inverse cosine function;
+        </li>
+        <li>
+          <a href = "arccosh_values.txt">arccosh_values.txt</a>, 
+          a table of the inverse hyperbolic cosine function;
+        </li>
+        <li>
+          <a href = "arcsin_values.txt">arcsin_values.txt</a>, 
+          a table of the inverse sine function;
+        </li>
+        <li>
+          <a href = "arcsinh_values.txt">arcsinh_values.txt</a>, 
+          a table of the inverse hyperbolic sine function;
+        </li>
+        <li>
+          <a href = "arctan_values.txt">arctan_values.txt</a>, 
+          a table of the inverse tangent function;
+        </li>
+        <li>
+          <a href = "arctan2_values.txt">arctan2_values.txt</a>, 
+          a table of the inverse tangent function of two arguments;
+        </li>
+        <li>
+          <a href = "arctanh_values.txt">arctanh_values.txt</a>, 
+          a table of the inverse hyperbolic tangent function;
+        </li>
+        <li>
+          <a href = "bei0_values.txt">bei0_values.txt</a>, 
+          a table of the Kelvin function bei(0,x);
+        </li>
+        <li>
+          <a href = "bei1_values.txt">bei1_values.txt</a>, 
+          a table of the Kelvin function bei(1,x);
+        </li>
+        <li>
+          <a href = "bell_values.txt">bell_values.txt</a>, 
+          a table of the Bell numbers;
+        </li>
+        <li>
+          <a href = "ber0_values.txt">ber0_values.txt</a>, 
+          a table of the Kelvin function ber(0,x);
+        </li>
+        <li>
+          <a href = "ber1_values.txt">ber1_values.txt</a>, 
+          a table of the Kelvin function ber(1,x);
+        </li>
+        <li>
+          <a href = "bernoulli_number_values.txt">
+          bernoulli_number_values.txt</a>, 
+          a table of the Bernoulli numbers;
+        </li>
+        <li>
+          <a href = "bernoulli_poly_values.txt">
+          bernoulli_poly_values.txt</a>, 
+          a table of Bernoulli polynomials;
+        </li>
+        <li>
+          <a href = "bernstein_poly.txt">bernstein_poly_values.txt</a>, 
+          a table of the Bernstein polynomials;
+        </li>
+        <li>
+          <a href = "bessel_i0_spherical_values.txt">
+          bessel_i0_spherical_values.txt</a>, 
+          a table of the spherical Bessel function i0;
+        </li>
+        <li>
+          <a href = "bessel_i0_values.txt">bessel_i0_values.txt</a>, 
+          a table of the Bessel I(0,x) function;
+        </li>
+        <li>
+          <a href = "bessel_i1_spherical_values.txt">
+          bessel_i1_spherical_values.txt</a>, 
+          a table of the spherical Bessel function i1;
+        </li>
+        <li>
+          <a href = "bessel_i1_values.txt">bessel_i1_values.txt</a>, 
+          a table of the Bessel I(1,x) function;
+        </li>
+        <li>
+          <a href = "bessel_in_values.txt">bessel_in_values.txt</a>, 
+          a table of the Bessel I(n,x) function;
+        </li>
+        <li>
+          <a href = "bessel_ix_values.txt">bessel_ix_values.txt</a>, 
+          a table of the Bessel I(n,x) function for several
+          NONINTEGER values of the order;
+        </li>
+        <li>
+          <a href = "bessel_j0_spherical_values.txt">
+          bessel_j0_spherical_values.txt</a>, 
+          a table of the spherical Bessel function j0;
+        </li>
+        <li>
+          <a href = "bessel_j0_values.txt">bessel_j0_values.txt</a>, 
+          a table of the Bessel J(0,x) function;
+        </li>
+        <li>
+          <a href = "bessel_j1_spherical_values.txt">
+          bessel_j1_spherical_values.txt</a>, 
+          a table of the spherical Bessel function j1;
+        </li>
+        <li>
+          <a href = "bessel_j1_values.txt">bessel_j1_values.txt</a>, 
+          a table of the Bessel J(1,x) function;
+        </li>
+        <li>
+          <a href = "bessel_jn_values.txt">bessel_jn_values.txt</a>, 
+          a table of the Bessel J(n,x) function;
+        </li>
+        <li>
+          <a href = "bessel_jx_values.txt">bessel_jx_values.txt</a>, 
+          a table of the Bessel J(n,x) function for several
+          NONINTEGER values of the order;
+        </li>
+        <li>
+          <a href = "bessel_k0_values.txt">bessel_k0_values.txt</a>, 
+          a table of the Bessel K(0,x) function;
+        </li>
+        <li>
+          <a href = "bessel_k1_values.txt">bessel_k1_values.txt</a>, 
+          a table of the Bessel K(1,x) function;
+        </li>
+        <li>
+          <a href = "bessel_kn_values.txt">bessel_kn_values.txt</a>, 
+          a table of the Bessel K(n,x) function;
+        </li>
+        <li>
+          <a href = "bessel_kx_values.txt">bessel_kx_values.txt</a>, 
+          a table of the Bessel K(n,x) function for several
+          NONINTEGER values of the order;
+        </li>
+        <li>
+          <a href = "bessel_y0_spherical_values.txt">
+          bessel_y0_spherical_values.txt</a>, 
+          a table of the spherical Bessel function y0;
+        </li>
+        <li>
+          <a href = "bessel_y0_values.txt">bessel_y0_values.txt</a>, 
+          a table of the Bessel Y(0,x) function;
+        </li>
+        <li>
+          <a href = "bessel_y1_spherical_values.txt">
+          bessel_y1_spherical_values.txt</a>, 
+          a table of the spherical Bessel function y1;
+        </li>
+        <li>
+          <a href = "bessel_y1_values.txt">bessel_y1_values.txt</a>, 
+          a table of the Bessel Y(1,x) function;
+        </li>
+        <li>
+          <a href = "bessel_yn_values.txt">bessel_yn_values.txt</a>, 
+          a table of the Bessel Y(n,x) function;
+        </li>
+        <li>
+          <a href = "bessel_yx_values.txt">bessel_yx_values.txt</a>, 
+          a table of the Bessel Y(n,x) function for several
+          NONINTEGER values of the order;
+        </li>
+        <li>
+          <a href = "beta_cdf_values.txt">beta_cdf_values.txt</a>, 
+          a table of the Beta CDF;
+        </li>
+        <li>
+          <a href = "beta_inc_values.txt">beta_inc_values.txt</a>, 
+          a table of the incomplete Beta function;
+        </li>
+        <li>
+          <a href = "beta_log_values.txt">beta_log_values.txt</a>, 
+          a table of the logarithm of the Beta function;
+        </li>
+        <li>
+          <a href = "beta_values.txt">beta_values.txt</a>, 
+          a table of the Beta function;
+        </li>
+        <li>
+          <a href = "binomial_cdf_values.txt">binomial_cdf_values.txt</a>, 
+          a table of the binomial CDF;
+        </li>
+        <li>
+          <a href = "binomial_values.txt">binomial_values.txt</a>, 
+          a table of the binomial function;
+        </li>
+        <li>
+          <a href = "bivariate_normal_cdf_values.txt">bivariate_normal_cdf_values.txt</a>, 
+          a table of the bivariate normal CDF;
+        </li>
+        <li>
+          <a href = "catalan_values.txt">catalan_values.txt</a>, 
+          a table of the Catalan numbers;
+        </li>
+        <li>
+          <a href = "cauchy_cdf_values.txt">cauchy_cdf_values.txt</a>, 
+          a table of the Cauchy CDF;
+        </li>
+        <li>
+          <a href = "cbrt_values.txt">
+          cbrt_values.txt</a>, 
+          a table of the cube root function;
+        </li>
+        <li>
+          <a href = "chebyshev_t_values.txt">chebyshev_t_values.txt</a>, 
+          a table of the Chebyshev polynomial T(n,x);
+        </li>
+        <li>
+          <a href = "chebyshev_u_values.txt">chebyshev_u_values.txt</a>, 
+          a table of the Chebyshev polynomial U(n,x);
+        </li>
+        <li>
+          <a href = "chebyshev_v_values.txt">chebyshev_v_values.txt</a>, 
+          a table of the Chebyshev polynomial V(n,x);
+        </li>
+        <li>
+          <a href = "chebyshev_w_values.txt">chebyshev_w_values.txt</a>, 
+          a table of the Chebyshev polynomial W(n,x);
+        </li>
+        <li>
+          <a href = "chi_values.txt">chi_values.txt</a>, 
+          a table of the hyperbolic cosine integral;
+        </li>
+        <li>
+          <a href = "chi_square_values.txt">chi_square_values.txt</a>, 
+          a table of the Chi Square CDF;
+        </li>
+        <li>
+          <a href = "chi_square_noncentral_values.txt">
+          chi_square_noncentral_values.txt</a>, 
+          a table of the noncentral Chi Square CDF;
+        </li>
+        <li>
+          <a href = "cil_values.txt">ci_values.txt</a>, 
+          a table of the Cosine integral;
+        </li>
+        <li>
+          <a href = "cin_values.txt">cin_values.txt</a>, 
+          a table of the alternate Cosine integral;
+        </li>
+        <li>
+          <a href = "cinh_values.txtb">cinh_values.txt</a>, 
+          a table of the alternate hyperbolic cosine integral;
+        </li>
+        <li>
+          <a href = "clebsch_gordan_values.txt">clebsch_gordan_values.txt</a>, 
+          a table of the Clebsch-Gordan coefficients;
+        </li>
+        <li>
+          <a href = "constant_values.txt">
+          constant_values.txt</a>, 
+          a table of some mathematical constants.
+        </li>
+        <li>
+          <a href = "cos_values.txt">cos_values.txt</a>, 
+          a table of the cosine function;
+        </li>
+        <li>
+          <a href = "cos_degree_values.txt">cos_degree_values.txt</a>, 
+          a table of the cosine function, with the argument given in degrees;
+        </li>
+        <li>
+          <a href = "cos_power_int_values.txt">
+          cos_power_int_values.txt</a>, 
+          a table of the cosine power integral function;
+        </li>
+        <li>
+          <a href = "cosh_values.txt">cosh_values.txt</a>, 
+          a table of the hyperbolic cosine function;
+        </li>
+        <li>
+          <a href = "cot_values.txt">cot_values.txt</a>, 
+          a table of the cotangent function;
+        </li>
+        <li>
+          <a href = "dawson_values.txt">dawson_values.txt</a>, 
+          a table of Dawson's integral function;
+        </li>
+        <li>
+          <a href = "dilogarithm_values.txt">dilogarithm_values.txt</a>, 
+          a table of the dilogarithm function;
+        </li>
+        <li>
+          <a href = "e1_values.txt">e1_values.txt</a>, 
+          a table of the exponential integral function E1(x);
+        </li>
+        <li>
+          <a href = "ei_values.txt">ei_values.txt</a>, 
+          a table of the exponential integral function Ei(x);
+        </li>
+        <li>
+          <a href = "elliptic_ea_values.txt">elliptic_ea_values.txt</a>, 
+          a table of the elliptic EA function;
+        </li>
+        <li>
+          <a href = "elliptic_em_values.txt">elliptic_em_values.txt</a>, 
+          a table of the elliptic EM function;
+        </li>
+        <li>
+          <a href = "elliptic_ka_values.txt">elliptic_ka_values.txt</a>, 
+          a table of the elliptic KA function;
+        </li>
+        <li>
+          <a href = "elliptic_km_values.txt">elliptic_km_values.txt</a>, 
+          a table of the elliptic KM function;
+        </li>
+        <li>
+          <a href = "erf_values.txt">erf_values.txt</a>, 
+          a table of the error function;
+        </li>
+        <li>
+          <a href = "erfc_values.txt">erfc_values.txt</a>, 
+          a table of the complementary error function;
+        </li>
+        <li>
+          <a href = "euler_number_values.txt">euler_number_values.txt</a>, 
+          a table of the Euler numbers;
+        </li>
+        <li>
+          <a href = "euler_poly_values.txt">euler_poly_values.txt</a>, 
+          a table of the Euler polynomials;
+        </li>
+        <li>
+          <a href = "exp_values.txt">exp_values.txt</a>, 
+          a table of the exponential function;
+        </li>
+        <li>
+          <a href = "exponential_cdf_values.txt">exponential_cdf_values.txt</a>, 
+          a table of the exponential CDF;
+        </li>
+        <li>
+          <a href = "extreme_cdf_values.txt">extreme_cdf_values.txt</a>, 
+          a table of the extreme CDF;
+        </li>
+        <li>
+          <a href = "f_cdf_values.txt">f_cdf_values.txt</a>, 
+          a table of the F CDF;
+        </li>
+        <li>
+          <a href = "f_noncentral_cdf_values.txt">
+          f_noncentral_cdf_values.txt</a>, 
+          a table of the noncentral F CDF;
+        </li>
+        <li>
+          <a href = "factorial_values.txt">factorial_values.txt</a>, 
+          a table of the factorial function;
+        </li>
+        <li>
+          <a href = "factorial2_values.txt">factorial2_values.txt</a>, 
+          a table of the double factorial function;
+        </li>
+       <li>
+          <a href = "factorial_rising_values.txt">
+          factorial_rising_values.txt</a>, 
+          a table of the Pochhammer function;
+        </li>
+        <li>
+          <a href = "fresnel_cos_values.txt">fresnel_cos_values.txt</a>, 
+          a table of the Fresnel cosine integral;
+        </li>
+        <li>
+          <a href = "fresnel_sin_values.txt">fresnel_sin_values.txt</a>, 
+          a table of the Fresnel sine integral;
+        </li>
+        <li>
+          <a href = "frobenius_number_order2_values.txt">frobenius_number_order2_values.txt</a>, 
+          a table of the Frobenius number of order 2;
+        </li>
+        <li>
+          <a href = "gamma_cdf_values.txt">gamma_cdf_values.txt</a>, 
+          a table of the Gamma CDF;
+        </li>
+        <li>
+          <a href = "gamma_inc_values.txt">gamma_inc_values.txt</a>, 
+          a table of the incomplete Gamma function;
+        </li>
+        <li>
+          <a href = "gamma_inc_p_values.txt">gamma_inc_p_values.txt</a>, 
+          a table of the incomplete Gamma ratio P(a,x);
+        </li>
+        <li>
+          <a href = "gamma_inc_q_values.txt">gamma_inc_q_values.txt</a>, 
+          a table of the incomplete Gamma ratio Q(a,x);
+        </li>
+        <li>
+          <a href = "gamma_inc_tricomi_values.txt">gamma_inc_tricomi_values.txt</a>, 
+          a table of Tricomi's incomplete Gamma function;
+        </li>
+        <li>
+          <a href = "gamma_log_values.txt">gamma_log_values.txt</a>, 
+          a table of the logarithm of the Gamma function;
+        </li>
+        <li>
+          <a href = "gamma_values.txt">gamma_values.txt</a>, 
+          a table of the Gamma function;
+        </li>
+        <li>
+          <a href = "gegenbauer_poly_values.txt">gegenbauer_poly_values.txt</a>, 
+          a table of the Gegenbauer polynomial;
+        </li>
+        <li>
+          <a href = "geometric_cdf_values.txt">geometric_cdf_values.txt</a>, 
+          a table of the geometric CDF;
+        </li>
+        <li>
+          <a href = "gud_values.txt">gud_values.txt</a>, 
+          a table of the Gudermannian function;
+        </li>
+        <li>
+          <a href = "hermite_function_values.txt">hermite_function_values.txt</a>, 
+          a table of the Hermite functions;
+        </li>
+        <li>
+          <a href = "hermite_poly_phys_values.txt">hermite_poly_phys_values.txt</a>, 
+          a table of the physicist's Hermite polynomials;
+        </li>
+        <li>
+          <a href = "hermite_poly_prob_values.txt">hermite_poly_prob_values.txt</a>, 
+          a table of the probabilist's Hermite polynomials;
+        </li>
+        <li>
+          <a href = "hyper_1f1_values.txt">
+          hyper_1f1_values.txt</a>, 
+          a table of the 1F1 hypergeometric function;
+        </li>
+        <li>
+          <a href = "hyper_2f1_values.txt">
+          hyper_2f1_values.txt</a>, 
+          a table of the 2F1 hypergeometric function;
+        </li>
+        <li>
+          <a href = "hypergeometric_cdf_values.txt">
+          hypergeometric_cdf_values.txt</a>, 
+          a table of the hypergeometric CDF;
+        </li>
+        <li>
+          <a href = "hypergeometric_pdf_values.txt">
+          hypergeometric_pdf_values.txt</a>, 
+          a table of the hypergeometric PDF;
+        </li>
+        <li>
+          <a href = "hypergeometricu_values.txt">
+          hypergeometric_u_values.txt</a>, 
+          a table of the hypergeometric function U(a,b,x);
+        </li>
+        <li>
+          <a href = "jacobi_cn_values.txt">
+          jacobi_cn_values.txt</a>, 
+          a table of the Jacobi CN function;
+        </li>
+        <li>
+          <a href = "jacobi_dn_values.txt">
+          jacobi_dn_values.txt</a>, 
+          a table of the Jacobi DN function;
+        </li>
+        <li>
+          <a href = "jacobi_poly_values.txt">
+          jacobi_poly_values.txt</a>, 
+          a table of the Jacobi polynomials;
+        </li>
+        <li>
+          <a href = "jacobi_sn_values.txt">
+          jacobi_sn_values.txt</a>, 
+          a table of the Jacobi SN function;
+        </li>
+        <li>
+          <a href = "kei0_values.txt">kei0_values.txt</a>, 
+          a table of the Kelvin function kei(0,x);
+        </li>
+        <li>
+          <a href = "kei1_values.txt">kei1_values.txt</a>, 
+          a table of the Kelvin function kei(1,x);
+        </li>
+        <li>
+          <a href = "ker0_values.txt">ker0_values.txt</a>, 
+          a table of the Kelvin function ker(0,x);
+        </li>
+        <li>
+          <a href = "ker1_values.txt">ker1_values.txt</a>, 
+          a table of the Kelvin function ker(1,x);
+        </li>
+        <li>
+          <a href = "laguerre_associated_values.txt">
+          laguerre_associated_values.txt</a>, 
+          a table of the associated Laguerre polynomials;
+        </li>
+        <li>
+          <a href = "laguerre_general_values.txt">
+          laguerre_general_values.txt</a>, 
+          a table of the generalized Laguerre functions;
+        </li>
+        <li>
+          <a href = "laguerre_poly_values.txt">
+          laguerre_poly_values.txt</a>, 
+          a table of the Laguerre polynomials;
+        </li>
+        <li>
+          <a href = "lambert_w_values.txt">lambert_w_values.txt</a>, 
+          a table of the Lambert W function;
+        </li>
+        <li>
+          <a href = "laplace_cdf_values.txt">laplace_cdf_values.txt</a>, 
+          a table of the Laplace CDF;
+        </li>
+        <li>
+          <a href = "legendre_associated_values.txt">
+          legendre_associated_values.txt</a>, 
+          a table of the associated Legendre function;
+        </li>
+        <li>
+          <a href = "legendre_associated_normalized_values.txt">
+          legendre_associated_normalized_values.txt</a>, 
+          a table of the normalized associated Legendre function;
+        </li>
+        <li>
+          <a href = "legendre_associated_normalized_sphere_values.txt">
+          legendre_associated_normalized_sphere_values.txt</a>, 
+          a table of the associated Legendre function,
+          normalized for the unit sphere.
+        </li>
+        <li>
+          <a href = "legendre_function_q_values.txt">
+          legendre_function_q_values.txt</a>, 
+          a table of the Legendre Q function;
+        </li>
+        <li>
+          <a href = "legendre_poly_values.txt">legendre_poly_values.txt</a>, 
+          a table of the Legendre polynomials;
+        </li>
+        <li>
+          <a href = "lerch_values.txt">lerch_values.txt</a>, 
+          a table of the Lerch function;
+        </li>
+        <li>
+          <a href = "ln_values.txt">ln_values.txt</a>, 
+          a table of the natural logarithm function;
+        </li>
+        <li>
+          <a href = "log_integral_values.txt">log_integral_values.txt</a>, 
+          a table of the logarithmic integral function;
+        </li>
+        <li>
+          <a href = "log_normal_cdf_values.txt">log_normal_cdf_values.txt</a>, 
+          a table of the log normal CDF;
+        </li>
+        <li>
+          <a href = "log_series_cdf_values.txt">log_series_cdf_values.txt</a>, 
+          a table of the log series CDF;
+        </li>
+        <li>
+          <a href = "log10_values.txt">log10_values.txt</a>, 
+          a table of the logarithm base 10 function;
+        </li>
+        <li>
+          <a href = "logistic_cdf_values.txt">logistic_cdf_values.txt</a>, 
+          a table of the logistic CDF;
+        </li>
+        <li>
+          <a href = "mathieu_even_values.txt">mathieu_even_values.txt</a>, 
+          a table of eigenvalues associated with even
+          solutions to Mathieu's differential equation;
+        </li>
+        <li>
+          <a href = "mathieu_odd_values.txt">mathieu_odd_values.txt</a>, 
+          a table of eigenvalues associated with odd
+          solutions to Mathieu's differential equation;
+        </li>
+        <li>
+          <a href = "moebius_values.txt">moebius_values.txt</a>, 
+          a table of the Moebius function;
+        </li>
+        <li>
+          <a href = "negative_binomial_cdf_values.txt">
+          negative_binomial_cdf_values.txt</a>, 
+          a table of the negative binomial CDF;
+        </li>
+        <li>
+          <a href = "normal_01_cdf_values.txt">
+          normal_01_cdf_values.txt</a>, 
+          a table of the Normal 01 CDF;
+        </li>
+        <li>
+          <a href = "normal_cdf_values.txt">
+          normal_cdf_values.txt</a>, 
+          a table of the normal CDF;
+        </li>
+        <li>
+          <a href = "omega_values.txt">
+          omega_values.txt</a>, 
+          a table of the Omega function;
+        </li>
+        <li>
+          <a href = "owen_values.txt">
+          owen_values.txt</a>, 
+          a table of the Owen function;
+        </li>
+        <li>
+          <a href = "partition_count_values.txt">
+          partition_count_values.txt</a>, 
+          a table of the number of partitions of an integer;
+        </li>
+        <li>
+          <a href = "partition_distinct_count_values.txt">
+          partition_distinct_count_values.txt</a>, 
+          a table of the number of partitions of an integer 
+          into distinct parts;
+        </li>
+        <li>
+          <a href = "phi_values.txt">
+          phi_values.txt</a>, 
+          a table of the Phi function;
+        </li>
+        <li>
+          <a href = "pi_values.txt">
+          pi_values.txt</a>, 
+          a table of the Pi function;
+        </li>
+        <li>
+          <a href = "pochhammer_values.txt">
+          pochhammer_values.txt</a>, 
+          a table of the Pochhammer function for real arguments;
+        </li>
+        <li>
+          <a href = "poisson_cdf_values.txt">
+          poisson_cdf_values.txt</a>, 
+          a table of the Poisson CDF;
+        </li>
+        <li>
+          <a href = "polylogarithm_values.txt">
+          polylogarithm_values.txt</a>, 
+          a table of the polylogarithm function;
+        </li>
+        <li>
+          <a href = "prime_values.txt">
+          prime_values.txt</a>, 
+          a table of the prime function;
+        </li>
+        <li>
+          <a href = "psi_values.txt">
+          psi_values.txt</a>, 
+          a table of the Psi function;
+        </li>
+        <li>
+          <a href = "r_factorial_values.txt">
+          r_factorial_values.txt</a>, 
+          a table of the factorial function;
+        </li>
+        <li>
+          <a href = "r_factorial_log_values.txt">
+          r_factorial_log_values.txt</a>, 
+          a table of the logarithm of the factorial function;
+        </li>
+        <li>
+          <a href = "rayleigh_cdf_values.txt">
+          rayleigh_cdf_values.txt</a>, 
+          a table of the Rayleigh CDF;
+        </li>
+        <li>
+          <a href = "sigma_values.txt">
+          sigma_values.txt</a>, 
+          a table of the Sigma function;
+        </li>
+        <li>
+          <a href = "sin_values.txt">sin_values.txt</a>, 
+          a table of the sine function;
+        </li>
+        <li>
+          <a href = "sin_degree_values.txt">sin_degree_values.txt</a>, 
+          a table of the sine function for arguments in degrees;
+        </li>
+        <li>
+          <a href = "sin_integral_values.txt">
+          sin_integral_values.txt</a>, 
+          a table of the sine integral function;
+        </li>
+        <li>
+          <a href = "sin_power_int_values.txt">
+          sin_power_int_values.txt</a>, 
+          a table of the sine power integral function;
+        </li>
+        <li>
+          <a href = "sinh_values.txt">sinh_values.txt</a>, 
+          a table of the hyperbolic sine function;
+        </li>
+        <li>
+          <a href = "sinh_integral_values.txt">
+          sinh_integral_values.txt</a>, 
+          a table of the hyperbolic sine integral function;
+        </li>
+        <li>
+          <a href = "six_j_values.txt">
+          six_j_values.txt</a>, 
+          a table of the Wigner 6J function;
+        </li>
+        <li>
+          <a href = "sphere_unit_area_values.txt">
+          sphere_unit_area_values.txt</a>, 
+          a table of the unit sphere area function;
+        </li>
+        <li>
+          <a href = "sphere_unit_volume_values.txt">
+          sphere_unit_volume_values.txt</a>, 
+          a table of the unit sphere volume function;
+        </li>
+        <li>
+          <a href = "spherical_harmonic_values.txt">
+          spherical_harmonic_values.txt</a>, 
+          a table of the spherical harmonic function;
+        </li>
+        <li>
+          <a href = "sqrt_values.txt">
+          sqrt_values.txt</a>, 
+          a table of the square root function;
+        </li>
+        <li>
+          <a href = "sterling1_values.txt">
+          sterling1_values.txt</a>, 
+          a table of the Sterling numbers of the first kind;
+        </li>
+        <li>
+          <a href = "sterling2_values.txt">
+          sterling2_values.txt</a>, 
+          a table of the Sterling numbers of the second kind;
+        </li>
+        <li>
+          <a href = "struve_h0_values.txt">
+          struve_h0_values.txt</a>, 
+          a table of the Struve H0 function;
+        </li>
+        <li>
+          <a href = "struve_h1_values.txt">
+          struve_h1_values.txt</a>, 
+          a table of the Struve H1 function;
+        </li>
+        <li>
+          <a href = "struve_l0_values.txt">
+          struve_l0_values.txt</a>, 
+          a table of the Struve L0 function;
+        </li>
+        <li>
+          <a href = "struve_l1_values.txt">
+          struve_l1_values.txt</a>, 
+          a table of the Struve L1 function;
+        </li>
+        <li>
+          <a href = "student_cdf_values.txt">
+          student_cdf_values.txt</a>, 
+          a table of the Student CDF;
+        </li>
+        <li>
+          <a href = "student_noncentral_cdf_values.txt">
+          student_noncentral_cdf_values.txt</a>, 
+          a table of the noncentral Student CDF;
+        </li>
+        <li>
+          <a href = "subfactorial_values.txt">subfactorial_values.txt</a>, 
+          a table of the subfactorial function, which
+          counts the number of derangements;
+        </li>
+        <li>
+          <a href = "tan_values.txt">tan_values.txt</a>, 
+          a table of the tangent function;
+        </li>
+        <li>
+          <a href = "tanh_values.txt">tanh_values.txt</a>, 
+          a table of the hyperbolic tangent function;
+        </li>
+        <li>
+          <a href = "tau_values.txt">
+          tau_values.txt</a>, 
+          a table of the Tau function;
+        </li>
+        <li>
+          <a href = "three_j_values.txt">
+          three_j_values.txt</a>, 
+          a table of the Wigner 3J function;
+        </li>
+        <li>
+          <a href = "trigamma_values.txt">
+          trigamma_values.txt</a>, 
+          a table of the Trigamma function;
+        </li>
+        <li>
+          <a href = "von_mises_cdf_values.txt">
+          von_mises_cdf_values.txt</a>, 
+          a table of the von Mises CDF;
+        </li>
+        <li>
+          <a href = "weibull_cdf_values.txt">
+          weibull_cdf_values.txt</a>, 
+          a table of the Weibull CDF;
+        </li>
+        <li>
+          <a href = "zeta_values.txt">
+          zeta_values.txt</a>, 
+          a table of the Zeta function;
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 23 April 2012.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

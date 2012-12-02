@@ -1,0 +1,142 @@
+<html>
+
+  <head>
+    <title>
+      LORENZ_EQUATIONS - The Lorenz Equations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      LORENZ_EQUATIONS <br> The Lorenz Equations
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>LORENZ_EQUATIONS</b> is a collection of Mathematica routines 
+      which investigate and display the behavior of solutions to the Lorenz equations.
+    </p>
+
+    <p>
+      The Lorenz equations are an extremely simplified model of the weather,
+      in which three differential equations describe the evolution of three
+      variables.  There are also three parameters whose values play the role
+      of physical constants.  
+    </p>
+
+    <p>
+      It was while studying these equations that Edward Lorenz discovered
+      what he called "deterministic chaos".  That is, at least for certain
+      values of the parameters, solutions were extremely sensitive to the
+      initial conditions.  
+    </p>
+
+    <p>
+      The Lorenz equations are often written as
+      <pre>
+        x' = sigma * ( y - x )
+        y' = x * ( rho - z ) - y
+        z' = x * y - beta * z
+      </pre>
+      where the parameters are positive.  Typical values for the parameters are
+      <pre>
+        sigma = 10
+        beta = 8 / 3 = 2.666...
+        rho = 28
+      </pre>
+      The value of rho has a strong influence on the behavior of solutions.
+      The value rho=28 results in chaotic solutions, whereas rho=99.96 yields
+      a regular pattern.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/lorenz_simulation/lorenz_simulation.html">
+      LORENZ_SIMULATION</a>
+      is a MATLAB program which
+      solves the Lorenz equations and displays the solution, for various
+      starting conditions.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Jim Fink, Gettysburg College.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Kathleen Alligood, Tim Sauer, James Yorke,<br>
+          Chaos: An Introduction to Dynamical Systems,<br>
+          Springer, 1997,<br>
+          ISBN: 0-387-94677-2,<br>
+          LC: QA614.8.A44.
+        </li>
+        <li>
+          James Gleick,<br>
+          Chaos: The Making of a New Science,<br>
+          Viking, 1987,<br>
+          ISBN13: 978-0140092509,<br>
+          LC: Q172.5.C45.G54.
+        </li>
+        <li>
+          Edward Lorenz,<br>
+          Deterministic Nonperiodic Flow,<br>
+          Journal of Atmospheric Science,<br>
+          Volume 20, 1963, pages 130-141.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "LorenzSync.nb">LorenzSync.nb</a>, 
+          a script which demonstrates the synchronization of solutions
+          to the Lorenz equations.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica packages and notebooks</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 20 April 2008.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

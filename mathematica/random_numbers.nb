@@ -1,0 +1,202 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      5751,        192]
+NotebookOptionsPosition[      4910,        159]
+NotebookOutlinePosition[      5255,        174]
+CellTagsIndexPosition[      5212,        171]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Demonstrate", " ", "the", " ", "generation", " ", "of", " ", "random", 
+    " ", 
+    RowBox[{"numbers", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"a", " ", "=", " ", 
+   RowBox[{"Random", "[", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.4652523827218637`*^9, 3.4652524177813187`*^9}}],
+
+Cell[BoxData["0.6938363173741812`"], "Output",
+ CellChangeTimes->{3.465252430345845*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"b", "=", 
+  RowBox[{"Table", "[", " ", 
+   RowBox[{
+    RowBox[{"Random", "[", "]"}], ",", " ", 
+    RowBox[{"{", "5", "}"}]}], " ", "]"}]}]], "Input",
+ CellChangeTimes->{{3.465252433245167*^9, 3.465252458787045*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.008447187798547681`", ",", "0.7071838257516814`", ",", 
+   "0.6148249031179335`", ",", "0.8684041360647914`", ",", 
+   "0.32048243221463474`"}], "}"}]], "Output",
+ CellChangeTimes->{3.465252462379532*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"c", " ", "=", " ", 
+  RowBox[{"Table", " ", "[", " ", 
+   RowBox[{
+    RowBox[{"Table", " ", "[", " ", 
+     RowBox[{
+      RowBox[{"Random", "[", "]"}], ",", " ", 
+      RowBox[{"{", "3", "}"}]}], "]"}], ",", " ", 
+    RowBox[{"{", "4", "}"}]}], " ", "]"}]}]], "Input",
+ CellChangeTimes->{{3.465252487420376*^9, 3.4652525184590797`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "0.005541536770123784`", ",", "0.9266515734739911`", ",", 
+     "0.07611727926011515`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.1094809347399664`", ",", "0.09527843290755232`", ",", 
+     "0.6304318547566388`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.9401453961368118`", ",", "0.786672312324302`", ",", 
+     "0.3177928546187301`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.07669816442877346`", ",", "0.9035168321370777`", ",", 
+     "0.5700147248119408`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.46525252048945*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"SeedRandom", "[", "]"}], " ", "sets", " ", "the", " ", "seed", 
+   " ", "by", " ", "the", " ", "time", " ", "of", " ", "day"}], " ", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.4652525319804907`*^9, 3.4652525658576403`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SeedRandom", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.4652526087855062`*^9, 3.465252611263283*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{
+   RowBox[{"SeedRandom", "[", " ", "integer", " ", "]"}], " ", "sets", " ", 
+   "the", " ", "seed", " ", "to", " ", "the", " ", "given", " ", 
+   RowBox[{"integer", "."}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.465252587022086*^9, 3.4652526041370068`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"SeedRandom", "[", " ", "1952", " ", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"d", "=", 
+  RowBox[{"Table", "[", " ", 
+   RowBox[{
+    RowBox[{"Random", "[", "]"}], ",", " ", 
+    RowBox[{"{", "5", "}"}]}], " ", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"SeedRandom", "[", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"e", "=", 
+  RowBox[{"Table", "[", " ", 
+   RowBox[{
+    RowBox[{"Random", "[", "]"}], ",", " ", 
+    RowBox[{"{", "5", "}"}]}], " ", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"SeedRandom", "[", "1952", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"f", "=", 
+  RowBox[{"Table", "[", " ", 
+   RowBox[{
+    RowBox[{"Random", "[", "]"}], ",", " ", 
+    RowBox[{"{", "5", "}"}]}], " ", "]"}]}]}], "Input",
+ CellChangeTimes->{{3.465252615951324*^9, 3.465252678371677*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.7686610907667516`", ",", "0.5069544566488302`", ",", 
+   "0.4699363312534186`", ",", "0.8487929454444181`", ",", 
+   "0.6535616404979163`"}], "}"}]], "Output",
+ CellChangeTimes->{3.4652526830332003`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.2667854992552209`", ",", "0.646873565664929`", ",", 
+   "0.5580508269140106`", ",", "0.27793569852687755`", ",", 
+   "0.3643912764967581`"}], "}"}]], "Output",
+ CellChangeTimes->{3.465252683036457*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.7686610907667516`", ",", "0.5069544566488302`", ",", 
+   "0.4699363312534186`", ",", "0.8487929454444181`", ",", 
+   "0.6535616404979163`"}], "}"}]], "Output",
+ CellChangeTimes->{3.465252683042932*^9}]
+}, Open  ]]
+},
+WindowSize->{640, 750},
+WindowMargins->{{Automatic, 301}, {Automatic, 41}},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 360, 9, 43, "Input"],
+Cell[930, 33, 88, 1, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1055, 39, 241, 6, 27, "Input"],
+Cell[1299, 47, 249, 6, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1585, 58, 362, 9, 27, "Input"],
+Cell[1950, 69, 634, 19, 43, "Output"]
+}, Open  ]],
+Cell[2599, 91, 281, 6, 27, "Input"],
+Cell[2883, 99, 126, 2, 27, "Input"],
+Cell[3012, 103, 310, 6, 27, "Input"],
+Cell[CellGroupData[{
+Cell[3347, 113, 798, 19, 103, "Input"],
+Cell[4148, 134, 248, 6, 27, "Output"],
+Cell[4399, 142, 246, 6, 27, "Output"],
+Cell[4648, 150, 246, 6, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

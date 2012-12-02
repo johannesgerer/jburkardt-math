@@ -1,0 +1,239 @@
+<html>
+
+  <head>
+    <title>
+      COLLATZ - A Simple Package for the Collatz Sequence
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      COLLATZ <br> A Simple Package for the Collatz Sequence
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>COLLATZ</b> is a Mathematica package which evaluates the
+      Collatz sequence for a given starting point.
+    </p>
+
+    <p>
+      The most interesting thing about <b>COLLATZ</b> is not the
+      Collatz sequence, but rather the way that it demonstrates how
+      a user can define new functions for Mathematica, to be stored
+      in a package file, and accessed later by, for example, a notebook.
+    </p>
+
+    <p>
+      The Collatz sequence itself, sometimes called the "3N+1" sequence,
+      is defined as follows.  Choose a starting value <b>n</b>, a positive
+      integer.  Now compute the next value of <b>n</b>:
+      <ul>
+        <li>
+          If the current value of <b>n</b> is 1, stop.  The sequence
+          has terminated.
+        </li>
+        <li>
+          If <b>n</b> is even, the next element is <b>n/2</b>;
+        </li>
+        <li>
+          If <b>n</b> is odd, the next element is <b>3*n+1</b>.
+        </li>
+      </ul>
+      For every starting value of <b>n</b>, the sequence seems to terminate,
+      and it is conjectured that this is always so.
+    </p>
+
+    <p>
+      However, we are much more interested in the steps necessary to
+      make it possible for a user to be able to start up Mathematica,
+      and type 
+      <pre>
+        Collatz[17]
+      </pre>
+      and see the appropriate sequence of values.
+    </p>
+
+    <h3 align = "center">
+      Package Installation:
+    </h3>
+
+    <p>
+      A package is a group of Mathematica function definitions.  Packages have
+      a specific format; for instance, they are delimited with  
+      <b>BeginPackage[]</b> and <b>EndPackage[]</b> statements.  Moreover,
+      (and I forget this every time!) the cells in a package must be explicitly
+      designated as "Initialization Cells" or nothing in the package will actually
+      be usable.
+    </p>
+
+    <p>
+      In order for a package to be accessible, it must be placed in a specific
+      directory where Mathematica can find it.  Generally, this is the <b>Applications</b>
+      subdirectory of the user base directory, which can be determined by:
+      <pre>
+        $UserBaseDirectory
+      </pre>
+    </p>
+
+    <p>
+      Once the new package has been placed, you should probably run
+      Mathematica and direct it to rebuild the Help database.  This
+      will serve to update Mathematica's internal information so that
+      it can explain how the functions in the package are called.
+    </p>
+
+    <h3 align = "center">
+      Package Usage:
+    </h3>
+
+    <p>
+      To use the Collatz function, the user must first load the package,
+      with the command
+      <pre>
+        &lt;&lt; Collatz.m
+      </pre>
+      after which, for the duration of the Mathematica session, the
+      user can invoke the Collatz function with commands like
+      <pre>
+        Collatz[99]
+      </pre>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>COLLATZ</b> is available in
+      <a href = "../../java_src/collatz/collatz.html">a JAVA version</a> and
+      <a href = "../../math_src/collatz/collatz.html">a MATHEMATICA version</a> and
+      <a href = "../../m_src/collatz/collatz.html">a MATLAB version</a> and
+      <a href = "../../pl_src/collatz/collatz.html">a PERL version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/polpak/polpak.html">
+      POLPAK</a>
+      is a FORTRAN90 library which
+      includes the routine <b>collatz_count</b> for counting the
+      length of a Collatz sequence.
+    </p>
+
+    <p>
+      <a href = "../../m_src/sequence_streak/sequence_streak.html">
+      SEQUENCE_STREAK</a> 
+      is a MATLAB program which can be used to
+      make a "streak plot" of a Collatz sequence for a particular
+      starting value, or for the length of the Collatz sequence for
+      a number of starting values.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Roman Maeder,<br>
+          Programming in Mathematica,<br>
+          Second Edition, Addison Wesley, 1991.
+        </li>
+        <li>
+          Eric Weisstein,<br>
+          "The Collatz Problem",<br>
+          CRC Concise Encyclopedia of Mathematics,<br>
+          CRC 1998.
+        </li>
+        <li>
+          Stephen Wolfram,<br>
+          The Mathematica Book,<br>
+          Fourth Edition,<br>
+          Wolfram Media / Cambridge University Press, 1999.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "Collatz.m">Collatz.m</a>, 
+          the text of the Collatz package;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "CollatzTest.nb">CollatzTest.nb</a>, 
+          a Mathematica notebook that uses Collatz;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      List of Routines:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <b>Collatz[n]</b> gives a list of the iterates in the 3n+1 problem, 
+          starting from n.  The conjecture is that this sequence always 
+          terminates.
+        </li>
+        <li>
+          <b>StoppingTime[n]</b> finds the total stopping time for the integer
+          n.  This is the length of the Collatz sequence up to the time
+          it reaches the value 1.
+        </li>
+        <li>
+          <b>FindMaxima[nmax]</b> reports successive maxima for the total
+          stopping time, starting the search with the integer nmax, and
+          running FOREVER.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica packages and notebooks</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 05 March 2006.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

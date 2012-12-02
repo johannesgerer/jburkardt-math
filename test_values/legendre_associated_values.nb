@@ -1,0 +1,229 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      7567,        220]
+NotebookOptionsPosition[      7133,        202]
+NotebookOutlinePosition[      7536,        219]
+CellTagsIndexPosition[      7493,        216]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"legendre_associated", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "associated", " ", "Legendre"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "function", " ", "at", " ", "selected", " ", "argument", " ", "values"}], 
+    ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"29", " ", "January", " ", "2006"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"nvec", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "\[IndentingNewLine]",
+        "1", ",", "2", ",", "3", ",", "4", ",", "\[IndentingNewLine]", "3", 
+       ",", "3", ",", "3", ",", "3", ",", "\[IndentingNewLine]", "4", ",", 
+       "5", ",", "6", ",", "7", ",", "\[IndentingNewLine]", "8", ",", "9", 
+       ",", "10"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"mvec", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "\[IndentingNewLine]",
+        "1", ",", "1", ",", "1", ",", "1", ",", "\[IndentingNewLine]", "0", 
+       ",", "1", ",", "2", ",", "3", ",", "\[IndentingNewLine]", "2", ",", 
+       "2", ",", "3", ",", "3", ",", "\[IndentingNewLine]", "4", ",", "4", 
+       ",", "5"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"xvec", "=", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "\[IndentingNewLine]", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", 
+       RowBox[{"1", "/", "2"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"1", "/", "5"}], ",", 
+       RowBox[{"1", "/", "5"}], ",", 
+       RowBox[{"1", "/", "5"}], ",", 
+       RowBox[{"1", "/", "5"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"1", "/", "4"}], ",", 
+       RowBox[{"1", "/", "4"}], ",", 
+       RowBox[{"1", "/", "4"}], ",", 
+       RowBox[{"1", "/", "4"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"1", "/", "4"}], ",", 
+       RowBox[{"1", "/", "4"}], ",", 
+       RowBox[{"1", "/", "4"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"fvec", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"num", " ", "=", " ", 
+     RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], 
+    ";"}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Do", " ", "[", " ", 
+  RowBox[{
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"n", "=", 
+      RowBox[{"nvec", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+     RowBox[{"m", "=", 
+      RowBox[{"mvec", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+     RowBox[{"x", "=", 
+      RowBox[{"xvec", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+     RowBox[{"f", " ", "=", " ", 
+      RowBox[{"LegendreP", "[", 
+       RowBox[{"n", ",", "m", ",", "x"}], "]"}]}], " ", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fvec", " ", "=", " ", 
+      RowBox[{"Append", " ", "[", " ", 
+       RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+     "\[IndentingNewLine]", "      ", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "\"\<P[\>\"", ",", "n", ",", "\"\<,\>\"", ",", "m", ",", "\"\<,\>\"", 
+       ",", "x", ",", "\"\<]=\>\"", ",", 
+       RowBox[{"N", "[", 
+        RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\<C:\\\\Documents and \
+Settings\\\\burkardt\\\\Desktop\\\\Misc\\\\mathematica\\\\legendre_associated_\
+values.txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  legendre_associated_values.txt\>\""}], 
+      "]"}], ";"}], 
+    RowBox[{
+     RowBox[{"today", "=", 
+      RowBox[{"DateList", "[", "]"}]}], ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], "]"}],
+      ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  n  m  x  f\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"n", "=", 
+         RowBox[{
+         "nvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"m", "=", 
+         RowBox[{
+         "mvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{
+         "fileout", ",", "n", ",", "\"\<  \>\"", ",", "m", ",", "\"\<  \>\"", 
+          ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{3.478291537672822*^9}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 214}, {Automatic, 27}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1117, 27, 148, "Input"],
+Cell[1665, 49, 1974, 47, 298, "Input"],
+Cell[3642, 98, 1083, 29, 88, "Input"],
+Cell[4728, 129, 2401, 71, 298, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

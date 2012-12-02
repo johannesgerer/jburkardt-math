@@ -1,0 +1,242 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      8098,        233]
+NotebookOptionsPosition[      7688,        216]
+NotebookOutlinePosition[      8029,        231]
+CellTagsIndexPosition[      7986,        228]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"f_noncentral", "_cdf", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "Evaluate", " ", "the", " ", "derivative", " ", "of", " ", "the", " ", 
+    "noncentral"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "F", " ", "CDF", " ", "at", " ", "selected", " ", "argument", " ", 
+     "values"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"13", " ", "January", " ", "2006"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<Statistics`ContinuousDistributions`\>\"", 
+  "]"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"avec", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1",
+      ",", "1", ",", "1", ",", "2", ",", "2", ",", "3", ",", "3", ",", "4", 
+     ",", "4", ",", "5", ",", "5", ",", "6", ",", "6", ",", "8", ",", "16"}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bvec", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "5", ",", "5", ",", "5", ",", "5", ",", "5", ",", "5", ",", "5",
+      ",", "5", ",", "5", ",", "5", ",", "10", ",", "5", ",", "5", ",", "5", 
+     ",", "5", ",", "1", ",", "5", ",", "6", ",", "12", ",", "16", ",", "8"}],
+     "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lambdavec", "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", 
+     RowBox[{"1", "/", "4"}], ",", "1", ",", "1", ",", "1", ",", "1", ",", 
+     "1", ",", "1", ",", "2", ",", "1", ",", "1", ",", "1", ",", "1", ",", 
+     "1", ",", "1", ",", "0", ",", "1", ",", "1", ",", "1", ",", "1", ",", 
+     "1"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xvec", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "1", ",", 
+     RowBox[{"1", "/", "2"}], ",", "1", ",", "2", ",", "3", ",", "4", ",", 
+     "5", ",", "1", ",", "1", ",", "1", ",", "1", ",", "2", ",", "1", ",", 
+     "2", ",", "1", ",", "1", ",", "1", ",", "1", ",", "2", ",", "1"}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", " ", "[", " ", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"a", "=", 
+       RowBox[{"avec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+      RowBox[{"b", "=", 
+       RowBox[{"bvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+      RowBox[{"lambda", " ", "=", " ", 
+       RowBox[{"lambdavec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+      RowBox[{"x", "=", 
+       RowBox[{"SetPrecision", "[", 
+        RowBox[{
+         RowBox[{"xvec", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", "28"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"dist", "=", 
+       RowBox[{"NoncentralFRatioDistribution", "[", 
+        RowBox[{"a", ",", "b", ",", "lambda"}], "]"}]}], ",", 
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"CDF", "[", 
+        RowBox[{"dist", ",", "x"}], "]"}]}], " ", ",", "\[IndentingNewLine]", 
+      
+      RowBox[{"fvec", " ", "=", " ", 
+       RowBox[{"Append", " ", "[", " ", 
+        RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+      "\[IndentingNewLine]", "      ", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<  NoncentralFCDF[\>\"", ",", "a", ",", "\"\<,\>\"", ",", "b", 
+        ",", "\"\<,\>\"", ",", "lambda", ",", "\"\<,\>\"", ",", "x", ",", 
+        "\"\<]=\>\"", ",", 
+        RowBox[{"N", "[", 
+         RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\<C:\\\\Documents and \
+Settings\\\\burkardt\\\\Desktop\\\\Misc\\\\mathematica\\\\f_noncentral_cdf_\
+values.txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  f_noncentral_cdf_values.txt\>\""}], 
+      "]"}], ";"}], 
+    RowBox[{
+     RowBox[{"today", "=", 
+      RowBox[{"DateList", "[", "]"}]}], ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], "]"}],
+      ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  a  b  lambda  x  fx\>\""}], "]"}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"a", "=", 
+         RowBox[{
+         "avec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"b", "=", 
+         RowBox[{
+         "bvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"lambda", "=", 
+         RowBox[{
+         "lambdavec", "\[LeftDoubleBracket]", "i", 
+          "\[RightDoubleBracket]"}]}], ";", 
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{
+         "fileout", ",", "a", ",", "\"\<  \>\"", ",", "b", ",", "\"\<  \>\"", 
+          ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"lambda", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{3.478291195711371*^9}]
+},
+WindowSize->{496, 599},
+WindowMargins->{{Automatic, 110}, {Automatic, 13}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1154, 28, 148, "Input"],
+Cell[1702, 50, 103, 2, 27, "Input"],
+Cell[1808, 54, 1653, 38, 163, "Input"],
+Cell[3464, 94, 1563, 41, 148, "Input"],
+Cell[5030, 137, 2654, 77, 298, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,547 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     19605,        538]
+NotebookOptionsPosition[     18095,        488]
+NotebookOutlinePosition[     18502,        505]
+CellTagsIndexPosition[     18459,        502]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"gamma_inc", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", 
+    RowBox[{"Tricomi", "'"}], "s", " ", "incomplete", " ", "Gamma", " ", 
+    "function"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "at", " ", "selected", " ", "argument", " ", "values", " ", "fx", 
+     RowBox[{"(", 
+      RowBox[{"a", ",", "x"}], ")"}]}], ","}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"08", " ", "April", " ", "2010"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.4797215170942307`*^9, 3.479721527287263*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Set", " ", "the", " ", "arguments", " ", "as", " ", 
+    RowBox[{"lists", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"avec", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"1", "/", "10"}], ",", 
+      RowBox[{"1", "/", "10"}], ",", 
+      RowBox[{"1", "/", "10"}], ",", 
+      RowBox[{"1", "/", "2"}], ",", 
+      RowBox[{"1", "/", "2"}], ",", 
+      RowBox[{"1", "/", "2"}], ",", "\[IndentingNewLine]", "1", ",", "1", ",",
+       "1", ",", 
+      RowBox[{"11", "/", "10"}], ",", 
+      RowBox[{"11", "/", "10"}], ",", 
+      RowBox[{"11", "/", "10"}], ",", "\[IndentingNewLine]", "2", ",", "2", 
+      ",", "2", ",", "6", ",", "6", ",", "11", ",", "26", ",", "41"}], 
+     "}"}]}], "\[IndentingNewLine]", "\n", 
+   RowBox[{"xvec", " ", "=", " ", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"3", "/", "100"}], ",", 
+      RowBox[{"3", "/", "10"}], ",", 
+      RowBox[{"15", "/", "10"}], ",", 
+      RowBox[{"3", "/", "40"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"3", "/", "4"}], ",", 
+      RowBox[{"35", "/", "10"}], ",", 
+      RowBox[{"1", "/", "10"}], ",", "1", ",", "\[IndentingNewLine]", "5", 
+      ",", 
+      RowBox[{"1", "/", "10"}], ",", "1", ",", "5", ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"15", "/", "100"}], ",", 
+      RowBox[{"15", "/", "10"}], ",", "7", ",", 
+      RowBox[{"25", "/", "10"}], ",", "\[IndentingNewLine]", "12", ",", "16", 
+      ",", "25", ",", "45"}], "}"}]}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "10"], ",", 
+   FractionBox["1", "10"], ",", 
+   FractionBox["1", "10"], ",", 
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"], ",", "1", ",", "1", ",", "1", ",", 
+   FractionBox["11", "10"], ",", 
+   FractionBox["11", "10"], ",", 
+   FractionBox["11", "10"], ",", "2", ",", "2", ",", "2", ",", "6", ",", "6", 
+   ",", "11", ",", "26", ",", "41"}], "}"}]], "Output",
+ CellChangeTimes->{3.479722052793229*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["3", "100"], ",", 
+   FractionBox["3", "10"], ",", 
+   FractionBox["3", "2"], ",", 
+   FractionBox["3", "40"], ",", 
+   FractionBox["3", "4"], ",", 
+   FractionBox["7", "2"], ",", 
+   FractionBox["1", "10"], ",", "1", ",", "5", ",", 
+   FractionBox["1", "10"], ",", "1", ",", "5", ",", 
+   FractionBox["3", "20"], ",", 
+   FractionBox["3", "2"], ",", "7", ",", 
+   FractionBox["5", "2"], ",", "12", ",", "16", ",", "25", ",", "45"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.4797220528038263`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"num", " ", "=", " ", 
+  RowBox[{"Length", "[", " ", "xvec", "]"}]}]], "Input"],
+
+Cell[BoxData["20"], "Output",
+ CellChangeTimes->{3.479722056472679*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Evaluate", ",", " ", 
+    RowBox[{
+    "print", " ", "and", " ", "store", " ", "the", " ", "function", " ", 
+     RowBox[{"values", "."}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fvec", " ", "=", " ", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"Do", " ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"a", "=", 
+        RowBox[{"avec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+       RowBox[{"x", " ", "=", " ", 
+        RowBox[{"xvec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+       RowBox[{"f", " ", "=", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Gamma", "[", 
+           RowBox[{"a", ",", "0", ",", "x"}], "]"}], "/", 
+          RowBox[{"Gamma", "[", "a", "]"}]}], "/", 
+         RowBox[{"x", "^", "a"}]}]}], " ", ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"fvec", " ", "=", " ", 
+         RowBox[{"Append", " ", "[", " ", 
+          RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ";", 
+        "\[IndentingNewLine]", "      ", 
+        RowBox[{"Print", "[", 
+         RowBox[{
+         "\"\<  Gamma_Inc_Tricomi[\>\"", ",", "a", ",", "\"\<,\>\"", ",", 
+          RowBox[{"N", "[", "x", "]"}], ",", "\"\<]=\>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}]}], " ", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.4797219722692137`*^9, 3.4797220155611763`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "10"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "0.03`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.04829264146350358708848887077`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[1, 10], ",", 0.03, "]=", 1.04829264146350358708848887077`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059479464*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "10"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "0.3`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.02457773736957422090449326019`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[1, 10], ",", 0.3, "]=", 1.02457773736957422090449326019`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059538567*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "10"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "1.5`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.94937124431853736993373353464`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[1, 10], ",", 1.5, "]=", 0.94937124431853736993373353464`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059592244*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "0.075`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.10079323031649235781394447929`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[1, 2], ",", 0.075, "]=", 1.10079323031649235781394447929`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059636993*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "0.75`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.89989119796552177325944156897`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[1, 2], ",", 0.75, "]=", 0.89989119796552177325944156897`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059673378*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "3.5`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.53016560624310392036624102484`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[1, 2], ",", 3.5, "]=", 0.53016560624310392036624102484`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059721143*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0.1`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.95162581964040426835750940543`16."}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 1, ",", 0.1, "]=", 
+   0.95162581964040426835750940543`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4797220597705193`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1.`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.63212055882855767840447622983`16."}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 1, ",", 1., "]=", 
+   0.63212055882855767840447622983`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059820592*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5.`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.19865241060018290658067279032`16."}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 1, ",", 5., "]=", 
+   0.19865241060018290658067279032`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.47972205987158*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["11", "10"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "0.1`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.90717845105374866305593136276`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[11, 10], ",", 0.1, "]=", 0.90717845105374866305593136276`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059921589*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["11", "10"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "1.`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.58918096187064845067317165692`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[11, 10], ",", 1., "]=", 0.58918096187064845067317165692`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722059995701*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", 
+   FractionBox["11", "10"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "5.`", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.16882697521935887747814520471`16."}],
+  SequenceForm["  Gamma_Inc_Tricomi[", 
+   Rational[11, 10], ",", 5., "]=", 0.16882697521935887747814520471`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722060035369*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0.15`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.45270342716371207497983741425`16."}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 2, ",", 0.15, "]=", 
+   0.45270342716371207497983741425`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722060072686*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1.5`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.19652204427952241230189472509`16."}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 2, ",", 1.5, "]=", 
+   0.19652204427952241230189472509`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4797220601194553`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "7.`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.02025928457705232388440765125`16."}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 2, ",", 7., "]=", 
+   0.02025928457705232388440765125`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4797220601549587`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "2.5`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.00017211817244797386077488170723297614`16."}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 6, ",", 2.5, "]=", 
+   0.00017211817244797386077488170723297614`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4797220602019043`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "12.`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "3.2808580708505860338598812001075`16.*^-7"}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 6, ",", 12., "]=", 
+   3.2808580708505860338598812001075`16.*^-7],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722060246808*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "11", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "16.`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "5.2443964718215904384566209628741156`16.*^-14"}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 11, ",", 16., "]=", 
+   5.2443964718215904384566209628741156`16.*^-14],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.479722060291314*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "26", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "25.`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "2.013462926183375988879477619921`16.*^-37"}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 26, ",", 25., "]=", 
+   2.013462926183375988879477619921`16.*^-37],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4797220603390617`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Gamma_Inc_Tricomi[\"\>", "\[InvisibleSpace]", "41", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "45.`", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "1.2306238874998746293148754411`16.*^-68"}],
+  SequenceForm[
+  "  Gamma_Inc_Tricomi[", 41, ",", 45., "]=", 
+   1.2306238874998746293148754411`16.*^-68],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4797220603888683`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/gamma_inc_tricomi_\
+values.txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  gamma_inc_tricomi_values.txt\>\""}], 
+       "]"}], ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  a  x  fx\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"a", "=", 
+         RowBox[{
+         "avec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"a", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.478291260563051*^9, 3.479721305072448*^9, {3.479722031883029*^9, 
+   3.47972203789052*^9}}]
+},
+WindowSize->{719, 686},
+WindowMargins->{{373, Automatic}, {Automatic, 68}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1267, 31, 148, "Input"],
+Cell[CellGroupData[{
+Cell[1837, 55, 1551, 37, 178, "Input"],
+Cell[3391, 94, 509, 13, 47, "Output"],
+Cell[3903, 109, 553, 15, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4493, 129, 102, 2, 27, "Input"],
+Cell[4598, 133, 71, 1, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4706, 139, 1625, 42, 88, "Input"],
+Cell[CellGroupData[{
+Cell[6356, 185, 480, 9, 40, "Print"],
+Cell[6839, 196, 478, 9, 40, "Print"],
+Cell[7320, 207, 478, 9, 40, "Print"],
+Cell[7801, 218, 480, 9, 39, "Print"],
+Cell[8284, 229, 478, 9, 39, "Print"],
+Cell[8765, 240, 476, 9, 39, "Print"],
+Cell[9244, 251, 450, 10, 20, "Print"],
+Cell[9697, 263, 446, 10, 20, "Print"],
+Cell[10146, 275, 445, 10, 20, "Print"],
+Cell[10594, 287, 480, 9, 40, "Print"],
+Cell[11077, 298, 478, 9, 40, "Print"],
+Cell[11558, 309, 478, 9, 40, "Print"],
+Cell[12039, 320, 450, 10, 20, "Print"],
+Cell[12492, 332, 450, 10, 20, "Print"],
+Cell[12945, 344, 448, 10, 20, "Print"],
+Cell[13396, 356, 468, 10, 20, "Print"],
+Cell[13867, 368, 460, 10, 23, "Print"],
+Cell[14330, 380, 470, 10, 23, "Print"],
+Cell[14803, 392, 464, 10, 23, "Print"],
+Cell[15270, 404, 460, 10, 23, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[15757, 418, 2334, 68, 208, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

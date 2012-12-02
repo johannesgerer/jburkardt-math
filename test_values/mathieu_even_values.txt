@@ -1,0 +1,21 @@
+#  mathieu_even_values.txt
+                                        -7
+#  Created on {2006, 1, 19, 8, 28, 0. 10  }
+#
+#  r  q  a
+#
+0  0  MathieuCharacteriscA[0, 0]
+1  0  MathieuCharacteriscA[1.000000000000000, 0]
+2  0  MathieuCharacteriscA[2.000000000000000, 0]
+15  0  MathieuCharacteriscA[15.00000000000000, 0]
+5  0  MathieuCharacteriscA[5.000000000000000, 0]
+5  5  MathieuCharacteriscA[5.000000000000000, 5.000000000000000]
+5  10  MathieuCharacteriscA[5.000000000000000, 10.00000000000000]
+5  15  MathieuCharacteriscA[5.000000000000000, 15.00000000000000]
+5  20  MathieuCharacteriscA[5.000000000000000, 20.00000000000000]
+5  25  MathieuCharacteriscA[5.000000000000000, 25.00000000000000]
+0  5  MathieuCharacteriscA[0, 5.000000000000000]
+0  25  MathieuCharacteriscA[0, 25.00000000000000]
+1  20  MathieuCharacteriscA[1.000000000000000, 20.00000000000000]
+2  15  MathieuCharacteriscA[2.000000000000000, 15.00000000000000]
+10  10  MathieuCharacteriscA[10.00000000000000, 10.00000000000000]

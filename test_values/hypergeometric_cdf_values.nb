@@ -1,0 +1,224 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      7795,        215]
+NotebookOptionsPosition[      7385,        198]
+NotebookOutlinePosition[      7726,        213]
+CellTagsIndexPosition[      7683,        210]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"hypergeometric_cdf", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "hypergeometric", " ", "CDF"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{"at", " ", "selected", " ", "argument", " ", "values"}], ","}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"08", " ", "January", " ", "2008"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.408793690064899*^9, 3.408793694743033*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<Statistics`DiscreteDistributions`\>\"", 
+  "]"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"samvec", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "10", ",", "10", ",", "10", ",", "10", ",", "\[IndentingNewLine]", "6", 
+     ",", " ", "7", ",", " ", "8", ",", " ", "9", ",", "\[IndentingNewLine]", 
+     "10", ",", "10", ",", "10", ",", "10", ",", "\[IndentingNewLine]", "10", 
+     ",", "10", ",", "10", ",", "10"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sucvec", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "90", ",", "90", ",", "90", ",", "90", ",", "\[IndentingNewLine]", "90", 
+     ",", "90", ",", "90", ",", "90", ",", "\[IndentingNewLine]", " ", "10", 
+     ",", " ", "30", ",", " ", "50", ",", " ", "70", ",", 
+     "\[IndentingNewLine]", "90", ",", "90", ",", "90", ",", "90"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"popvec", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "100", ",", "100", ",", "100", ",", "100", ",", "\[IndentingNewLine]", 
+     "100", ",", "100", ",", "100", ",", "100", ",", "\[IndentingNewLine]", 
+     "100", ",", "100", ",", "100", ",", "100", ",", "\[IndentingNewLine]", 
+     "90", ",", " ", "200", ",", "1000", ",", "10000"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nvec", " ", "=", " ", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+    "7", ",", "8", ",", "9", ",", "10", ",", "\[IndentingNewLine]", "6", ",", 
+     " ", "6", ",", " ", "6", ",", " ", "6", ",", "\[IndentingNewLine]", "6", 
+     ",", "6", ",", "6", ",", "6", ",", "\[IndentingNewLine]", "0", ",", " ", 
+     "0", ",", " ", "0", ",", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "nvec", " ", "]"}]}], ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{
+      RowBox[{"sam", " ", "=", " ", 
+       RowBox[{"samvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+      RowBox[{"suc", " ", "=", " ", 
+       RowBox[{"sucvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+      RowBox[{"pop", "=", 
+       RowBox[{"popvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+      RowBox[{"n", "=", 
+       RowBox[{"nvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"dist", " ", "=", " ", 
+       RowBox[{"HypergeometricDistribution", "[", 
+        RowBox[{"sam", ",", "suc", ",", "pop"}], "]"}]}], ",", " ", 
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"N", "[", 
+        RowBox[{
+         RowBox[{"CDF", "[", 
+          RowBox[{"dist", ",", "n"}], "]"}], ",", "16"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"fvec", " ", "=", " ", 
+       RowBox[{"Append", " ", "[", " ", 
+        RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<HyperCDF[\>\"", ",", "sam", ",", "\"\<,\>\"", ",", "suc", ",", 
+        "\"\<,\>\"", ",", "pop", ",", "\"\<](\>\"", ",", "n", ",", 
+        "\"\<)=\>\"", ",", "f"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+    " ", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", " ", "1", ",", " ", "num", ",", "1"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fileout", "=", 
+   RowBox[{
+   "OpenWrite", "[", 
+    "\"\<C:\\\\Documents and \
+Settings\\\\burkardt\\\\Desktop\\\\Misc\\\\mathematica\\\\hypergeometric_cdf_\
+values.txt\>\"", "]"}]}], ";", 
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"fileout", ",", 
+    RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#  hypergeometric_cdf_values.txt\>\""}], 
+   "]"}], ";", " ", 
+  RowBox[{"today", "=", 
+   RowBox[{"DateList", "[", "]"}]}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], "]"}], 
+  ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#  sam  suc  pop  n  f\>\""}], "]"}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";", 
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"sam", "=", 
+       RowBox[{
+       "samvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+      ";", 
+      RowBox[{"suc", "=", 
+       RowBox[{
+       "sucvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+      ";", 
+      RowBox[{"pop", "=", 
+       RowBox[{
+       "popvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+      ";", 
+      RowBox[{"n", "=", 
+       RowBox[{
+       "nvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], ";", 
+      
+      RowBox[{"f", "=", 
+       RowBox[{
+       "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], ";", 
+      
+      RowBox[{"Write", "[", 
+       RowBox[{
+       "fileout", ",", "sam", ",", "\"\<  \>\"", ",", "suc", ",", 
+        "\"\<  \>\"", ",", "pop", ",", "\"\<  \>\"", ",", "n", ",", 
+        "\"\<  \>\"", ",", 
+        RowBox[{"N", "[", 
+         RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", " ", 
+  
+  RowBox[{"Close", "[", "fileout", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.478291348629324*^9, 3.478291416954385*^9}}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 400}, {Automatic, 22}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1158, 27, 148, "Input"],
+Cell[1706, 49, 101, 2, 27, "Input"],
+Cell[1810, 53, 1903, 40, 343, "Input"],
+Cell[3716, 95, 1513, 39, 148, "Input"],
+Cell[5232, 136, 2149, 60, 268, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

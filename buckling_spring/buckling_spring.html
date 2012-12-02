@@ -1,0 +1,208 @@
+<html>
+
+  <head>
+    <title>
+      BUCKLING_SPRING - The Buckling Spring
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BUCKLING_SPRING <br> The Buckling Spring
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BUCKLING_SPRING</b> is a Mathematica program
+      which illustrates solutions of the buckling spring equations.
+    </p>
+
+    <p>
+      We are given three points A, B, and C:
+      <ul>
+        <li>
+          A is at the origin (0,0);
+        </li>
+        <li>
+          B has coordinates (X,Y) with Y nonnegative, and the ray from A to B
+          makes an angle of THETA with the horizontal axis.
+        </li>
+        <li>
+          C is at the point (2*X,0).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Springs:
+      <ul>
+        <li>
+          A spring extends from A to B; it is normally of length 1, and is
+          currently of length L.
+        </li>
+        <li>
+          A spring extends from B to C; it is normally of length 1, and is
+          currently of length L.
+        </li>
+        <li>
+          A spring force is also exerted, which tends to draw the two
+          springs together, proportional to the angle between the two springs.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Forces:
+      <li>
+          A vertical load MU is applied at point B (downward is positive);
+        </li>
+        <li>
+          A horizontal load LAMBDA is applied at point C (leftware is positive);
+        </li>
+        <li>
+          The spring force is applied perpendicularly to the axes of the two springs.
+      </li>
+    </p>
+
+    <p>
+      If we compute F(1), the force along the axis of one spring, and
+      F(2), the force perpendicular to the axis of one spring, we have that
+      F(L,THETA,LAMBDA,MU) is given by:
+      <ul>
+        <li>
+          F(1) =  - 2 ( 1 - L ) + 2 * LAMBDA * cos ( THETA ) + MU * sin ( THETA )
+        </li>
+        <li>
+          F(2) =  0.5 * THETA - 2 * LAMBDA * L * sin ( THETA ) + MU * L * cos ( THETA )
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      To explore these equations, we can first solve for MU and LAMBDA in terms
+      of L and THETA:
+      <ul>
+        <li>
+          LAMBDA(L,THETA) = (1-L) * cos(THETA) + 0.25 * THETA * sin(THETA) / L
+        </li>
+        <li>
+          MU(L,THETA) = 2 * (1-L) * sin(THETA) - 0.5 * THETA * cos(THETA) / L
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      We can then study the behavior of solutions by choosing a fixed value of
+      THETA (say pi/8), and plotting LAMBDA(L,THETA) versus MU(L,THETA) over a range
+      of values of L, say from 0.25 to 1.75.  Recall that L = 1 when the springs
+      are at their "natural" length.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../m_src/buckling_spring/buckling_spring.html">
+      BUCKLING_SPRING</a>
+      is a MATLAB program which
+      plots solutions of the buckling spring equations.
+    </p>
+
+    <p>
+      <a href = "../../f_src/test_con/test_con.html">
+      TEST_CON</a>
+      is a FORTRAN program which
+      sets up sample problems for continuation, including the buckling spring.
+    </p>
+
+    <h3 align = "center">
+      Author:
+    </h3>
+
+    <p>
+      Jim Fink, Gettysburg College.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Tim Poston, Ian Stewart,<br>
+          Catastrophe Theory and its Applications,<br>
+          Dover, 1996,<br>
+          ISBN13: 978-0486692715,<br>
+          LC: QA614.58.P66.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      Computing a single curve:
+      <ul>
+        <li>
+          <a href = "BucklingSpring.nb">BucklingSpring.nb</a>, 
+          a MATHEMATICA script which determines LAMBDA(L,THETA) and MU(L,THETA), chooses
+          a value for THETA and makes one plot of LAMBDA versus MU over the 
+          range 0.25 &lt;= L &lt;= 1.75.
+        </li>
+        <li>
+          <a href = "buckling_spring.png">buckling_spring.png</a>
+          a PNG image of the plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Computing and displaying multiple curves:
+      <ul>
+        <li>
+          <a href = "BucklingSprings.nb">BucklingSprings.nb</a>, 
+          a MATHEMATICA script which determines LAMBDA(L,THETA) and MU(L,THETA), chooses
+          a value for THETA and plots LAMBDA versus MU over the 
+          range 0.25 &lt;= L &lt;= 1.75, for 49 values of THETA between -3Pi/8
+          and +3Pi/8.
+        </li>
+        </li>
+        <li>
+          <a href = "buckling_springs.png">buckling_springs.png</a>
+          a PNG image of the plot.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica packages and notebooks</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 14 October 2008.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

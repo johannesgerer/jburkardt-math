@@ -1,0 +1,498 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     18946,        489]
+NotebookOptionsPosition[     17629,        445]
+NotebookOutlinePosition[     18031,        462]
+CellTagsIndexPosition[     17988,        459]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"pochhammer_values", ".", "nb"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "Pochhammer"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "function", " ", "at", " ", "selected", " ", "argument", " ", "values"}], 
+    ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"03", " ", "February", " ", "2006"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xvec", "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"9", "/", "2"}], ",", 
+     RowBox[{"9", "/", "2"}], ",", 
+     RowBox[{"9", "/", "2"}], ",", "10", ",", "10", ",", 
+     RowBox[{"29", "/", "4"}], ",", "\[IndentingNewLine]", "5", ",", " ", "5",
+      ",", " ", "5", ",", " ", "5", ",", " ", "5", ",", " ", "5", ",", " ", 
+     "5", ",", " ", "5", ",", " ", "5", ",", " ", "5", ",", " ", "5"}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yvec", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "6", ",", " ", "3", ",", " ", "0", ",", "1", ",", "2", ",", "2", ",", 
+     RowBox[{"5", "/", "2"}], ",", 
+     RowBox[{"3", "/", "4"}], ",", "\[IndentingNewLine]", "0", ",", " ", 
+     RowBox[{"1", "/", "4"}], ",", " ", 
+     RowBox[{"2", "/", "4"}], ",", " ", 
+     RowBox[{"3", "/", "4"}], ",", " ", "1", ",", " ", 
+     RowBox[{"5", "/", "4"}], ",", " ", 
+     RowBox[{"6", "/", "4"}], ",", " ", 
+     RowBox[{"7", "/", "4"}], ",", " ", "2", ",", " ", 
+     RowBox[{"9", "/", "4"}], ",", " ", 
+     RowBox[{"10", "/", "4"}]}], " ", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.478096046851717*^9, 3.478096048250339*^9}, {
+  3.47809626664396*^9, 3.478096372002582*^9}, {3.478096416910616*^9, 
+  3.478096441793415*^9}, {3.4780966312844763`*^9, 3.4780967042486277`*^9}, {
+  3.4780967598597937`*^9, 3.478096785606515*^9}, {3.4781135474946012`*^9, 
+  3.478113658272043*^9}, {3.478113957753549*^9, 3.478113958222206*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Do", " ", "[", " ", 
+  RowBox[{
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"x", "=", 
+      RowBox[{"xvec", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+     RowBox[{"y", " ", "=", " ", 
+      RowBox[{"yvec", "[", 
+       RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+     RowBox[{"f", " ", "=", " ", 
+      RowBox[{"Pochhammer", "[", 
+       RowBox[{"x", ",", "y"}], "]"}]}], " ", ",", "\[IndentingNewLine]", 
+     RowBox[{"fvec", " ", "=", " ", 
+      RowBox[{"Append", " ", "[", " ", 
+       RowBox[{"fvec", ",", " ", "f"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     "      ", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "\"\<Poch[\>\"", ",", "x", ",", "\"\<,\>\"", ",", "y", ",", 
+       "\"\<]=\>\"", ",", 
+       RowBox[{"N", "[", 
+        RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.478096055143035*^9, 3.478096064455572*^9}, {
+  3.478096774431652*^9, 3.4780967832383623`*^9}, {3.478113451122636*^9, 
+  3.478113454471386*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "720.`16."}],
+  SequenceForm["Poch[", 1, ",", 6, "]=", 720.`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.4781139697873917`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "3", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.875`16."}],
+  SequenceForm["Poch[", 
+   Rational[1, 2], ",", 3, "]=", 1.875`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969789177*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "0", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.`16."}],
+  SequenceForm["Poch[", 
+   Rational[9, 2], ",", 0, "]=", 1.`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969790929*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "1", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "4.5`16."}],
+  SequenceForm["Poch[", 
+   Rational[9, 2], ",", 1, "]=", 4.5`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969792674*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "24.75`16."}],
+  SequenceForm["Poch[", 
+   Rational[9, 2], ",", 2, "]=", 24.75`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969794447*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "110.`16."}],
+  SequenceForm["Poch[", 10, ",", 2, "]=", 110.`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.4781139697964067`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["5", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "377.10363058191649376005795440602622100899`16."}],
+  SequenceForm["Poch[", 10, ",", 
+   Rational[5, 2], "]=", 377.10363058191649376005795440602622100899`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969816284*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", 
+   FractionBox["29", "4"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["3", "4"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "4.3621973524562528207284213135761829096`16."}],
+  SequenceForm["Poch[", 
+   Rational[29, 4], ",", 
+   Rational[3, 4], "]=", 4.3621973524562528207284213135761829096`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.4781139698318663`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "1.`16."}],
+  SequenceForm["Poch[", 5, ",", 0, "]=", 1.`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.4781139698482323`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "4"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.46715049386665357105105200528960246759`16."}],
+  SequenceForm["Poch[", 5, ",", 
+   Rational[1, 4], "]=", 1.46715049386665357105105200528960246759`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969864634*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "2.18094907435639667421454202051742519335`16."}],
+  SequenceForm["Poch[", 5, ",", 
+   Rational[1, 2], "]=", 2.18094907435639667421454202051742519335`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969882392*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "4"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "3.28268671088846721464331658524000447049`16."}],
+  SequenceForm["Poch[", 5, ",", 
+   Rational[3, 4], "]=", 3.28268671088846721464331658524000447049`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969898629*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "5.`16."}],
+  SequenceForm["Poch[", 5, ",", 1, "]=", 5.`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969914275*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["5", "4"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "7.70254009279993124801802302777041295485`16."}],
+  SequenceForm["Poch[", 5, ",", 
+   Rational[5, 4], "]=", 7.70254009279993124801802302777041295485`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969931806*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "11.99521990896018170817998111284583856342`16."}],
+  SequenceForm["Poch[", 5, ",", 
+   Rational[3, 2], "]=", 11.99521990896018170817998111284583856342`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969947632*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["7", "4"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "18.87544858760868648419907036513002570532`16."}],
+  SequenceForm["Poch[", 5, ",", 
+   Rational[7, 4], "]=", 18.87544858760868648419907036513002570532`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969963632*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "30.`16."}],
+  SequenceForm["Poch[", 5, ",", 2, "]=", 30.`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969981679*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "4"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "48.14087557999957030011264392356508096783`16."}],
+  SequenceForm["Poch[", 5, ",", 
+   Rational[9, 4], "]=", 48.14087557999957030011264392356508096783`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113969997121*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Poch[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["5", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "77.96892940824118110316987723349795066225`16."}],
+  SequenceForm["Poch[", 5, ",", 
+   Rational[5, 2], "]=", 77.96892940824118110316987723349795066225`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478096789554791*^9, 3.4781134780349083`*^9, 
+  3.4781135659301987`*^9, 3.47811360033267*^9, 3.478113665289666*^9, 
+  3.478113970015703*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/pochhammer_values.\
+txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", "\"\<#  pochhammer_values.txt\>\""}], "]"}], 
+        ";"}], 
+       RowBox[{
+        RowBox[{"today", "=", 
+         RowBox[{"DateList", "[", "]"}]}], ";"}], 
+       RowBox[{"Write", "[", 
+        RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+        "]"}]}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  x  y  f\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"y", "=", 
+         RowBox[{
+         "yvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"y", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.4780958780055513`*^9, 3.4780958900288277`*^9}, {
+   3.4780959701787*^9, 3.478096031146947*^9}, {3.47809607551285*^9, 
+   3.478096118857623*^9}, {3.4781134623614063`*^9, 3.478113465985631*^9}, {
+   3.478113694813195*^9, 3.478113704340703*^9}, 3.478291780524581*^9}],
+
+Cell[BoxData[
+ SuperscriptBox["Null", "2"]], "Output",
+ CellChangeTimes->{3.478096132288611*^9, 3.478096723700913*^9, 
+  3.4780968529800253`*^9, 3.478113525682382*^9, 3.4781136761217957`*^9, 
+  3.4781137096224546`*^9, 3.478113983750041*^9}]
+}, Open  ]]
+},
+WindowSize->{653, 590},
+WindowMargins->{{207, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1075, 27, 148, "Input"],
+Cell[1623, 49, 1771, 38, 103, "Input"],
+Cell[CellGroupData[{
+Cell[3419, 91, 1110, 28, 58, "Input"],
+Cell[CellGroupData[{
+Cell[4554, 123, 469, 9, 20, "Print"],
+Cell[5026, 134, 508, 11, 39, "Print"],
+Cell[5537, 147, 502, 11, 39, "Print"],
+Cell[6042, 160, 504, 11, 39, "Print"],
+Cell[6549, 173, 508, 11, 39, "Print"],
+Cell[7060, 186, 471, 9, 20, "Print"],
+Cell[7534, 197, 584, 11, 39, "Print"],
+Cell[8121, 210, 619, 13, 39, "Print"],
+Cell[8743, 225, 465, 9, 20, "Print"],
+Cell[9211, 236, 578, 11, 39, "Print"],
+Cell[9792, 249, 578, 11, 39, "Print"],
+Cell[10373, 262, 578, 11, 39, "Print"],
+Cell[10954, 275, 463, 9, 20, "Print"],
+Cell[11420, 286, 578, 11, 39, "Print"],
+Cell[12001, 299, 580, 11, 39, "Print"],
+Cell[12584, 312, 580, 11, 39, "Print"],
+Cell[13167, 325, 465, 9, 20, "Print"],
+Cell[13635, 336, 580, 11, 39, "Print"],
+Cell[14218, 349, 580, 11, 39, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14847, 366, 2523, 70, 208, "Input"],
+Cell[17373, 438, 240, 4, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

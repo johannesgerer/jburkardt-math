@@ -1,0 +1,194 @@
+<html>
+
+  <head>
+    <title>
+      CALENDARS - Routines for Calendrical Computations
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      CALENDARS <br> Routines for Calendrical Computations
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>CALENDARS</b> is a collection of several Mathematica packages 
+      which can be used for simple
+      calendrical calculations, including computing the number of days
+      that have elapsed between two dates, or converting a date from one calendar to another.
+    </p>
+
+    <p>
+      A package is a group of Mathematica function definitions.  Packages have
+      a specific format; for instance, they are delimited with  
+      <b>BeginPackage[]</b> and <b>EndPackage[]</b> statements.  Moreover,
+      (and I forget this every time!) the cells in a package must be explicitly
+      designated as "Initialization Cells" or nothing in the package will actually
+      be usable.
+    </p>
+
+    <p>
+      In order for a package to be accessible, it must be placed in a specific
+      directory where Mathematica can find it.  Generally, this is the <b>Applications</b>
+      subdirectory of the user base directory, which can be determined by:
+      <pre>
+        SetDirectory[$UserBaseDirectory]
+      </pre>
+    </p>
+
+    <p>
+      The functions defined in a package are made available by using
+      a special command, such as
+      <pre>
+        << SimplestCalendar
+      </pre>
+    </p>
+
+    <p>
+      Once the new package has been placed, you should probably run
+      Mathematica and direct it to rebuild the Help database.  This
+      will serve to update Mathematica's internal information so that
+      it can explain how the functions in the package are called.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f_src/calendar_nyt/calendar_nyt.html">
+      CALENDAR_NYT</a>,
+      a FORTRAN90 library which
+      shows the correspondence between dates and the New York Times volume and
+      issue number;
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/calendar_rd/calendar_rd.html">
+      CALENDAR_RD</a>, 
+      a C++ program which 
+      computes the representation of a given date in a
+      number of calendrical systems,
+      by Edward Reingold and Nachum Dershowitz
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/calendar_rd/calendar_rd.html">
+      CALENDAR_RD</a>, 
+      a C++ program which 
+      computes the representation of a given date in a
+      number of calendrical systems,
+      by Edward Reingold and Nachum Dershowitz
+    </p>
+
+    <p>
+      <a href = "../../f_src/calendar_nyt/calendar_nyt.html">
+      CALPAK</a> 
+      is a FORTRAN90 library which
+      converts between dates as computed on various calendars.
+    </p>
+
+    <p>
+      <a href = "../../datasets/dates/dates.html">
+      DATES</a> 
+      is a dataset directory which
+      contains lists of dates in various calendar systems.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Ilan Vardi,<br>
+          Computational Recreations in Mathematica,<br>
+          Addison Wesley,<br>
+          ISBN: 0-201-52989-0,<br>
+          LC: QA76.95.V36.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <b>SimplestCalendar</b> is a very simple calendar, which has 365 days every year.
+      <ul>
+        <li>
+          <a href = "SimplestCalendar.m">SimplestCalendar.m</a>, 
+          a package with DigitsToNumber.
+        </li>
+        <li>
+          <a href = "SimplestCalendarTest.m">SimplestCalendarTest.m</a>, 
+          a notebook which demonstrates some of the features of SimplestCalendar.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>JulianCalendar</b> is the Julian calendar, with a leap year every 4 years.
+      This set of routines is not working.
+      <ul>
+        <li>
+          <a href = "JulianCalendar.nb">JulianCalendar.nb</a>, 
+          a notebook for the Julian Calendar.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>GregorianCalendar</b> is the Gregorian calendar, with a leap year every 4 years,
+      except every 100 years, except every 400 years.
+      This set of routines is not working.
+      <ul>
+        <li>
+          <a href = "GregorianCalendar.nb">GregorianCalendar.nb</a>, 
+          a notebook for the Gregorian Calendar.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      <b>IslamicCalendar</b> is the Islamic calendar, with a lunar cycle.
+      This set of routines is not working.
+      <ul>
+        <li>
+          <a href = "IslamicCalendar.nb">IslamicCalendar.nb</a>, 
+          a notebook for the Islamic Calendar.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica packages and notebooks</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 January 2009.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

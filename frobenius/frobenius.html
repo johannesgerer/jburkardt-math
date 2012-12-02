@@ -1,0 +1,141 @@
+<html>
+
+  <head>
+    <title>
+      FROBENIUS - Routines for the Frobenius Problem
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      FROBENIUS <br> Routines for the Frobenius Problem
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>FROBENIUS</b> is a collection of Mathematica routines for the solution
+      of Frobenius's problem.
+    </p>
+
+    <p>
+      Frobenius's problem assumes that there are <b>N</b> denominations of
+      coins, <b>A<sub>1</sub></b> through <b>A<sub>N</sub></b>, and asks for
+      the largest quantity that <i>cannot</i> be formed using any combination
+      of the coins.
+    </p>
+
+    <p>
+      It is assumed that the denominations are all positive integers.
+    </p>
+
+    <p>
+      The problem
+      is "impossible" if the denominations have a common factor greater than 1 -
+      impossible in the sense that in this case there are an infinite number of
+      quantitities that cannot be formed.  On the other hand, if the denominations
+      do not all share a common factor greater than 1, then there is always a
+      finite solution, that is, a largest quantity that cannot be formed by
+      the denominations.  In this case, the value is called the <b>Frobenius number</b>,
+      and symbolized by <b>g(<b>A<sub>1</sub></b>,<b>A<sub>2</sub></b>,...<b>A<sub>N</sub></b>)</b>.
+    </p>
+
+    <p>
+      The case of two denominations is easy:
+      <blockquote><b>
+        g(a,b) = a*b - a - b
+      </b></blockquote>
+      However, the case of three denominations is hard, and for general N, the
+      problem is NP-hard!
+    </p>
+
+    <p>
+      In an example inspired by the "denominations" of McDonald's MacNuggets,
+      there are 3 denominations, 6, 9, and 20, and it can be shown that the
+      number 43 is the largest value that cannot be formed by combinations of
+      these denominations.
+    </p>
+
+    <p>
+      Note that Mathematica has a built in command that can compute the
+      Frobenius number:
+      <blockquote><code>
+        FrobeniusNumber [ { 6, 9, 20 } ]
+      </code></blockquote>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Dale Beihoffer, Jemimah Hendry, Albert Nijenhuis, Stan Wagon,<br>
+          Faster Algorithms for Frobenius Numbers,<br>
+          The Electronic Journal of Combinatorics,<br>
+          Volume 12, 2005, #R27.
+        </li>
+        <li>
+          Robert Owens,<br>
+          An Algorithm to Solve the Frobenius Problem,<br>
+          Mathematics Magazine,<br>
+          Volume 76, Number 4, October 2003, pages 264-275.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bfd.nb">bfd.nb</a>, 
+          the BFD algorithm, the breadth-first-decreasing algorithm.
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bfd_example.nb">bfd_example.nb</a>, 
+          an example in which the BFD algorithm is used to determine several
+          Frobenius numbers.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica packages and notebooks</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 28 November 2007.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

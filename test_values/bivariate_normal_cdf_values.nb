@@ -1,0 +1,1126 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     45768,       1117]
+NotebookOptionsPosition[     43316,       1041]
+NotebookOutlinePosition[     43853,       1064]
+CellTagsIndexPosition[     43772,       1059]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"<<", "MultivariateStatistics`"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xvec", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "2"}], ",", 
+     RowBox[{"-", "1"}], ",", "0", ",", "1", ",", "2", ",", 
+     "\[IndentingNewLine]", "3", ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", " ", "1", ",", " ", "2", ",", 
+     "\[IndentingNewLine]", "  ", "0", ",", " ", "0", ",", " ", "0", ",", " ",
+      "0", ",", " ", "0", ",", "\[IndentingNewLine]", "  ", "1", ",", " ", 
+     "1", ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", "1", ",", " ", "1", ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "2", "]"}], "/", "2"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yvec", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "\[IndentingNewLine]", 
+     "1", ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", "1", ",", "\[IndentingNewLine]", " ", 
+     "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", " ", "0", ",", 
+     "\[IndentingNewLine]", " ", "1", ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", "1", ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", "1", ",", 
+     RowBox[{"-", "1"}], ",", " ", "1", ",", " ", 
+     RowBox[{"-", "1"}], ",", " ", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "2", "]"}], "/", "2"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rvec", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"1", "/", "2"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{
+      RowBox[{"-", "9"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "8"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "7"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "6"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "2"}], ",", 
+     RowBox[{
+      RowBox[{"-", "4"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "3"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "2"}], "/", "10"}], ",", 
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "10"}], ",", "\[IndentingNewLine]", "0", ",", 
+     RowBox[{"1", "/", "10"}], ",", 
+     RowBox[{"2", "/", "10"}], ",", 
+     RowBox[{"3", "/", "10"}], ",", 
+     RowBox[{"4", "/", "10"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"1", "/", "2"}], ",", 
+     RowBox[{"6", "/", "10"}], ",", 
+     RowBox[{"7", "/", "10"}], ",", 
+     RowBox[{"8", "/", "10"}], ",", 
+     RowBox[{"9", "/", "10"}], ",", " ", 
+     RowBox[{"673", "/", "1000"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"-", "1"}], ",", " ", 
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "2"}], ",", " ", "0", ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", "1", ",", "\[IndentingNewLine]", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}], ",", " ", 
+     RowBox[{"1", "/", "2"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.452177840025532*^9, 3.452178059546309*^9}, {
+  3.4521783434645443`*^9, 3.452178519438714*^9}, {3.452245061585594*^9, 
+  3.4522450875238953`*^9}, {3.49952840546902*^9, 3.4995285179470654`*^9}, {
+  3.4995285746215963`*^9, 3.499528575316249*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", " ", "[", " ", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"x", "=", 
+       RowBox[{"xvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+      RowBox[{"y", " ", "=", 
+       RowBox[{"yvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+      RowBox[{"r", "=", 
+       RowBox[{"rvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"dist", "=", 
+       RowBox[{"MultinormallDistribution", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "r"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"r", ",", "1"}], "}"}]}], "}"}]}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"f", "=", 
+       RowBox[{"CDF", "[", " ", 
+        RowBox[{
+         RowBox[{"MultinormalDistribution", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"1", ",", "r"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"r", ",", "1"}], "}"}]}], "}"}]}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"x", ",", "y"}], "}"}]}], " ", "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"fvec", " ", "=", " ", 
+       RowBox[{"Append", " ", "[", " ", 
+        RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+      "\[IndentingNewLine]", "      ", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<  BivariateNormalCDF[\>\"", ",", "x", ",", "\"\<,\>\"", ",", "y", 
+        ",", "\"\<,\>\"", ",", "r", ",", "\"\<]=\>\"", ",", 
+        RowBox[{"N", "[", 
+         RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.452178085682228*^9, 3.452178178714243*^9}, {
+  3.452178265048366*^9, 3.4521783139717007`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "2"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   "1", "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.0226032721856986659247619436562828342`16."}],
+  SequenceForm["  BivariateNormalCDF[", -2, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.022603272185698666`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581308016*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   "1", "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.15487295185841002418627473805448268689`16."}],
+  SequenceForm["  BivariateNormalCDF[", -1, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.15487295185841002`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581338455*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.46874280833521836135082736475688430728`16."}],
+  SequenceForm["  BivariateNormalCDF[", 0, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.46874280833521836`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581368964*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.7452035868929476423003454068436159126`16."}],
+  SequenceForm["  BivariateNormalCDF[", 1, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.74520358689294764`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581401473*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.83186083068741877711135363306296572603`16."}],
+  SequenceForm["  BivariateNormalCDF[", 2, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.83186083068741878`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581432332*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.84103142611342016007452003975203927361`16."}],
+  SequenceForm["  BivariateNormalCDF[", 3, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.84103142611342016`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285814722023`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["9", "10"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.13770193849194640303516010900239067797`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-9, 10], "]=", 0.1377019384919464`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285814831743`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["4", "5"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.16217495017390296060214380521207533766`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-4, 5], "]=", 0.16217495017390296`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581503965*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["7", "10"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.18274112432331187587418206760129310286`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-7, 10], "]=", 0.18274112432331188`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581534648*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["3", "5"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.20100674215062349035091403776165869375`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-3, 5], "]=", 0.20100674215062349`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581568309*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.21777511552652897445042681751800899371`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-1, 2], "]=", 0.21777511552652897`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581592167*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["2", "5"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.2335088436446962350566237197664078719`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-2, 5], "]=", 0.23350884364469624`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581618001*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["3", "10"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.24850577818342856526674964296836462177`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-3, 10], "]=", 0.24850577818342857`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581651766*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.26297478251548683766160080819946853305`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-1, 5], "]=", 0.26297478251548684`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285816846457`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "10"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.27707298234047376015702867977542722107`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[-1, 10], "]=", 0.27707298234047376`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285817181892`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "0", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.29092611686838124689655133964237045846`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 0, "]=", 0.29092611686838125`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581741716*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "10"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.30464063787267379303256104048469363251`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[1, 10], "]=", 0.30464063787267379`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581758625*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.3183113449213637714274161965785968154`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[1, 5], "]=", 0.31831134492136377`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581775687*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["3", "10"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.33202625441080276451694986388748977467`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[3, 10], "]=", 0.33202625441080276`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581792692*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["2", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.3458686754647614376489899719437925216`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[2, 5], "]=", 0.34586867546476144`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.49952858183479*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.35991504623106677190171433913025012128`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[1, 2], "]=", 0.35991504623106677`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285818588047`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["3", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.3742210899871167839424586307967638719`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[3, 5], "]=", 0.37422108998711678`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285818855143`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["7", "10"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.38877064052823199284535796017773413141`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[7, 10], "]=", 0.38877064052823199`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581917595*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.40327651983613435459455783018308395549`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[4, 5], "]=", 0.40327651983613435`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581951746*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "5"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["9", "10"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.41621002919536784694824430841877603633`16."}],
+  SequenceForm["  BivariateNormalCDF[", 
+   Rational[-1, 5], ",", 
+   Rational[1, 2], ",", 
+   Rational[9, 10], "]=", 0.41621002919536785`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528581984954*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["673", "1000"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.6508271498838663654853090785867690626`16."}],
+  SequenceForm["  BivariateNormalCDF[", 1, ",", 
+   Rational[1, 2], ",", 
+   Rational[673, 1000], "]=", 0.65082714988386637`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285820203133`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.83186083068741877711135363306296572603`16."}],
+  SequenceForm["  BivariateNormalCDF[", 2, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.83186083068741878`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582061679*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MultinormalDistribution", "::", "\<\"sing\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Warning: Singular \
+multinormal distribution encountered.\\\\\\\"\\\", \\\"MT\\\"]\\) \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/sing\\\", \
+ButtonNote -> \
+\\\"MultivariateStatistics`MultinormalDistribution::sing\\\"]\\)\"\>"}]], \
+"Message", "MSG",
+ CellChangeTimes->{3.452178526211115*^9, 3.452245124089978*^9, 
+  3.499528527348556*^9, 3.499528582076478*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]",
+    "0"}],
+  SequenceForm["  BivariateNormalCDF[", 0, ",", 0, ",", -1, "]=", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.49952858209269*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.16666666665399697237916542450577243569`16."}],
+  SequenceForm["  BivariateNormalCDF[", 0, ",", 0, ",", 
+   Rational[-1, 2], "]=", 0.16666666665399697`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582109827*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0.25`16."}],
+  SequenceForm["  BivariateNormalCDF[", 0, ",", 0, ",", 0, "]=", 0.25`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582126254*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.33333333333289063660075379700449703967`16."}],
+  SequenceForm["  BivariateNormalCDF[", 0, ",", 0, ",", 
+   Rational[1, 2], "]=", 0.33333333333289064`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582142771*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MultinormalDistribution", "::", "\<\"sing\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Warning: Singular \
+multinormal distribution encountered.\\\\\\\"\\\", \\\"MT\\\"]\\) \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/sing\\\", \
+ButtonNote -> \
+\\\"MultivariateStatistics`MultinormalDistribution::sing\\\"]\\)\"\>"}]], \
+"Message", "MSG",
+ CellChangeTimes->{3.452178526211115*^9, 3.452245124089978*^9, 
+  3.499528527348556*^9, 3.499528582159523*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0.5`16."}],
+  SequenceForm["  BivariateNormalCDF[", 0, ",", 0, ",", 1, "]=", 0.5`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582184952*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.7452035868929476423003454068436159126`16."}],
+  SequenceForm["  BivariateNormalCDF[", 1, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.74520358689294764`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582197241*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.15487295185841002418627473805448268689`16."}],
+  SequenceForm["  BivariateNormalCDF[", 1, ",", -1, ",", 
+   Rational[1, 2], "]=", 0.15487295185841002`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285822099257`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   "1", "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.15487295185841002418627473805448268689`16."}],
+  SequenceForm["  BivariateNormalCDF[", -1, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.15487295185841002`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285822268267`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.06251409470431653061243746105315045397`16."}],
+  SequenceForm["  BivariateNormalCDF[", -1, ",", -1, ",", 
+   Rational[1, 2], "]=", 0.062514094704316531`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582243484*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.7452035868929476423003454068436159126`16."}],
+  SequenceForm["  BivariateNormalCDF[", 1, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.74520358689294764`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582260277*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.15487295185841002418627473805448268689`16."}],
+  SequenceForm["  BivariateNormalCDF[", 1, ",", -1, ",", 
+   Rational[1, 2], "]=", 0.15487295185841002`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582276698*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   "1", "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.15487295185841002418627473805448268689`16."}],
+  SequenceForm["  BivariateNormalCDF[", -1, ",", 1, ",", 
+   Rational[1, 2], "]=", 0.15487295185841002`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582293181*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.06251409470431653061243746105315045397`16."}],
+  SequenceForm["  BivariateNormalCDF[", -1, ",", -1, ",", 
+   Rational[1, 2], "]=", 0.062514094704316531`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.499528582309588*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  BivariateNormalCDF[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", 
+    SqrtBox["2"]], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", 
+    SqrtBox["2"]], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.63370204579129160137137588153016623022`16."}],
+  SequenceForm[
+  "  BivariateNormalCDF[", 2^Rational[-1, 2], ",", 2^Rational[-1, 2], ",", 
+   Rational[1, 2], "]=", 0.6337020457912916`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.452178165725209*^9, 3.4521781803101997`*^9}, 
+   3.452178317770612*^9, 3.452178524958191*^9, 3.452245122660548*^9, 
+   3.4995285263940363`*^9, 3.4995285823255053`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", " ", "=", " ", 
+     RowBox[{
+     "OpenWrite", " ", "[", " ", 
+      "\"\</Users/jburkardt/public_html/math_src/test_values/bivariate_normal_\
+cdf_values.txt\>\"", " ", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", " ", "[", " ", 
+     RowBox[{"fileout", ",", " ", 
+      RowBox[{"FormatType", " ", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", " ", 
+     RowBox[{
+     "fileout", ",", " ", "\"\<#  bivariate_normal_cdf_values.txt\>\""}], " ",
+      "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"today", " ", "=", " ", 
+     RowBox[{"Date", "[", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Write", " ", "[", " ", 
+     RowBox[{"fileout", ",", " ", "\"\<#  Created on \>\"", ",", "today"}], 
+     " ", "]"}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"Write", " ", "[", " ", 
+     RowBox[{"fileout", ",", " ", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", " ", "[", " ", 
+     RowBox[{"fileout", ",", " ", "\"\<#  x  y  r  f\>\""}], " ", "]"}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", " ", "[", " ", 
+     RowBox[{"fileout", ",", " ", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", " ", "[", " ", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"x", " ", "=", " ", 
+         RowBox[{"xvec", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"y", " ", "=", " ", 
+         RowBox[{"yvec", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"r", " ", "=", " ", 
+         RowBox[{"rvec", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"f", " ", "=", " ", 
+         RowBox[{"fvec", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Write", " ", "[", " ", 
+         RowBox[{"fileout", ",", "  ", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "16"}], "]"}], ",", " ", "\"\<  \>\"", ",", " ", 
+          
+          RowBox[{"N", "[", 
+           RowBox[{"y", ",", "16"}], "]"}], ",", " ", "\"\<  \>\"", ",", " ", 
+          
+          RowBox[{"N", "[", 
+           RowBox[{"r", ",", "16"}], "]"}], ",", " ", "\"\<  \>\"", ",", " ", 
+          
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], " ", "]"}]}], " ", "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{"Close", " ", "[", " ", "fileout", " ", "]"}], ";"}], 
+   "\n"}]}]], "Input",
+ CellChangeTimes->{{3.452178617336166*^9, 3.452178721355178*^9}, 
+   3.478289211976564*^9, 3.479767030964197*^9, 3.49952862471565*^9},
+ CellTags->"compatibility-yes"]
+},
+WindowSize->{640, 750},
+WindowMargins->{{193, Automatic}, {Automatic, 44}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "compatibility-yes"->{
+  Cell[40207, 959, 3105, 80, 343, "Input",
+   CellTags->"compatibility-yes"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"compatibility-yes", 43670, 1053}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 67, 1, 27, "Input"],
+Cell[615, 23, 5653, 152, 328, "Input"],
+Cell[CellGroupData[{
+Cell[6293, 179, 2112, 57, 118, "Input"],
+Cell[CellGroupData[{
+Cell[8430, 240, 704, 12, 39, "Print"],
+Cell[9137, 254, 704, 12, 39, "Print"],
+Cell[9844, 268, 688, 12, 39, "Print"],
+Cell[10535, 282, 687, 12, 39, "Print"],
+Cell[11225, 296, 688, 12, 39, "Print"],
+Cell[11916, 310, 690, 12, 39, "Print"],
+Cell[12609, 324, 811, 18, 40, "Print"],
+Cell[13423, 344, 808, 18, 40, "Print"],
+Cell[14234, 364, 810, 18, 40, "Print"],
+Cell[15047, 384, 808, 18, 40, "Print"],
+Cell[15858, 404, 808, 18, 40, "Print"],
+Cell[16669, 424, 807, 18, 40, "Print"],
+Cell[17479, 444, 810, 18, 40, "Print"],
+Cell[18292, 464, 810, 18, 40, "Print"],
+Cell[19105, 484, 812, 18, 40, "Print"],
+Cell[19920, 504, 748, 15, 40, "Print"],
+Cell[20671, 521, 789, 17, 40, "Print"],
+Cell[21463, 540, 786, 17, 40, "Print"],
+Cell[22252, 559, 789, 17, 40, "Print"],
+Cell[23044, 578, 785, 17, 40, "Print"],
+Cell[23832, 597, 789, 17, 40, "Print"],
+Cell[24624, 616, 788, 17, 40, "Print"],
+Cell[25415, 635, 789, 17, 40, "Print"],
+Cell[26207, 654, 787, 17, 40, "Print"],
+Cell[26997, 673, 789, 17, 40, "Print"],
+Cell[27789, 692, 738, 14, 40, "Print"],
+Cell[28530, 708, 688, 12, 39, "Print"]
+}, Open  ]],
+Cell[29233, 723, 602, 12, 23, "Message"],
+Cell[CellGroupData[{
+Cell[29860, 739, 603, 11, 20, "Print"],
+Cell[30466, 752, 709, 13, 39, "Print"],
+Cell[31178, 767, 598, 10, 20, "Print"],
+Cell[31779, 779, 688, 12, 39, "Print"]
+}, Open  ]],
+Cell[32482, 794, 602, 12, 23, "Message"],
+Cell[CellGroupData[{
+Cell[33109, 810, 596, 10, 20, "Print"],
+Cell[33708, 822, 687, 12, 39, "Print"],
+Cell[34398, 836, 710, 13, 39, "Print"],
+Cell[35111, 851, 706, 12, 39, "Print"],
+Cell[35820, 865, 729, 14, 39, "Print"],
+Cell[36552, 881, 687, 12, 39, "Print"],
+Cell[37242, 895, 708, 13, 39, "Print"],
+Cell[37953, 910, 704, 12, 39, "Print"],
+Cell[38660, 924, 729, 14, 39, "Print"],
+Cell[39392, 940, 788, 15, 43, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[40207, 959, 3105, 80, 343, "Input",
+ CellTags->"compatibility-yes"]
+}
+]
+*)
+
+(* End of internal cache information *)

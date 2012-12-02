@@ -1,0 +1,409 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     14051,        400]
+NotebookOptionsPosition[     12754,        357]
+NotebookOutlinePosition[     13156,        374]
+CellTagsIndexPosition[     13113,        371]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"dilogarithm_values", ".", "nb"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "dilogarithm"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "function", " ", "at", " ", "selected", " ", "argument", " ", "values"}], 
+    ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"08", " ", "January", " ", "2006"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", " ", "[", " ", 
+  RowBox[{
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"x", " ", "=", " ", 
+      RowBox[{"i", "/", "20"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"xvec", " ", "=", " ", 
+      RowBox[{"Append", " ", "[", " ", 
+       RowBox[{"xvec", ",", " ", "x"}], " ", "]"}]}]}], " ", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "0", ",", "20", ",", "1"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], ";"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Do", " ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+       RowBox[{"x", " ", "=", " ", 
+        RowBox[{"xvec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+       RowBox[{"f", " ", "=", " ", 
+        RowBox[{"PolyLog", "[", 
+         RowBox[{"2", ",", "x"}], "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"fvec", " ", "=", " ", 
+        RowBox[{"Append", " ", "[", " ", 
+         RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+       "\[IndentingNewLine]", "      ", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<  Dilogarithm[\>\"", ",", "x", ",", "\"\<]]=\>\"", ",", 
+         RowBox[{"N", "[", 
+          RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  Dilogarithm[", 0, "]]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "20"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.0506392924644960271217320099`15.999999999999998"}],
+  
+  SequenceForm["  Dilogarithm[", 
+   Rational[1, 20], "]]=", 0.0506392924644960271217320099`15.999999999999998],
+  
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "10"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.1026177910993911311138373671`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[1, 10], "]]=", 0.1026177910993911311138373671`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "20"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.1560350339454830904622463001`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[3, 20], "]]=", 0.1560350339454830904622463001`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "5"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.2110037754397047725754703379`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[1, 5], "]]=", 0.2110037754397047725754703379`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "4"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.2676526390827326069191838278`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[1, 4], "]]=", 0.2676526390827326069191838278`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "10"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.3261295100754760695300346304`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[3, 10], "]]=", 0.3261295100754760695300346304`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["7", "20"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.3866059411605864812078131958`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[7, 20], "]]=", 0.3866059411605864812078131958`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["2", "5"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.4492829744712816643426694934`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[2, 5], "]]=", 0.4492829744712816643426694934`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "20"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.5143989891542119367037687665`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[9, 20], "]]=", 0.5143989891542119367037687665`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.5822405264650125059322895792`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[1, 2], "]]=", 0.5822405264650125059322895792`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["11", "20"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.6531576315069018291314519668`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[11, 20], "]]=", 0.6531576315069018291314519668`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "5"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.727586307716333389464207364`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[3, 5], "]]=", 0.727586307716333389464207364`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["13", "20"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.8060826895177240176377363976`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[13, 20], "]]=", 0.8060826895177240176377363976`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["7", "10"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.8893776242860387393272878136`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[7, 10], "]]=", 0.8893776242860387393272878136`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "4"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "0.9784693929303061037305800528`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[3, 4], "]]=", 0.9784693929303061037305800528`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "1.0747946000082483593489593186`15.999999999999998"}],
+  
+  SequenceForm["  Dilogarithm[", 
+   Rational[4, 5], "]]=", 1.0747946000082483593489593186`15.999999999999998],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["17", "20"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "1.1805811238302549937127505918`15.999999999999998"}],
+  
+  SequenceForm["  Dilogarithm[", 
+   Rational[17, 20], "]]=", 1.1805811238302549937127505918`15.999999999999998],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "10"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "1.2997147230049587264991161901`16."}],
+  SequenceForm["  Dilogarithm[", 
+   Rational[9, 10], "]]=", 1.2997147230049587264991161901`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", 
+   FractionBox["19", "20"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", "1.4406337969700394844153576608`16.000000000000004"}],
+  
+  SequenceForm["  Dilogarithm[", 
+   Rational[19, 20], "]]=", 1.4406337969700394844153576608`16.000000000000004],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Dilogarithm[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", 
+   "1.6449340668482264364724151667`16."}],
+  SequenceForm["  Dilogarithm[", 1, "]]=", 1.6449340668482264364724151667`16.],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\<C:\\\\Documents and \
+Settings\\\\burkardt\\\\Desktop\\\\Misc\\\\mathematica\\\\dilogarithm_values.\
+txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  dilogarithm_values.txt\>\""}], "]"}], 
+     ";"}], 
+    RowBox[{
+     RowBox[{"today", "=", 
+      RowBox[{"DateList", "[", "]"}]}], ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], "]"}],
+      ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  x  fx\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{3.4782893953111963`*^9}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 278}, {Automatic, 1}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1076, 27, 148, "Input"],
+Cell[1624, 49, 768, 21, 88, "Input"],
+Cell[CellGroupData[{
+Cell[2417, 74, 919, 23, 103, "Input"],
+Cell[CellGroupData[{
+Cell[3361, 101, 240, 5, 20, "Print"],
+Cell[3604, 108, 383, 9, 40, "Print"],
+Cell[3990, 119, 347, 7, 40, "Print"],
+Cell[4340, 128, 347, 7, 40, "Print"],
+Cell[4690, 137, 345, 7, 40, "Print"],
+Cell[5038, 146, 345, 7, 39, "Print"],
+Cell[5386, 155, 347, 7, 40, "Print"],
+Cell[5736, 164, 347, 7, 40, "Print"],
+Cell[6086, 173, 345, 7, 40, "Print"],
+Cell[6434, 182, 347, 7, 40, "Print"],
+Cell[6784, 191, 345, 7, 39, "Print"],
+Cell[7132, 200, 349, 7, 40, "Print"],
+Cell[7484, 209, 343, 7, 40, "Print"],
+Cell[7830, 218, 349, 7, 40, "Print"],
+Cell[8182, 227, 347, 7, 40, "Print"],
+Cell[8532, 236, 345, 7, 39, "Print"],
+Cell[8880, 245, 378, 8, 40, "Print"],
+Cell[9261, 255, 382, 8, 40, "Print"],
+Cell[9646, 265, 347, 7, 40, "Print"],
+Cell[9996, 274, 382, 8, 40, "Print"],
+Cell[10381, 284, 310, 6, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[10718, 294, 2032, 61, 283, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

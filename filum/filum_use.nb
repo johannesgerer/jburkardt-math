@@ -1,0 +1,97 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      2025,         87]
+NotebookOptionsPosition[      1271,         55]
+NotebookOutlinePosition[      1699,         73]
+CellTagsIndexPosition[      1656,         70]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"<<", " ", "Filum.m"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNameInc", "[", "\"\<bob001.txt\>\"", "]"}]], "Input"],
+
+Cell[BoxData["\<\"bob002.txt\"\>"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNameInc", "[", "\"\<fred199.txt\>\"", "]"}]], "Input"],
+
+Cell[BoxData["\<\"fred200.txt\"\>"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNameDec", "[", "\"\<bob002.txt\>\"", "]"}]], "Input"],
+
+Cell[BoxData["\<\"bob001.txt\"\>"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNameDec", "[", "\"\<Nat400.txt\>\"", "]"}]], "Input"],
+
+Cell[BoxData["\<\"Nat399.txt\"\>"], "Output"]
+}, Open  ]]
+},
+WindowSize->{496, 537},
+WindowMargins->{{200, Automatic}, {Automatic, 60}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+ShowSelection->True,
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 56, 1, 27, "Input"],
+Cell[CellGroupData[{
+Cell[626, 25, 81, 1, 27, "Input"],
+Cell[710, 28, 45, 0, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[792, 33, 82, 1, 27, "Input"],
+Cell[877, 36, 46, 0, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[960, 41, 81, 1, 27, "Input"],
+Cell[1044, 44, 45, 0, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1126, 49, 81, 1, 27, "Input"],
+Cell[1210, 52, 45, 0, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

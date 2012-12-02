@@ -1,0 +1,389 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     12829,        380]
+NotebookOptionsPosition[     11612,        338]
+NotebookOutlinePosition[     12015,        355]
+CellTagsIndexPosition[     11972,        352]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"cin_values", ".", "nb"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "Evaluate", " ", "the", " ", "alternate", " ", "Cosine", " ", "integral"}],
+    " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "Cin", " ", "at", " ", "selected", " ", "argument", " ", "values"}], 
+    ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"07", " ", "January", " ", "2006"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.478634816190277*^9, 3.4786348255876207`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"xvec", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"5", "/", "10"}], ",", " ", 
+    RowBox[{"6", "/", "10"}], ",", " ", 
+    RowBox[{"7", "/", "10"}], ",", " ", 
+    RowBox[{"8", "/", "10"}], ",", " ", 
+    RowBox[{"9", "/", "10"}], ",", " ", "1", ",", " ", 
+    RowBox[{"12", "/", "10"}], ",", " ", 
+    RowBox[{"14", "/", "10"}], ",", " ", 
+    RowBox[{"16", "/", "10"}], ",", " ", 
+    RowBox[{"18", "/", "10"}], ",", " ", "2", ",", " ", 
+    RowBox[{"25", "/", "10"}], ",", " ", 
+    RowBox[{"30", "/", "10"}], ",", " ", 
+    RowBox[{"35", "/", "10"}], ",", " ", 
+    RowBox[{"40", "/", "10"}], ",", " ", 
+    RowBox[{"45", "/", "10"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"num", " ", "=", " ", 
+  RowBox[{
+  "Length", " ", "[", " ", "xvec", " ", 
+   "]"}]}], "\[IndentingNewLine]"}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "2"], ",", 
+   FractionBox["3", "5"], ",", 
+   FractionBox["7", "10"], ",", 
+   FractionBox["4", "5"], ",", 
+   FractionBox["9", "10"], ",", "1", ",", 
+   FractionBox["6", "5"], ",", 
+   FractionBox["7", "5"], ",", 
+   FractionBox["8", "5"], ",", 
+   FractionBox["9", "5"], ",", "2", ",", 
+   FractionBox["5", "2"], ",", "3", ",", 
+   FractionBox["7", "2"], ",", "4", ",", 
+   FractionBox["9", "2"]}], "}"}]], "Output"],
+
+Cell[BoxData["16"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Do", " ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+       RowBox[{"x", " ", "=", " ", 
+        RowBox[{"xvec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+       RowBox[{"f", " ", "=", " ", 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"CosIntegral", "[", "x", "]"}]}], "+", 
+         RowBox[{"Log", "[", "x", "]"}], "+", "EulerGamma"}]}], " ", ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"fvec", " ", "=", " ", 
+        RowBox[{"Append", " ", "[", " ", 
+         RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+       "\[IndentingNewLine]", "      ", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<  Cin[\>\"", ",", "x", ",", "\"\<]=\>\"", ",", 
+         RowBox[{"N", "[", 
+          RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{3.478634834158382*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.0618525631482004528050030168`16."}],
+  SequenceForm["  Ci[", 
+   Rational[1, 2], "]=", 0.0618525631482004528050030168`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.0886607480948219399276007377`16."}],
+  SequenceForm["  Ci[", 
+   Rational[3, 5], "]=", 0.0886607480948219399276007377`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["7", "10"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.120026013953902649004737486`16."}],
+  SequenceForm["  Ci[", 
+   Rational[7, 10], "]=", 0.120026013953902649004737486`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.1557934976348559278243834179`16."}],
+  SequenceForm["  Ci[", 
+   Rational[4, 5], "]=", 0.1557934976348559278243834179`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "10"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.1957873187759336992285769991`16."}],
+  SequenceForm["  Ci[", 
+   Rational[9, 10], "]=", 0.1957873187759336992285769991`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.23981174200056472599270308`16."}],
+  SequenceForm["  Ci[", 1, "]=", 0.23981174200056472599270308`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["6", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.3390780388012469841028646579`16."}],
+  SequenceForm["  Ci[", 
+   Rational[6, 5], "]=", 0.3390780388012469841028646579`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["7", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.4516813164280685147992650065`16."}],
+  SequenceForm["  Ci[", 
+   Rational[7, 5], "]=", 0.4516813164280685147992650065`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["8", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.5754867772153906108952381101`16."}],
+  SequenceForm["  Ci[", 
+   Rational[8, 5], "]=", 0.5754867772153906108952381101`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.7081912003853149757621242067`16."}],
+  SequenceForm["  Ci[", 
+   Rational[9, 5], "]=", 0.7081912003853149757621242067`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.8473820166866131742824273029`16."}],
+  SequenceForm["  Ci[", 2, "]=", 0.8473820166866131742824273029`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["5", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.2076352004103044304009392944`16.000000000000004"}],
+  
+  SequenceForm["  Ci[", 
+   Rational[5, 2], "]=", 1.2076352004103044304009392944`16.000000000000004],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "1.5561981675616422243755034643`16."}],
+  SequenceForm["  Ci[", 3, "]=", 1.5561981675616422243755034643`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["7", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.8621071819093819719113271357`16.000000000000004"}],
+  
+  SequenceForm["  Ci[", 
+   Rational[7, 2], "]=", 1.8621071819093819719113271357`16.000000000000004],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "2.1044917239083538910488278652`15.999999999999998"}],
+  SequenceForm[
+  "  Ci[", 4, "]=", 2.1044917239083538910488278652`15.999999999999998],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Ci[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "2.2747841837795456913959051108`16."}],
+  SequenceForm["  Ci[", 
+   Rational[9, 2], "]=", 2.2747841837795456913959051108`16.],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\<C:\\\\Documents and \
+Settings\\\\burkardt\\\\Desktop\\\\Misc\\\\mathematica\\\\cin_values.txt\>\"",
+       "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  cin_values.txt\>\""}], "]"}], ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  x  fx\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.478289345072462*^9, {3.47863484000698*^9, 3.478634843964199*^9}}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 248}, {Automatic, -2}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1163, 28, 148, "Input"],
+Cell[CellGroupData[{
+Cell[1733, 52, 942, 24, 103, "Input"],
+Cell[2678, 78, 479, 14, 47, "Output"],
+Cell[3160, 94, 29, 0, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3226, 99, 1056, 27, 118, "Input"],
+Cell[CellGroupData[{
+Cell[4307, 130, 325, 7, 39, "Print"],
+Cell[4635, 139, 325, 7, 40, "Print"],
+Cell[4963, 148, 325, 7, 40, "Print"],
+Cell[5291, 157, 325, 7, 40, "Print"],
+Cell[5619, 166, 327, 7, 40, "Print"],
+Cell[5949, 175, 286, 6, 20, "Print"],
+Cell[6238, 183, 325, 7, 40, "Print"],
+Cell[6566, 192, 325, 7, 40, "Print"],
+Cell[6894, 201, 325, 7, 40, "Print"],
+Cell[7222, 210, 325, 7, 40, "Print"],
+Cell[7550, 219, 290, 6, 20, "Print"],
+Cell[7843, 227, 358, 8, 39, "Print"],
+Cell[8204, 237, 290, 6, 20, "Print"],
+Cell[8497, 245, 358, 8, 39, "Print"],
+Cell[8858, 255, 323, 7, 20, "Print"],
+Cell[9184, 264, 325, 7, 39, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[9536, 275, 2072, 61, 283, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

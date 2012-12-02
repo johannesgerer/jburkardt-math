@@ -1,0 +1,464 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     16429,        455]
+NotebookOptionsPosition[     15433,        420]
+NotebookOutlinePosition[     15836,        437]
+CellTagsIndexPosition[     15793,        434]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"constant_values", ".", "nb"}], " ", "*)"}], "\[IndentingNewLine]",
+   
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "constants"}], " ", "*)"}], "\[IndentingNewLine]",
+   
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"21", " ", "January", " ", "2008"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.409912238297844*^9, 3.40991225877986*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Print", " ", "[", "  ", 
+   RowBox[{"\"\<  1/Pi   = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"1", "/", "Pi"}], ",", "20"}], "]"}]}], " ", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", "  ", 
+   RowBox[{"\"\<    Pi/4 = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Pi", "/", "4"}], ",", "20"}], "]"}]}], " ", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", "  ", 
+   RowBox[{"\"\<    Pi/2 = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Pi", "/", "2"}], ",", "20"}], "]"}]}], " ", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"Print", "[", " ", 
+    RowBox[{"\"\<     Pi  = \>\"", ",", " ", 
+     RowBox[{"N", "[", 
+      RowBox[{"Pi", ",", "20"}], "]"}]}], " ", "]"}], 
+   ";"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Print", " ", "[", " ", 
+    RowBox[{"\"\<   2*Pi  = \>\"", ",", " ", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       RowBox[{"2", "*", "Pi"}], ",", " ", "20"}], " ", "]"}]}], " ", "]"}], 
+   ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<Sqrt[Pi] = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "Pi", "]"}], ",", " ", "20"}], " ", "]"}]}], " ", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<Sqrt[2]  = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "2", "]"}], ",", " ", "20"}], " ", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<Sqrt[3]  = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "3", "]"}], ",", " ", "20"}], " ", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<Sqrt[5]  = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "5", "]"}], ",", " ", "20"}], " ", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<Cos[Pi/6]= \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Cos", "[", 
+       RowBox[{"Pi", "/", "6"}], "]"}], ",", " ", "20"}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<Cos[Pi/4]= \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Cos", "[", 
+       RowBox[{"Pi", "/", "4"}], "]"}], ",", " ", "20"}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<     E   = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{"E", ",", " ", "20"}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<(1+Sqrt[5])/2 = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{"Sqrt", "[", "5", "]"}]}], ")"}], "/", "2"}], ",", "20"}], 
+     "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", " ", "[", " ", 
+   RowBox[{"\"\<EulerGamma = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{"EulerGamma", ",", "20"}], "]"}]}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.409912439002211*^9, 3.4099124507421103`*^9}, {
+  3.4099124823691187`*^9, 3.409912623933681*^9}, {3.409912679429453*^9, 
+  3.4099127426615458`*^9}, {3.4099127921051693`*^9, 3.4099127975107327`*^9}, {
+  3.409912862400688*^9, 3.409912872686356*^9}, {3.4099129329456987`*^9, 
+  3.409912958202714*^9}, {3.40991303198472*^9, 3.4099130443034782`*^9}, {
+  3.4099133522110777`*^9, 3.4099133943361998`*^9}, {3.409913438242038*^9, 
+  3.409913463047982*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  1/Pi   = \"\>", "\[InvisibleSpace]", 
+   "0.31830988618379067153776752671383708654`20."}],
+  SequenceForm["  1/Pi   = ", 0.318309886183790671538`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913511869052*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    Pi/4 = \"\>", "\[InvisibleSpace]", 
+   "0.78539816339744830961566084589683800181`20."}],
+  SequenceForm["    Pi/4 = ", 0.785398163397448309616`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913511874137*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    Pi/2 = \"\>", "\[InvisibleSpace]", 
+   "1.57079632679489661923132169179367600361`20."}],
+  SequenceForm["    Pi/2 = ", 1.57079632679489661923`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913511879489*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"     Pi  = \"\>", "\[InvisibleSpace]", 
+   "3.14159265358979323846264338358735200723`20."}],
+  SequenceForm["     Pi  = ", 3.14159265358979323846`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.40991351188496*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"   2*Pi  = \"\>", "\[InvisibleSpace]", 
+   "6.28318530717958647692528676718`20."}],
+  SequenceForm["   2*Pi  = ", 6.28318530717958647693`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913511890506*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Sqrt[Pi] = \"\>", "\[InvisibleSpace]", 
+   "1.77245385090551602729816748342798781706`20."}],
+  SequenceForm["Sqrt[Pi] = ", 1.7724538509055160273`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.4099135118961554`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Sqrt[2]  = \"\>", "\[InvisibleSpace]", 
+   "1.41421356237309504880168872420969807857`20."}],
+  SequenceForm["Sqrt[2]  = ", 1.4142135623730950488`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913511926238*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Sqrt[3]  = \"\>", "\[InvisibleSpace]", 
+   "1.73205080756887729352744634150587236694`20."}],
+  SequenceForm["Sqrt[3]  = ", 1.73205080756887729353`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913511966551*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Sqrt[5]  = \"\>", "\[InvisibleSpace]", 
+   "2.23606797749978969640917366873127623544`20."}],
+  SequenceForm["Sqrt[5]  = ", 2.23606797749978969641`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913511999289*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Cos[Pi/6]= \"\>", "\[InvisibleSpace]", 
+   "0.86602540378443864676372317075293618347`20."}],
+  SequenceForm["Cos[Pi/6]= ", 0.866025403784438646764`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913512025401*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Cos[Pi/4]= \"\>", "\[InvisibleSpace]", 
+   "0.70710678118654752440084436210484070353`20."}],
+  SequenceForm["Cos[Pi/4]= ", 0.707106781186547524401`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913512058399*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"     E   = \"\>", "\[InvisibleSpace]", 
+   "2.71828182845904523536028579257075851155`20."}],
+  SequenceForm["     E   = ", 2.71828182845904523536`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913512092637*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"(1+Sqrt[5])/2 = \"\>", "\[InvisibleSpace]", 
+   "1.61803398874989484820458683436563811772`20."}],
+  SequenceForm["(1+Sqrt[5])/2 = ", 1.6180339887498948482`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913512125416*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"EulerGamma = \"\>", "\[InvisibleSpace]", 
+   "0.57721566490153286060591601943726163587`20."}],
+  SequenceForm["EulerGamma = ", 0.577215664901532860606`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.409912968632374*^9, 3.409913064307474*^9, 
+  3.4099133954224987`*^9, 3.4099134642119703`*^9, 3.409913512158478*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fileout", "=", 
+   RowBox[{
+   "OpenWrite", "[", 
+    "\"\</Users/burkardt/public_html/math_src/test_values/constant_values.txt\
+\>\"", "]"}]}], ";", 
+  RowBox[{"SetOptions", "[", 
+   RowBox[{"fileout", ",", 
+    RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#  constant_values.txt\>\""}], "]"}], ";", 
+  RowBox[{"today", "=", 
+   RowBox[{"DateList", "[", "]"}]}], ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], "]"}], 
+  ";", 
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<   1/Pi   = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"1", "/", "Pi"}], ",", "20"}], "]"}]}], " ", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", "\"\<     Pi/4 = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Pi", "/", "4"}], ",", "20"}], "]"}]}], " ", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"Write", "[", 
+    RowBox[{"fileout", ",", "\"\<     Pi/2 = \>\"", ",", " ", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       RowBox[{"Pi", "/", "2"}], ",", "20"}], "]"}]}], " ", "]"}], 
+   ";"}]}], "\[IndentingNewLine]", 
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{"Write", "[", 
+    RowBox[{"fileout", ",", "\"\<     Pi   = \>\"", ",", " ", 
+     RowBox[{"N", "[", 
+      RowBox[{"Pi", ",", "20"}], "]"}]}], " ", "]"}], 
+   ";"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Write", "[", 
+    RowBox[{"fileout", ",", " ", "\"\<   2*Pi   = \>\"", ",", " ", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       RowBox[{"2", "*", "Pi"}], ",", " ", "20"}], " ", "]"}]}], " ", "]"}], 
+   ";"}], " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<Sqrt[Pi]  = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "Pi", "]"}], ",", " ", "20"}], " ", "]"}]}], " ", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<Sqrt[2]   = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "2", "]"}], ",", " ", "20"}], " ", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<Sqrt[3]   = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "3", "]"}], ",", " ", "20"}], " ", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<Sqrt[5]   = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Sqrt", "[", "5", "]"}], ",", " ", "20"}], " ", "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<Cos[Pi/6] = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Cos", "[", 
+       RowBox[{"Pi", "/", "6"}], "]"}], ",", "20"}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<Cos[Pi/4] = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{"Cos", "[", 
+       RowBox[{"Pi", "/", "4"}], "]"}], ",", "20"}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<    E     = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{"E", ",", "20"}], "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<(1+Sqrt[5])/2 = \>\"", ",", " ", 
+    RowBox[{"N", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"1", "+", 
+         RowBox[{"Sqrt", "[", "5", "]"}]}], ")"}], "/", "2"}], ",", "20"}], 
+     "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Write", "[", 
+   RowBox[{"fileout", ",", " ", "\"\<EulerGamma = \>\"", ",", 
+    RowBox[{"N", "[", 
+     RowBox[{"EulerGamma", ",", " ", "20"}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Close", "[", "fileout", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.4099121434127007`*^9, 3.409912217373136*^9}, {
+  3.409912273173374*^9, 3.409912414328719*^9}, {3.409912589207696*^9, 
+  3.409912595501258*^9}, {3.409912629412775*^9, 3.409912647411756*^9}, {
+  3.409912747195251*^9, 3.4099127679302588`*^9}, {3.409912808310636*^9, 
+  3.409912813820306*^9}, {3.409912884879912*^9, 3.4099128969480267`*^9}, {
+  3.4099129785486794`*^9, 3.4099130201901283`*^9}, {3.409913402474016*^9, 
+  3.409913430536751*^9}, {3.409913470479557*^9, 3.409913488609356*^9}}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 408}, {Automatic, 40}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 947, 23, 133, "Input"],
+Cell[CellGroupData[{
+Cell[1540, 48, 3845, 108, 223, "Input"],
+Cell[CellGroupData[{
+Cell[5410, 160, 368, 7, 20, "Print"],
+Cell[5781, 169, 368, 7, 20, "Print"],
+Cell[6152, 178, 367, 7, 20, "Print"],
+Cell[6522, 187, 366, 7, 20, "Print"],
+Cell[6891, 196, 358, 7, 20, "Print"],
+Cell[7252, 205, 368, 7, 20, "Print"],
+Cell[7623, 214, 366, 7, 20, "Print"],
+Cell[7992, 223, 367, 7, 20, "Print"],
+Cell[8362, 232, 367, 7, 20, "Print"],
+Cell[8732, 241, 368, 7, 20, "Print"],
+Cell[9103, 250, 368, 7, 20, "Print"],
+Cell[9474, 259, 367, 7, 20, "Print"],
+Cell[9844, 268, 376, 7, 20, "Print"],
+Cell[10223, 277, 372, 7, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[10622, 288, 4807, 130, 388, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

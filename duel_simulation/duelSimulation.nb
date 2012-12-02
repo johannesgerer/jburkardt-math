@@ -1,0 +1,154 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      4795,        144]
+NotebookOptionsPosition[      4389,        126]
+NotebookOutlinePosition[      4733,        141]
+CellTagsIndexPosition[      4690,        138]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"duelSimulation", " ", "[", " ", 
+   RowBox[{"p_", ",", " ", "duelNum_"}], " ", "]"}], " ", ":=", "\n", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"duel", ",", "s", ",", "survivor"}], "}"}], ",", "\n", 
+    RowBox[{
+     RowBox[{"s", "=", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], ";", "\n", 
+     RowBox[{"Do", " ", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"survivor", "=", 
+         RowBox[{"duelOnce", "[", "p", "]"}]}], ";", "\n", " ", 
+        RowBox[{
+         RowBox[{"s", "[", 
+          RowBox[{"[", "survivor", "]"}], "]"}], "=", 
+         RowBox[{
+          RowBox[{"s", "[", 
+           RowBox[{"[", "survivor", "]"}], "]"}], "+", "1"}]}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"duel", ",", "1", ",", "duelNum"}], "}"}]}], "]"}], ";", "\n", 
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"s", "[", 
+         RowBox[{"[", "player", "]"}], "]"}], "=", 
+        RowBox[{
+         RowBox[{"s", "[", 
+          RowBox[{"[", "player", "]"}], "]"}], "/", "duelNum"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"player", ",", "1", ",", 
+         RowBox[{"Length", "[", "p", "]"}]}], "}"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", "s"}]}], "\n", "]"}]}]], "Input",
+ CellChangeTimes->{{3.467298399047662*^9, 3.467298439548567*^9}, {
+  3.467298497455729*^9, 3.467298502160173*^9}, {3.467298537167965*^9, 
+  3.467298589469117*^9}, {3.467298628217039*^9, 3.4672986417634706`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"duelOnce", " ", "[", " ", "p_", " ", "]"}], " ", ":=", "\n", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"r", ",", "survivor", ",", "turnNum"}], "}"}], ",", "\n", 
+     RowBox[{
+      RowBox[{"turnNum", " ", "=", " ", "0"}], ";", "\n", 
+      RowBox[{"While", " ", "[", 
+       RowBox[{"True", ",", "\n", 
+        RowBox[{
+         RowBox[{"turnNum", " ", "=", " ", 
+          RowBox[{"turnNum", " ", "+", " ", "1"}]}], ";", "\n", 
+         RowBox[{"r", " ", "=", " ", 
+          RowBox[{"Random", "[", "]"}]}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"r", " ", "<", " ", 
+            RowBox[{"p", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+           RowBox[{
+            RowBox[{"survivor", " ", "=", " ", "1"}], ";", " ", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}], ";", "\n", 
+         RowBox[{"turnNum", " ", "=", " ", 
+          RowBox[{"turnNum", " ", "+", " ", "1"}]}], ";", "\n", 
+         RowBox[{"r", " ", "=", " ", 
+          RowBox[{"Random", "[", "]"}]}], ";", "\n", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"r", "<", 
+            RowBox[{"p", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+           RowBox[{
+            RowBox[{"survivor", " ", "=", " ", "2"}], ";", " ", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}]}]}], "\n", "]"}], ";", 
+      "\n", "survivor"}]}], "\n", "]"}]}], "\n"}]], "Input",
+ CellChangeTimes->{{3.467298399047662*^9, 3.4672984430944023`*^9}, 
+   3.467298505422114*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"p", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"3", "/", "6"}], ",", 
+     RowBox[{"2", "/", "6"}]}], "}"}]}], ";"}], "\n", 
+ RowBox[{"N", "[", 
+  RowBox[{"duelSimulation", "[", 
+   RowBox[{"p", ",", "100"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.467298399047662*^9, 3.46729845909262*^9}, {
+  3.467298604365705*^9, 3.467298609313181*^9}, {3.46729870096292*^9, 
+  3.4672987045584393`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.77`", ",", "0.23`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.46729845111023*^9, 3.467298512813335*^9, {3.467298597631735*^9, 
+   3.467298615775496*^9}, {3.467298662387868*^9, 3.4672987147526073`*^9}}]
+}, Open  ]]
+},
+WindowSize->{640, 750},
+WindowMargins->{{Automatic, 315}, {Automatic, 5}},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1510, 39, 133, "Input"],
+Cell[2058, 61, 1603, 39, 223, "Input"],
+Cell[CellGroupData[{
+Cell[3686, 104, 439, 12, 43, "Input"],
+Cell[4128, 118, 245, 5, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

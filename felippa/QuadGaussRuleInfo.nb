@@ -1,0 +1,61 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      1460,         52]
+NotebookOptionsPosition[      1158,         37]
+NotebookOutlinePosition[      1550,         54]
+CellTagsIndexPosition[      1507,         51]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+QuadGaussRuleInfo [ { rule_, numer_ }, point_ ] := Module [
+  {xi, eta, p1, p2, i, j, w1, w2, m, info = { { Null, Null}, 0 }},
+  If [ Length[rule] == 2, { p1,p2} = rule, p1=p2=rule];
+  If [ Length[point]==2, {i,j}=point, m = point;
+    j=Floor[(m-1)/p1]+1;i=m-p1*(j-1)];
+  {xi,w1} = LineGaussRuleInfo[{p1,numer},i];
+  {eta,w2}= LineGaussRuleinfo[{p2,numer},j];
+  info={{xi,eta},w1*w2};
+  If [ numer, Return[N[info,20]], Return[Simplify[info]]];
+];
+\
+\>", "Input",
+ CellChangeTimes->{{3.417598644524733*^9, 3.417598650080737*^9}, {
+  3.44776682562547*^9, 3.44776682611525*^9}}]
+},
+WindowSize->{640, 750},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 586, 14, 157, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

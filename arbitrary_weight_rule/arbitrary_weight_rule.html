@@ -1,0 +1,203 @@
+<html>
+
+  <head>
+    <title>
+      ARBITRARY_WEIGHT_RULE - Gauss Quadrature Rules for Arbitrary Weights
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      ARBITRARY_WEIGHT_RULE <br> Gauss Quadrature Rules for Arbitrary Weights
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>ARBITRARY_WEIGHT_RULE</b> is a Mathematica package which 
+      accepts a formula for an arbitrary (but nonnegative) weight function 
+      over an interval, and determines the points and weights of a
+      corresponding Gaussian quadrature rule,
+      by Fukuda, Katsuya, Alt and Matveenko.
+    </p>
+
+    <p>
+      The integral to be approximated has the form
+      <blockquote>
+        If = Integral ( a &lt; x z&lt; b ) f(z(x)) w(x) dx 
+      </blockquote>
+      where <b>a</b> is allowed to be -oo, and <b>b</b> is allowed
+      to be +oo.  The function <b>z(x)</b> is a monotonic (that is,
+      invertible) function of <b>x</b> introduced for convenience.
+      The weight function <b>w(x)</b> is assumed to be positive
+      everywhere within the range, except perhaps for isolated
+      points where it may be zero.
+    </p>
+
+    <p>
+      A Gauss quadrature rule Q of order <b>n</b> is a set of points 
+      <b>x<sub>i</sub></b> and weights <b>w<sub>i</sub></b>
+      which approximate the integral <b>If</b> by
+      <blockquote>
+        If approx Qf = Sum ( 1 &lt;= i &lt;= n ) w<sub>i</sub> f(z(x<sub>i</sub>))
+      </blockquote>
+      with the property that the approximation is exact in cases where
+      <b>f(z(x))</b> is a polynomial of degree 2*<b>n</b>-1 or less.
+    </p>
+
+    <p>
+      The Mathematica program is not interactive.  To be used, it
+      requires the user to modify the text of the program to specify
+      certain quantities.
+    </p>
+
+    <p>
+      Quantities the user must specify include:
+      <ul>
+        <li>
+          <b>a</b> and <b>b</b>, the integration limits;
+        </li>
+        <li>
+          <b>w(x)</b>, the formula for the weight;
+        </li>
+        <li>
+          <b>u=z(x)</b>, the formula for the transformation;
+          In most cases, <b>u=x</b> can be used;
+        </li>
+        <li>
+          <b>zi(u)</b>, the formula for the inverse transformation;
+          In most cases, <b>zi=u</b> can be used.
+        </li>
+        <li>
+          <b>n</b>, the order of the desired Gauss quadrature rule.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Other quantities which the user may wish to change, but which
+      are already set to reasonable values, include:
+      <ul>
+        <li>
+          <b>Nm</b>, the internal precision (number of digits of accuracy)
+          for the moments (set to 50);
+        </li>
+        <li>
+          <b>Nz</b>, the internal precision (number of digits of accuracy)
+          for the Jacobi matrix (set to 25);
+        </li>
+        <li>
+          <b>Na</b>, the final precision (number of digits of accuracy)
+          in the abscissas and weights of the rule (set to 17);
+        </li>
+        <li>
+          <b>outputww</b>, set to 0 for the weights, or 1 for the
+          weights divided by W(x) (set to 0);
+        </li>
+        <li>
+          <b>fortranfname</b>, the name of the file to be created,
+          containing a FORTRAN77 program that defines the abscissas
+          and weights (set to "gqxw.f");
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../f77_src/toms655/toms655.html">
+      TOMS655</a>
+      a FORTRAN77 library which
+      computes the weights for interpolatory quadrature rule;<br>
+      this library is commonly called <b>IQPACK</b>;<br>
+      this is ACM TOMS algorithm 655. 
+    </p>
+
+    <p>
+      <a href = "../../f77_src/toms726/toms726.html">
+      TOMS726</a>
+      a FORTRAN77 library which
+      computes recursion coefficients for orthogonal polynomials,
+      and the abscissa and weights for related quadrature rules;<br>
+      this library is commonly called <b>ORTHPOL</b>;<br>
+      this is ACM TOMS algorithm 726. 
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Hiroshi Fukuda, Mitsuaki Katsuya, Erwin Alt, Alexander Matveenko,<br>
+          Gaussian quadrature rule for arbitrary weight function and interval,<br>
+          Computer Physics Communications,<br>
+          Volume 167, Number 2, 15 April 2005, pages 143-150.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "ArbitraryWeightRule.nb">ArbitraryWeightRule.nb</a>, 
+          the Mathematica notebook;
+        </li>
+      </ul>
+    </p>
+
+    <h3 align = "center">
+      Examples and Tests:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "gqxw.f">gqxw.f</a>, 
+          the FORTRAN77 program corresponding to integration over [0,1]
+          with weight function w(x)=1/x, the identity transformation,
+          and a requested order of 4.
+        </li>
+        <li>
+          <a href = "testrun.pdf">testrun.pdf</a>, 
+          the printout of a test run for the case [1,+oo) with weight
+          function 1/(1+x^2)^2, the identity transformation, and a
+          requested order of 4.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica packages and notebooks</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 10 November 2010.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

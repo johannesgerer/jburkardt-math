@@ -1,0 +1,93 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      2971,         84]
+NotebookOptionsPosition[      2715,         71]
+NotebookOutlinePosition[      3060,         86]
+CellTagsIndexPosition[      3017,         83]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"duelOnce", " ", "[", " ", "p_", " ", "]"}], " ", ":=", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"r", ",", "survivor", ",", "turnNum"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"turnNum", " ", "=", " ", "0"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"While", " ", "[", 
+       RowBox[{"True", ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"turnNum", " ", "=", " ", 
+          RowBox[{"turnNum", " ", "+", " ", "1"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"r", " ", "=", " ", 
+          RowBox[{"Random", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"r", " ", "<", " ", 
+            RowBox[{"p", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ",", 
+           RowBox[{
+            RowBox[{"survivor", " ", "=", " ", "1"}], ";", " ", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"turnNum", " ", "=", " ", 
+          RowBox[{"turnNum", " ", "+", " ", "1"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"r", " ", "=", " ", 
+          RowBox[{"Random", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"r", "<", 
+            RowBox[{"p", "[", 
+             RowBox[{"[", "2", "]"}], "]"}]}], ",", " ", 
+           RowBox[{
+            RowBox[{"survivor", " ", "=", " ", "2"}], ";", " ", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}]}]}], "\[IndentingNewLine]",
+        "]"}], ";", "\[IndentingNewLine]", "survivor"}]}], 
+    "\[IndentingNewLine]", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.467248195237761*^9, 3.46724838782648*^9}, {
+   3.467248433783761*^9, 3.467248483649641*^9}, {3.4672485292414007`*^9, 
+   3.467248580061132*^9}, {3.467248702822482*^9, 3.467248729202478*^9}, {
+   3.467248769991795*^9, 3.467248783136568*^9}, {3.4672488168792152`*^9, 
+   3.46724893457269*^9}, {3.4672489780449247`*^9, 3.467249114386477*^9}, 
+   3.4672987445094557`*^9}]
+},
+WindowSize->{640, 750},
+WindowMargins->{{460, Automatic}, {Automatic, 19}},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 2166, 49, 223, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

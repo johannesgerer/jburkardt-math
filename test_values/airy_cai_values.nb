@@ -1,0 +1,484 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     15892,        475]
+NotebookOptionsPosition[     14992,        443]
+NotebookOutlinePosition[     15399,        460]
+CellTagsIndexPosition[     15356,        457]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"airy_cai", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "Airy", " ", "Ai", " ", "function"}], 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "at", " ", "selected", " ", "COMPLEX", " ", "argument", " ", "values", 
+     " ", "fz", 
+     RowBox[{"(", "z", ")"}]}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"13", " ", "April", " ", "2007"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"zvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", " ", "[", " ", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "  ", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"theta", " ", "=", " ", 
+      RowBox[{"i", " ", "*", " ", "2", " ", "*", " ", 
+       RowBox[{"Pi", " ", "/", " ", "n"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"z", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Cos", " ", "[", "theta", "]"}], " ", "+", " ", 
+       RowBox[{"I", " ", "*", " ", 
+        RowBox[{"Sin", "[", "theta", "]"}]}]}]}], ",", " ", 
+     "\[IndentingNewLine]", 
+     RowBox[{"zvec", " ", "=", " ", 
+      RowBox[{"Append", " ", "[", " ", 
+       RowBox[{"zvec", ",", " ", "z"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"f", " ", "=", " ", 
+      RowBox[{"AiryAi", "[", "z", "]"}]}], " ", ",", "\[IndentingNewLine]", 
+     RowBox[{"fvec", " ", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"fvec", ",", "f"}], "]"}]}], ",", "\[IndentingNewLine]", " ", 
+     RowBox[{"Print", "[", " ", 
+      RowBox[{"\"\<f[\>\"", ",", " ", "z", ",", "\"\<] = \>\"", ",", 
+       RowBox[{"N", "[", 
+        RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", 
+    "\[IndentingNewLine]", "}"}], ",", " ", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "0", ",", 
+     RowBox[{"n", "-", "1"}], ",", "1"}], "}"}]}], " ", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "zvec", " ", "]"}]}], ";"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"spell1\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Possible spelling error: new symbol name \\\"\\!\\(fvec\\)\
+\\\" is similar to existing symbol \\\"\\!\\(zvec\\)\\\". \\!\\(\\*ButtonBox[\
+\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", \
+ButtonFrame->None, ButtonData:>\\\"General::spell1\\\"]\\)\"\>"}]], "Message"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", 
+   "0.1352924163128814155241474235`16."}],
+  SequenceForm["f[", 1, "] = ", 0.1352924163128814155241474235`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+     SqrtBox[
+      RowBox[{
+       FractionBox["1", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"5", "-", 
+         SqrtBox["5"]}], ")"}]}]]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       SqrtBox["5"]}], ")"}]}]}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"0.143382448688205582472911088`16.051153582695886", "-", 
+    RowBox[{
+    "0.109219334270737814594666196`15.932957114726984", " ", 
+     "\[ImaginaryI]"}]}]}],
+  SequenceForm["f[", Complex[0, 
+      Rational[1, 2]] (Rational[1, 2] (5 - 5^Rational[1, 2]))^Rational[1, 2] + 
+   Rational[1, 4] (1 + 5^Rational[1, 2]), "] = ", 
+   Complex[
+   0.143382448688205582472911088`16.051153582695886, \
+-0.109219334270737814594666196`15.932957114726984]],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", 
+       SqrtBox["5"]}], ")"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+     SqrtBox[
+      RowBox[{
+       FractionBox["1", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"5", "+", 
+         SqrtBox["5"]}], ")"}]}]]}]}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"0.2215404472324630547773438326`15.96356228360924", "-", 
+    RowBox[{
+    "0.2588711788891803411752371174`16.03119295697843", " ", 
+     "\[ImaginaryI]"}]}]}],
+  SequenceForm["f[", Rational[1, 4] (-1 + 5^Rational[1, 2]) + Complex[0, 
+      Rational[1, 2]] (Rational[1, 2] (5 + 5^Rational[1, 2]))^Rational[1, 2], 
+   "] = ", 
+   Complex[
+   0.2215404472324630547773438326`15.96356228360924, \
+-0.2588711788891803411752371174`16.03119295697843]],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SqrtBox["5"]}], ")"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+     SqrtBox[
+      RowBox[{
+       FractionBox["1", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"5", "+", 
+         SqrtBox["5"]}], ")"}]}]]}]}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"0.4763929771766866318361738348`16.076481132684833", "-", 
+    RowBox[{
+    "0.3036484220291284184252248828`15.880886810613227", " ", 
+     "\[ImaginaryI]"}]}]}],
+  SequenceForm["f[", Rational[1, 4] (1 - 5^Rational[1, 2]) + Complex[0, 
+      Rational[1, 2]] (Rational[1, 2] (5 + 5^Rational[1, 2]))^Rational[1, 2], 
+   "] = ", 
+   Complex[
+   0.4763929771766866318361738348`16.076481132684833, \
+-0.3036484220291284184252248828`15.880886810613227]],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "-", 
+       SqrtBox["5"]}], ")"}]}], "+", 
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+     SqrtBox[
+      RowBox[{
+       FractionBox["1", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"5", "-", 
+         SqrtBox["5"]}], ")"}]}]]}]}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"0.5983692170633874397260663588`16.146519054562333", "-", 
+    RowBox[{
+    "0.0815460216077121424210540155`15.280952589222569", " ", 
+     "\[ImaginaryI]"}]}]}],
+  SequenceForm["f[", Rational[1, 4] (-1 - 5^Rational[1, 2]) + Complex[0, 
+      Rational[1, 2]] (Rational[1, 2] (5 - 5^Rational[1, 2]))^Rational[1, 2], 
+   "] = ", 
+   Complex[
+   0.5983692170633874397260663588`16.146519054562333, \
+-0.0815460216077121424210540155`15.280952589222569]],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", "0.5355608832923521187995165656`16."}],
+  SequenceForm["f[", -1, "] = ", 0.5355608832923521187995165656`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "-", 
+       SqrtBox["5"]}], ")"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+     SqrtBox[
+      RowBox[{
+       FractionBox["1", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"5", "-", 
+         SqrtBox["5"]}], ")"}]}]]}]}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"0.5983692170633874397260663588`16.146519054562333", "+", 
+    RowBox[{
+    "0.0815460216077121424210540155`15.280952589222569", " ", 
+     "\[ImaginaryI]"}]}]}],
+  SequenceForm["f[", Rational[1, 4] (-1 - 5^Rational[1, 2]) + Complex[0, 
+      Rational[-1, 2]] (Rational[1, 2] (5 - 5^Rational[1, 2]))^Rational[1, 2],
+    "] = ", 
+   Complex[
+   0.5983692170633874397260663588`16.146519054562333, 
+    0.0815460216077121424210540155`15.280952589222569]],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", 
+       SqrtBox["5"]}], ")"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+     SqrtBox[
+      RowBox[{
+       FractionBox["1", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"5", "+", 
+         SqrtBox["5"]}], ")"}]}]]}]}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"0.4763929771766866318361738348`16.076481132684833", "+", 
+    RowBox[{
+    "0.3036484220291284184252248828`15.880886810613227", " ", 
+     "\[ImaginaryI]"}]}]}],
+  SequenceForm["f[", Rational[1, 4] (1 - 5^Rational[1, 2]) + Complex[0, 
+      Rational[-1, 2]] (Rational[1, 2] (5 + 5^Rational[1, 2]))^Rational[1, 2],
+    "] = ", 
+   Complex[
+   0.4763929771766866318361738348`16.076481132684833, 
+    0.3036484220291284184252248828`15.880886810613227]],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", 
+       SqrtBox["5"]}], ")"}]}], "-", 
+    RowBox[{
+     FractionBox["1", "2"], " ", "\[ImaginaryI]", " ", 
+     SqrtBox[
+      RowBox[{
+       FractionBox["1", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"5", "+", 
+         SqrtBox["5"]}], ")"}]}]]}]}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"0.2215404472324630547773438326`15.96356228360924", "+", 
+    RowBox[{
+    "0.2588711788891803411752371174`16.03119295697843", " ", 
+     "\[ImaginaryI]"}]}]}],
+  SequenceForm["f[", Rational[1, 4] (-1 + 5^Rational[1, 2]) + Complex[0, 
+      Rational[-1, 2]] (Rational[1, 2] (5 + 5^Rational[1, 2]))^Rational[1, 2],
+    "] = ", 
+   Complex[
+   0.2215404472324630547773438326`15.96356228360924, 
+    0.2588711788891803411752371174`16.03119295697843]],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"f[\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "2"]}], " ", "\[ImaginaryI]", " ", 
+     SqrtBox[
+      RowBox[{
+       FractionBox["1", "2"], " ", 
+       RowBox[{"(", 
+        RowBox[{"5", "-", 
+         SqrtBox["5"]}], ")"}]}]]}], "+", 
+    RowBox[{
+     FractionBox["1", "4"], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       SqrtBox["5"]}], ")"}]}]}], "\[InvisibleSpace]", "\<\"] = \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"0.143382448688205582472911088`16.051153582695886", "+", 
+    RowBox[{
+    "0.109219334270737814594666196`15.932957114726984", " ", 
+     "\[ImaginaryI]"}]}]}],
+  SequenceForm["f[", Complex[0, 
+      Rational[-1, 2]] (Rational[1, 2] (5 - 5^Rational[1, 2]))^Rational[1, 2] + 
+   Rational[1, 4] (1 + 5^Rational[1, 2]), "] = ", 
+   Complex[
+   0.143382448688205582472911088`16.051153582695886, 
+    0.109219334270737814594666196`15.932957114726984]],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/airy_cai_values.\
+txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  airy_cai_values.txt\>\""}], "]"}], 
+      ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  z  fz\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"z", "=", 
+         RowBox[{
+         "zvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{
+            RowBox[{"Re", "[", "z", "]"}], ",", "16"}], "]"}], ",", 
+          "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{
+            RowBox[{"Im", "[", "z", "]"}], ",", "16"}], "]"}], ",", 
+          "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{
+            RowBox[{"Re", "[", "f", "]"}], ",", "16"}], "]"}], ",", 
+          "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{
+            RowBox[{"Im", "[", "f", "]"}], ",", "16"}], "]"}]}], "]"}]}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{3.478288773395884*^9, 3.479721414291094*^9}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 236}, {Automatic, -2}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1146, 28, 148, "Input"],
+Cell[CellGroupData[{
+Cell[1716, 52, 1727, 41, 208, "Input"],
+Cell[3446, 95, 385, 7, 48, "Message"],
+Cell[CellGroupData[{
+Cell[3856, 106, 288, 6, 20, "Print"],
+Cell[4147, 114, 990, 28, 65, "Print"],
+Cell[5140, 144, 1014, 29, 65, "Print"],
+Cell[6157, 175, 994, 28, 65, "Print"],
+Cell[7154, 205, 1018, 29, 65, "Print"],
+Cell[8175, 236, 304, 6, 20, "Print"],
+Cell[8482, 244, 1021, 29, 65, "Print"],
+Cell[9506, 275, 997, 28, 65, "Print"],
+Cell[10506, 305, 1017, 29, 65, "Print"],
+Cell[11526, 336, 1015, 29, 65, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[12568, 369, 2420, 72, 283, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

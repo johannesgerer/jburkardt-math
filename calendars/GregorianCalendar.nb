@@ -1,0 +1,120 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      3612,        110]
+NotebookOptionsPosition[      3261,         93]
+NotebookOutlinePosition[      3594,        108]
+CellTagsIndexPosition[      3551,        105]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"DayOfWeek", " ", "[", " ", 
+    RowBox[{
+    "year_Integer", ",", " ", "month_Integer", ",", " ", "day_Integer"}], " ",
+     "]"}], " ", ":=", "\[IndentingNewLine]", 
+   RowBox[{"Block", " ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+       RowBox[{"y", " ", "=", " ", "year"}], ",", " ", 
+       RowBox[{"m", " ", "=", " ", 
+        RowBox[{"month", "  ", "-", " ", "2"}]}]}], " ", "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"If", " ", "[", " ", 
+       RowBox[{
+        RowBox[{"m", " ", "<", " ", "3"}], ",", " ", 
+        RowBox[{
+         RowBox[{"{", " ", 
+          RowBox[{"m", ",", " ", "y"}], " ", "}"}], " ", "=", " ", 
+         RowBox[{"{", " ", 
+          RowBox[{
+           RowBox[{"m", " ", "+", " ", "12"}], ",", " ", 
+           RowBox[{"y", " ", "-", " ", "1"}]}], " ", "}"}]}]}], " ", "]"}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"{", " ", 
+        RowBox[{
+        "\"\<Sunday\>\"", ",", " ", "\"\<Monday\>\"", ",", " ", 
+         "\"\<Tuesday\>\"", ",", " ", "\"\<Wednesday\>\"", ",", " ", 
+         "\"\<Thursday\>\"", ",", " ", "\"\<Friday\>\"", ",", " ", 
+         "\"\<Saturday\>\""}], " ", "}"}], "\[IndentingNewLine]", "[", 
+       RowBox[{"[", 
+        RowBox[{"1", "+", "\[IndentingNewLine]", 
+         RowBox[{"Mod", "[", 
+          RowBox[{
+           RowBox[{"day", "+", 
+            RowBox[{"Floor", "[", 
+             RowBox[{
+              RowBox[{"2.6", " ", "m"}], " ", "-", " ", "0.2"}], " ", "]"}], 
+            " ", "+", " ", 
+            RowBox[{"Mod", " ", "[", " ", 
+             RowBox[{"y", ",", " ", "100"}], " ", "]"}], " ", "+", " ", 
+            RowBox[{"Quotient", "[", 
+             RowBox[{
+              RowBox[{"Mod", "[", 
+               RowBox[{"y", ",", "100"}], "]"}], ",", "4"}], "]"}], "+", 
+            RowBox[{"Quotient", "[", 
+             RowBox[{
+              RowBox[{"Quotient", "[", 
+               RowBox[{"y", ",", "100"}], "]"}], ",", "4"}], "]"}], " ", "-", 
+            " ", 
+            RowBox[{"2", " ", 
+             RowBox[{"Quotient", " ", "[", " ", 
+              RowBox[{"y", ",", " ", "100"}], "]"}]}]}], ",", " ", "7"}], " ",
+           "]"}]}], " ", "]"}], "]"}]}]}], "]"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.44174722462773*^9, 3.441747380924375*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DayOfWeek", "[", 
+  RowBox[{"2009", ",", " ", "1", ",", " ", "23"}], " ", "]"}]], "Input",
+ CellChangeTimes->{{3.441747435261237*^9, 3.441747445560443*^9}}],
+
+Cell[BoxData["\<\"Friday\"\>"], "Output",
+ CellChangeTimes->{3.441747447861342*^9}]
+}, Open  ]]
+},
+WindowSize->{640, 750},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"6.0 for Mac OS X x86 (32-bit) (May 21, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 2386, 59, 148, "Input"],
+Cell[CellGroupData[{
+Cell[2979, 84, 180, 3, 27, "Input"],
+Cell[3162, 89, 83, 1, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

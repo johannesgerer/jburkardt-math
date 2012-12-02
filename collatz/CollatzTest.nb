@@ -1,0 +1,469 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     13473,        459]
+NotebookOptionsPosition[     10578,        361]
+NotebookOutlinePosition[     10994,        379]
+CellTagsIndexPosition[     10951,        376]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Collatz_use.nb",
+  FontWeight->"Bold"],
+ " is a notebook which demonstrates how a Mathematica package can be used.\n\n\
+In this case, a package named \"Collatz.m\" has been written, and placed in \
+the appropriate place.  The appropriate place is the \"Applications\" or \
+\"Autoload\" subdirectories of the UserBaseDirectory, as defined by \
+Mathematica. \n\nModified:  18 September 2005\n\nAuthor: John Burkardt"
+}], "Text"],
+
+Cell["\<\
+Our first task is to find out the name of the directory where the file should \
+have been stored.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["$UserBaseDirectory"], "Input"],
+
+Cell[BoxData["\<\"C:\\\\Documents and Settings\\\\burkardt\\\\Application \
+Data\\\\Mathematica\"\>"], "Output"]
+}, Open  ]],
+
+Cell["\<\
+Before we change directories (just to have a look), we save the location of \
+our current home directory so we can get back!\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"home", " ", "=", " ", 
+   RowBox[{"Directory", "[", "]"}]}]}]], "Input"],
+
+Cell[BoxData["\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Mathematica\\\\5.2\"\>"], "Output"]
+}, Open  ]],
+
+Cell["Now we jump over to the UserBaseDirectory.", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", "$UserBaseDirectory", "]"}]], "Input"],
+
+Cell[BoxData["\<\"C:\\\\Documents and Settings\\\\burkardt\\\\Application \
+Data\\\\Mathematica\"\>"], "Output"]
+}, Open  ]],
+
+Cell["\<\
+From here it is easy to move down a level, to the directory where we expect \
+the package file to be stored.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", "\"\<Applications\>\"", "]"}]], "Input"],
+
+Cell[BoxData["\<\"C:\\\\Documents and Settings\\\\burkardt\\\\Application \
+Data\\\\Mathematica\\\\Applications\"\>"], "Output"]
+}, Open  ]],
+
+Cell["\<\
+Now we can ask for a listing of the contents of this directory.  The file \
+\"Collatz.m\" should show up.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FileNames", "[", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"Collatz.m\"\>", "}"}]], "Output"]
+}, Open  ]],
+
+Cell["Now let's go home.", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", "home", "]"}]], "Input"],
+
+Cell[BoxData["\<\"C:\\\\Program Files\\\\Wolfram \
+Research\\\\Mathematica\\\\5.2\"\>"], "Output"]
+}, Open  ]],
+
+Cell["And now we can load the package, and issue some commands.", "Text"],
+
+Cell[BoxData[
+ RowBox[{"<<", "Collatz.m"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Collatz", "[", "1", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", "1", "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Collatz", "[", "10", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10", ",", "5", ",", "16", ",", "8", ",", "4", ",", "2", ",", "1"}],
+   "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Collatz", "[", "131", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "131", ",", "394", ",", "197", ",", "592", ",", "296", ",", "148", ",", 
+   "74", ",", "37", ",", "112", ",", "56", ",", "28", ",", "14", ",", "7", 
+   ",", "22", ",", "11", ",", "34", ",", "17", ",", "52", ",", "26", ",", 
+   "13", ",", "40", ",", "20", ",", "10", ",", "5", ",", "16", ",", "8", ",", 
+   "4", ",", "2", ",", "1"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"StoppingTime", "[", "131", "]"}]], "Input"],
+
+Cell[BoxData["29"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindMaxima", "[", "1", "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["StoppingTime[", 1, "] = ", 1],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "2"}],
+  SequenceForm["StoppingTime[", 2, "] = ", 2],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "8"}],
+  SequenceForm["StoppingTime[", 3, "] = ", 8],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "9"}],
+  SequenceForm["StoppingTime[", 6, "] = ", 9],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "17"}],
+  SequenceForm["StoppingTime[", 7, "] = ", 17],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "20"}],
+  SequenceForm["StoppingTime[", 9, "] = ", 20],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "18", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "21"}],
+  SequenceForm["StoppingTime[", 18, "] = ", 21],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "24"}],
+  SequenceForm["StoppingTime[", 25, "] = ", 24],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "27", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "112"}],
+  SequenceForm["StoppingTime[", 27, "] = ", 112],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "54", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "113"}],
+  SequenceForm["StoppingTime[", 54, "] = ", 113],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "73", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "116"}],
+  SequenceForm["StoppingTime[", 73, "] = ", 116],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "97", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "119"}],
+  SequenceForm["StoppingTime[", 97, "] = ", 119],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "100"}],
+  SequenceForm["i = ", 100],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "129", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "122"}],
+  SequenceForm["StoppingTime[", 129, "] = ", 122],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "171", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "125"}],
+  SequenceForm["StoppingTime[", 171, "] = ", 125],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "200"}],
+  SequenceForm["i = ", 200],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "231", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "128"}],
+  SequenceForm["StoppingTime[", 231, "] = ", 128],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "300"}],
+  SequenceForm["i = ", 300],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "313", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "131"}],
+  SequenceForm["StoppingTime[", 313, "] = ", 131],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "327", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "144"}],
+  SequenceForm["StoppingTime[", 327, "] = ", 144],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "400"}],
+  SequenceForm["i = ", 400],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "500"}],
+  SequenceForm["i = ", 500],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "600"}],
+  SequenceForm["i = ", 600],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "649", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "145"}],
+  SequenceForm["StoppingTime[", 649, "] = ", 145],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "700"}],
+  SequenceForm["i = ", 700],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "703", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "171"}],
+  SequenceForm["StoppingTime[", 703, "] = ", 171],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "800"}],
+  SequenceForm["i = ", 800],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"StoppingTime[\"\>", "\[InvisibleSpace]", "871", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "179"}],
+  SequenceForm["StoppingTime[", 871, "] = ", 179],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"i = \"\>", "\[InvisibleSpace]", "900"}],
+  SequenceForm["i = ", 900],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{496, 537},
+WindowMargins->{{570, Automatic}, {Automatic, 70}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+ShowSelection->True,
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 453, 8, 161, "Text"],
+Cell[1024, 31, 121, 3, 41, "Text"],
+Cell[CellGroupData[{
+Cell[1170, 38, 44, 0, 27, "Input"],
+Cell[1217, 40, 112, 1, 43, "Output"]
+}, Open  ]],
+Cell[1344, 44, 148, 3, 41, "Text"],
+Cell[CellGroupData[{
+Cell[1517, 51, 130, 3, 43, "Input"],
+Cell[1650, 56, 98, 1, 27, "Output"]
+}, Open  ]],
+Cell[1763, 60, 58, 0, 26, "Text"],
+Cell[CellGroupData[{
+Cell[1846, 64, 82, 1, 27, "Input"],
+Cell[1931, 67, 112, 1, 43, "Output"]
+}, Open  ]],
+Cell[2058, 71, 132, 3, 41, "Text"],
+Cell[CellGroupData[{
+Cell[2215, 78, 84, 1, 27, "Input"],
+Cell[2302, 81, 128, 1, 43, "Output"]
+}, Open  ]],
+Cell[2445, 85, 129, 3, 41, "Text"],
+Cell[CellGroupData[{
+Cell[2599, 92, 57, 1, 27, "Input"],
+Cell[2659, 95, 66, 1, 27, "Output"]
+}, Open  ]],
+Cell[2740, 99, 34, 0, 26, "Text"],
+Cell[CellGroupData[{
+Cell[2799, 103, 68, 1, 27, "Input"],
+Cell[2870, 106, 98, 1, 27, "Output"]
+}, Open  ]],
+Cell[2983, 110, 73, 0, 26, "Text"],
+Cell[3059, 112, 53, 1, 27, "Input"],
+Cell[CellGroupData[{
+Cell[3137, 117, 60, 1, 27, "Input"],
+Cell[3200, 120, 50, 1, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3287, 126, 61, 1, 27, "Input"],
+Cell[3351, 129, 128, 3, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3516, 137, 62, 1, 27, "Input"],
+Cell[3581, 140, 392, 7, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4010, 152, 67, 1, 27, "Input"],
+Cell[4080, 155, 29, 0, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4146, 160, 63, 1, 27, "Input"],
+Cell[CellGroupData[{
+Cell[4234, 165, 240, 5, 20, "Print"],
+Cell[4477, 172, 240, 5, 20, "Print"],
+Cell[4720, 179, 240, 5, 20, "Print"],
+Cell[4963, 186, 240, 5, 20, "Print"],
+Cell[5206, 193, 242, 5, 20, "Print"],
+Cell[5451, 200, 242, 5, 20, "Print"],
+Cell[5696, 207, 244, 5, 20, "Print"],
+Cell[5943, 214, 244, 5, 20, "Print"],
+Cell[6190, 221, 246, 5, 20, "Print"],
+Cell[6439, 228, 246, 5, 20, "Print"],
+Cell[6688, 235, 246, 5, 20, "Print"],
+Cell[6937, 242, 246, 5, 20, "Print"],
+Cell[7186, 249, 148, 4, 20, "Print"],
+Cell[7337, 255, 248, 5, 20, "Print"],
+Cell[7588, 262, 248, 5, 20, "Print"],
+Cell[7839, 269, 148, 4, 20, "Print"],
+Cell[7990, 275, 248, 5, 20, "Print"],
+Cell[8241, 282, 148, 4, 20, "Print"],
+Cell[8392, 288, 248, 5, 20, "Print"],
+Cell[8643, 295, 248, 5, 20, "Print"],
+Cell[8894, 302, 148, 4, 20, "Print"],
+Cell[9045, 308, 148, 4, 25, "Print"],
+Cell[9196, 314, 148, 4, 25, "Print"],
+Cell[9347, 320, 248, 5, 25, "Print"],
+Cell[9598, 327, 148, 4, 25, "Print"],
+Cell[9749, 333, 248, 5, 25, "Print"],
+Cell[10000, 340, 148, 4, 25, "Print"],
+Cell[10151, 346, 248, 5, 25, "Print"],
+Cell[10402, 353, 148, 4, 25, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,314 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      9779,        304]
+NotebookOptionsPosition[      8742,        267]
+NotebookOutlinePosition[      9082,        282]
+CellTagsIndexPosition[      9039,        279]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"subfactorial_values", ".", "nb"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{"Evaluate", " ", "the", " ", "subfactorial", " ", "function"}], 
+    ",", " ", "which"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "counts", " ", "the", " ", "number", " ", "of", " ", "permutations", " ", 
+    "of", " ", "N"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "objects", " ", "which", " ", "leave", " ", "no", " ", "object", " ", 
+    RowBox[{"unchanged", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "This", " ", "is", " ", "also", " ", "called", " ", "a", " ", 
+    "derangement"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"21", " ", "March", " ", "2007"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"<<", " ", "DiscreteMath`CombinatorialFunctions`"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nvec", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+    "0", ",", "1", ",", "2", ",", "3", ",", " ", "4", ",", " ", "5", ",", " ",
+      "6", ",", " ", "7", ",", " ", "8", ",", " ", "9", ",", " ", "10", ",", 
+     " ", "11", ",", " ", "12"}], " ", "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"svec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "nvec", " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"spell1\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Possible spelling error: new symbol name \\\"\\!\\(svec\\)\
+\\\" is similar to existing symbol \\\"\\!\\(nvec\\)\\\". \\!\\(\\*ButtonBox[\
+\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", \
+ButtonFrame->None, ButtonData:>\\\"General::spell1\\\"]\\)\"\>"}]], "Message"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", " ", "[", " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", "  ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"n", " ", "=", " ", 
+       RowBox[{"nvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"s", " ", "=", " ", 
+       RowBox[{"Subfactorial", "[", "n", "]"}]}], " ", ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"svec", " ", "=", " ", 
+       RowBox[{"Append", "[", 
+        RowBox[{"svec", ",", "s"}], "]"}]}], ",", "\[IndentingNewLine]", " ", 
+      
+      RowBox[{"Print", "[", " ", 
+       RowBox[{"\"\<s[\>\"", ",", " ", "n", ",", "\"\<] = \>\"", ",", "s"}], 
+       "]"}]}], " ", "\[IndentingNewLine]", "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], " ", "]"}], 
+  "\[IndentingNewLine]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["s[", 0, "] = ", 1],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["s[", 1, "] = ", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["s[", 2, "] = ", 1],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "2"}],
+  SequenceForm["s[", 3, "] = ", 2],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "9"}],
+  SequenceForm["s[", 4, "] = ", 9],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "44"}],
+  SequenceForm["s[", 5, "] = ", 44],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "265"}],
+  SequenceForm["s[", 6, "] = ", 265],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "1854"}],
+  SequenceForm["s[", 7, "] = ", 1854],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "14833"}],
+  SequenceForm["s[", 8, "] = ", 14833],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "133496"}],
+  SequenceForm["s[", 9, "] = ", 133496],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "1334961"}],
+  SequenceForm["s[", 10, "] = ", 1334961],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "11", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "14684570"}],
+  SequenceForm["s[", 11, "] = ", 14684570],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"s[\"\>", "\[InvisibleSpace]", "12", 
+   "\[InvisibleSpace]", "\<\"] = \"\>", "\[InvisibleSpace]", "176214841"}],
+  SequenceForm["s[", 12, "] = ", 176214841],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\<C:\\\\Documents and \
+Settings\\\\burkardt.BURKARDTPC\\\\Desktop\\\\Misc\\\\mathematica\\\\\
+subfactorial_values.txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  subfactorial_values.txt\>\""}], "]"}], 
+     ";"}], 
+    RowBox[{
+     RowBox[{"today", "=", 
+      RowBox[{"DateList", "[", "]"}]}], ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], "]"}],
+      ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  n  s\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"n", "=", 
+          RowBox[{
+          "nvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         ";", 
+         RowBox[{"s", "=", 
+          RowBox[{
+          "svec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         ";", 
+         RowBox[{"Write", "[", 
+          RowBox[{"fileout", ",", "n", ",", "\"\<  \>\"", ",", "s"}], "]"}]}],
+         "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";"}], 
+    
+    RowBox[{
+     RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]}]], "Input"]
+},
+WindowSize->{496, 740},
+WindowMargins->{{343, Automatic}, {Automatic, 6}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1290, 31, 163, "Input"],
+Cell[1838, 53, 85, 1, 27, "Input"],
+Cell[CellGroupData[{
+Cell[1948, 58, 572, 15, 73, "Input"],
+Cell[2523, 75, 385, 7, 48, "Message"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2945, 87, 870, 21, 133, "Input"],
+Cell[CellGroupData[{
+Cell[3840, 112, 218, 5, 20, "Print"],
+Cell[4061, 119, 218, 5, 20, "Print"],
+Cell[4282, 126, 218, 5, 20, "Print"],
+Cell[4503, 133, 218, 5, 20, "Print"],
+Cell[4724, 140, 218, 5, 20, "Print"],
+Cell[4945, 147, 220, 5, 20, "Print"],
+Cell[5168, 154, 222, 5, 20, "Print"],
+Cell[5393, 161, 224, 5, 20, "Print"],
+Cell[5620, 168, 226, 5, 20, "Print"],
+Cell[5849, 175, 228, 5, 20, "Print"],
+Cell[6080, 182, 232, 5, 20, "Print"],
+Cell[6315, 189, 234, 5, 20, "Print"],
+Cell[6552, 196, 236, 5, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[6815, 205, 1923, 60, 268, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

@@ -1,0 +1,126 @@
+<html>
+
+  <head>
+    <title>
+      BURGERS_EQUATION_CHARACTERISTICS - Method of Characteristics for Burgers Equation
+    </title>
+  </head>
+ 
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      BURGERS_EQUATION_CHARACTERISTICS <br> Method of Characteristics for Burgers Equation
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>BURGERS_EQUATION_CHARACTERISTICS</b> is a MATHEMATICA library
+      which uses the method of characteristics to display a solution to
+      the inviscid Burgers equation.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../datasets/burgers/burgers.html">
+      BURGERS</a>,
+      a dataset directory which
+      contains 40 solutions of the Burgers equation in one space dimension and time,
+      at equally spaced times from 0 to 1, with values
+      at 41 equally spaced nodes in [0,1];
+    </p>
+
+    <p>
+      <a href = "../../c_src/burgers_solution/burgers_solution.html">
+      BURGERS_SOLUTION</a>,
+      a C library which
+      evaluates an exact solution of the time-dependent 1D viscous Burgers equation.
+    </p>
+
+    <p>
+      <b>BURGERS_STEADY_VISCOUS</b>
+      a MATLAB library which
+      solves the steady (time-independent) viscous Burgers equation
+      using a finite difference discretization of the conservative form 
+      of the equation, and then applying Newton's method to solve the
+      resulting nonlinear system.
+    </p>
+
+    <p>
+      <a href = "../../c_src/fd1d_burgers_lax/fd1d_burgers_lax.html">
+      FD1D_BURGERS_LAX</a>,
+      a C program which
+      applies the finite difference method and the Lax-Wendroff method
+      to solve the non-viscous Burgers equation
+      in one spatial dimension and time.
+    </p>
+
+    <p>
+      <a href = "../../c_src/fd1d_burgers_leap/fd1d_burgers_leap.html">
+      FD1D_BURGERS_LEAP</a>,
+      a C program which
+      applies the finite difference method and the leapfrog approach
+      to solve the non-viscous Burgers equation in one spatial dimension and time.
+    </p>
+
+    <p>
+      <a href = "../../cpp_src/pce_burgers/pce_burgers.html">
+      PCE_BURGERS</a>,
+      a C++ program which
+      defines and solves a version of the time-dependent viscous Burgers equation,
+      with uncertain viscosity, using a polynomial chaos expansion in terms
+      of Hermite polynomials,
+      by Gianluca Iaccarino.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Mikel Landajuela,<br>
+          Burgers Equation,<br>
+          Basque Center for Applied Mathematics, 2011.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "bc.nb">bc.nb</a>, the notebook;
+        </li>
+        <li>
+          <a href = "characteristics.png">characteristics.png</a>, a plot of characteristics.
+        </li>
+        <li>
+          <a href = "solution.png">solution.png</a>, a 3D plot of U(X,T).
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica source codes</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 06 January 2006.
+    </i>
+
+    <!-- John Burkardt -->
+
+  </body>
+
+</html>

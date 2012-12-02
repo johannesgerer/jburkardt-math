@@ -1,0 +1,1365 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     39271,       1355]
+NotebookOptionsPosition[     35987,       1234]
+NotebookOutlinePosition[     36328,       1249]
+CellTagsIndexPosition[     36285,       1246]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"<<", " ", 
+  "\"\<NumericalDifferentialEquationAnalysis`\>\""}]], "Input",
+ CellChangeTimes->{{3.4443974354261217`*^9, 3.4443974485340776`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"1", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "2"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.4443975504491463`*^9, 3.4443975801403303`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"1", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397592507024*^9, 3.444397596146139*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"0.`", ",", "2.`"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.444397596657803*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"2", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "2"]}], ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "2"], ",", "1"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397552939004*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"2", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.4443976062293243`*^9, 3.4443976103059187`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.5`"}], ",", "1.`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.5`", ",", "1.`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397610836285*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"3", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "3"]}], ",", 
+     FractionBox["3", "4"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     FractionBox["1", "2"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "3"], ",", 
+     FractionBox["3", "4"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397554475271*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"3", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397621189591*^9, 3.4443976244417562`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.6666666666666666`"}], ",", "0.75`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.`", ",", "0.5`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.6666666666666666`", ",", "0.75`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.4443976249844303`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"4", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["3", "4"]}], ",", 
+     FractionBox["13", "24"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], ",", 
+     FractionBox["11", "24"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "4"], ",", 
+     FractionBox["11", "24"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["3", "4"], ",", 
+     FractionBox["13", "24"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397555718112*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"4", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397638132696*^9, 3.4443976413930693`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.75`"}], ",", "0.5416666666666666`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.25`"}], ",", "0.4583333333333333`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.25`", ",", "0.4583333333333333`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.75`", ",", "0.5416666666666666`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.4443976419111977`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"5", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["4", "5"]}], ",", 
+     FractionBox["275", "576"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "5"]}], ",", 
+     FractionBox["25", "144"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     FractionBox["67", "96"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "5"], ",", 
+     FractionBox["25", "144"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["4", "5"], ",", 
+     FractionBox["275", "576"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397556518237*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"5", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397651988392*^9, 3.4443976547538643`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.8`"}], ",", "0.4774305555555556`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.4`"}], ",", "0.1736111111111111`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.`", ",", "0.6979166666666666`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.4`", ",", "0.1736111111111111`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.8`", ",", "0.4774305555555556`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397655245756*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"6", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["5", "6"]}], ",", 
+     FractionBox["247", "640"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "2"]}], ",", 
+     FractionBox["139", "640"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "6"]}], ",", 
+     FractionBox["127", "320"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "6"], ",", 
+     FractionBox["127", "320"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "2"], ",", 
+     FractionBox["139", "640"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["5", "6"], ",", 
+     FractionBox["247", "640"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397558112846*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"6", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397667196323*^9, 3.4443976700244017`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.8333333333333334`"}], ",", "0.3859375`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.5`"}], ",", "0.2171875`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.16666666666666666`"}], ",", "0.396875`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.16666666666666666`", ",", "0.396875`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.5`", ",", "0.2171875`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.8333333333333334`", ",", "0.3859375`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.444397670508584*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"7", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["6", "7"]}], ",", 
+     FractionBox["4949", "13824"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["4", "7"]}], ",", 
+     FractionBox["49", "3840"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "7"]}], ",", 
+     FractionBox["6223", "7680"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"-", 
+      FractionBox["6257", "17280"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "7"], ",", 
+     FractionBox["6223", "7680"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["4", "7"], ",", 
+     FractionBox["49", "3840"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["6", "7"], ",", 
+     FractionBox["4949", "13824"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397561849781*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"7", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397683355579*^9, 3.444397686112256*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.8571428571428571`"}], ",", "0.3580005787037037`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.5714285714285714`"}], ",", "0.012760416666666666`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.2857142857142857`"}], ",", "0.8102864583333333`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.`", ",", 
+     RowBox[{"-", "0.3620949074074074`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.2857142857142857`", ",", "0.8102864583333333`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.5714285714285714`", ",", "0.012760416666666666`"}], "}"}], ",",
+    
+   RowBox[{"{", 
+    RowBox[{"0.8571428571428571`", ",", "0.3580005787037037`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.444397686637547*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"8", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["7", "8"]}], ",", 
+     FractionBox["295627", "967680"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["5", "8"]}], ",", 
+     FractionBox["71329", "967680"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["3", "8"]}], ",", 
+     FractionBox["17473", "35840"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "8"]}], ",", 
+     FractionBox["128953", "967680"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "8"], ",", 
+     FractionBox["128953", "967680"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["3", "8"], ",", 
+     FractionBox["17473", "35840"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["5", "8"], ",", 
+     FractionBox["71329", "967680"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["7", "8"], ",", 
+     FractionBox["295627", "967680"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.4443975628507147`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"8", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.4443976998594427`*^9, 3.4443977035123568`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.875`"}], ",", "0.3055007853835979`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.625`"}], ",", "0.07371135085978836`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.375`"}], ",", "0.4875279017857143`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.125`"}], ",", "0.13325996197089948`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.125`", ",", "0.13325996197089948`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.375`", ",", "0.4875279017857143`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.625`", ",", "0.07371135085978836`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.875`", ",", "0.3055007853835979`"}], "}"}]}], "}"}]], "Output",\
+
+ CellChangeTimes->{3.444397704020824*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"9", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["8", "9"]}], ",", 
+     FractionBox["832221", "2867200"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "3"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["32601", "358400"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["4", "9"]}], ",", 
+     FractionBox["725787", "716800"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "9"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["403407", "358400"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     FractionBox["523979", "286720"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "9"], ",", 
+     RowBox[{"-", 
+      FractionBox["403407", "358400"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["4", "9"], ",", 
+     FractionBox["725787", "716800"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "3"], ",", 
+     RowBox[{"-", 
+      FractionBox["32601", "358400"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["8", "9"], ",", 
+     FractionBox["832221", "2867200"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397563781321*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"9", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.4443977154438963`*^9, 3.444397718871266*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.8888888888888888`"}], ",", "0.29025565011160714`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.6666666666666666`"}], ",", 
+     RowBox[{"-", "0.09096261160714286`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.4444444444444444`"}], ",", "1.0125376674107143`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.2222222222222222`"}], ",", 
+     RowBox[{"-", "1.1255775669642858`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.`", ",", "1.8274937220982144`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.2222222222222222`", ",", 
+     RowBox[{"-", "1.1255775669642858`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.4444444444444444`", ",", "1.0125376674107143`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.6666666666666666`", ",", 
+     RowBox[{"-", "0.09096261160714286`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.8888888888888888`", ",", "0.29025565011160714`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.444397719402911*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"10", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["9", "10"]}], ",", 
+     FractionBox["678755", "2654208"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["7", "10"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["492755", "18579456"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "2"]}], ",", 
+     FractionBox["3067489", "4644864"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["3", "10"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["1568555", "4644864"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "10"]}], ",", 
+     FractionBox["4162595", "9289728"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "10"], ",", 
+     FractionBox["4162595", "9289728"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["3", "10"], ",", 
+     RowBox[{"-", 
+      FractionBox["1568555", "4644864"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "2"], ",", 
+     FractionBox["3067489", "4644864"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["7", "10"], ",", 
+     RowBox[{"-", 
+      FractionBox["492755", "18579456"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["9", "10"], ",", 
+     FractionBox["678755", "2654208"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397566394786*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"10", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397733258568*^9, 3.444397736839202*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.9`"}], ",", "0.25572788568190585`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.7`"}], ",", 
+     RowBox[{"-", "0.0265214977230765`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.5`"}], ",", "0.6604044811645723`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.3`"}], ",", 
+     RowBox[{"-", "0.3376966473076499`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.1`"}], ",", "0.4480857781842482`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.1`", ",", "0.4480857781842482`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.3`", ",", 
+     RowBox[{"-", "0.3376966473076499`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.5`", ",", "0.6604044811645723`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.7`", ",", 
+     RowBox[{"-", "0.0265214977230765`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.9`", ",", "0.25572788568190585`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397737363*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"11", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["10", "11"]}], ",", 
+     FractionBox["1372676393", "5573836800"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["8", "11"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["465490993", "2786918400"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["6", "11"]}], ",", 
+     FractionBox["2362001191", "1857945600"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["4", "11"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["508623137", "232243200"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "11"]}], ",", 
+     FractionBox["404360099", "103219200"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"-", 
+      FractionBox["1930391873", "464486400"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "11"], ",", 
+     FractionBox["404360099", "103219200"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["4", "11"], ",", 
+     RowBox[{"-", 
+      FractionBox["508623137", "232243200"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["6", "11"], ",", 
+     FractionBox["2362001191", "1857945600"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["8", "11"], ",", 
+     RowBox[{"-", 
+      FractionBox["465490993", "2786918400"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["10", "11"], ",", 
+     FractionBox["1372676393", "5573836800"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397566980249*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"11", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397749626115*^9, 3.444397752838537*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.9090909090909091`"}], ",", "0.24627136427819343`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.7272727272727273`"}], ",", 
+     RowBox[{"-", "0.16702713398426017`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.5454545454545454`"}], ",", "1.2712972817933959`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.36363636363636365`"}], ",", 
+     RowBox[{"-", "2.1900453360959546`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.18181818181818182`"}], ",", "3.9174891783699155`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.`", ",", 
+     RowBox[{"-", "4.15597070872258`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.18181818181818182`", ",", "3.9174891783699155`"}], "}"}], ",", 
+   
+   RowBox[{"{", 
+    RowBox[{"0.36363636363636365`", ",", 
+     RowBox[{"-", "2.1900453360959546`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.5454545454545454`", ",", "1.2712972817933959`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.7272727272727273`", ",", 
+     RowBox[{"-", "0.16702713398426017`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.9090909090909091`", ",", "0.24627136427819343`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.444397753347377*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"12", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["11", "12"]}], ",", 
+     FractionBox["335481023", "1513881600"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["3", "4"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["156166223", "1513881600"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["7", "12"]}], ",", 
+     FractionBox["1346226757", "1513881600"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["5", "12"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["109161691", "100925440"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "4"]}], ",", 
+     FractionBox["1129208419", "756940800"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "12"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["21088381", "50462720"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "12"], ",", 
+     RowBox[{"-", 
+      FractionBox["21088381", "50462720"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "4"], ",", 
+     FractionBox["1129208419", "756940800"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["5", "12"], ",", 
+     RowBox[{"-", 
+      FractionBox["109161691", "100925440"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["7", "12"], ",", 
+     FractionBox["1346226757", "1513881600"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["3", "4"], ",", 
+     RowBox[{"-", 
+      FractionBox["156166223", "1513881600"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["11", "12"], ",", 
+     FractionBox["335481023", "1513881600"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.4443975698423758`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+   RowBox[{"12", ",", " ", 
+    RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+    RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.444397765609948*^9, 3.4443977684860783`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.9166666666666666`"}], ",", "0.22160321058132948`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.75`"}], ",", 
+     RowBox[{"-", "0.1031561669023522`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.5833333333333334`"}], ",", "0.8892549833487638`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.4166666666666667`"}], ",", 
+     RowBox[{"-", "1.081607283555068`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.25`"}], ",", "1.4918054608762006`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.08333333333333333`"}], ",", 
+     RowBox[{"-", "0.41790020434887376`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.08333333333333333`", ",", 
+     RowBox[{"-", "0.41790020434887376`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.25`", ",", "1.4918054608762006`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.4166666666666667`", ",", 
+     RowBox[{"-", "1.081607283555068`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.5833333333333334`", ",", "0.8892549833487638`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.75`", ",", 
+     RowBox[{"-", "0.1031561669023522`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.9166666666666666`", ",", "0.22160321058132948`"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.4443977690243387`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"13", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["12", "13"]}], ",", 
+     FractionBox["22169902131481", "103004504064000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["10", "13"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["1949826242741", "8583708672000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["8", "13"]}], ",", 
+     FractionBox["26979393054211", "17167417344000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["6", "13"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["18550541141639", "5150225203200"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["4", "13"]}], ",", 
+     FractionBox["5734798919473", "762996326400"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "13"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["15419966424551", "1430618112000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     FractionBox["15462064518851", "1226244096000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "13"], ",", 
+     RowBox[{"-", 
+      FractionBox["15419966424551", "1430618112000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["4", "13"], ",", 
+     FractionBox["5734798919473", "762996326400"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["6", "13"], ",", 
+     RowBox[{"-", 
+      FractionBox["18550541141639", "5150225203200"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["8", "13"], ",", 
+     FractionBox["26979393054211", "17167417344000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["10", "13"], ",", 
+     RowBox[{"-", 
+      FractionBox["1949826242741", "8583708672000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["12", "13"], ",", 
+     FractionBox["22169902131481", "103004504064000"]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.444397570724515*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"14", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["13", "14"]}], ",", 
+     FractionBox["10745301693637", "54655451136000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["11", "14"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["9027946009607", "54655451136000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["9", "14"]}], ",", 
+     FractionBox["3524845128791", "3036413952000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "2"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["58640454201689", "27327725568000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["5", "14"]}], ",", 
+     FractionBox["8014345747751", "2186218045440"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["3", "14"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["20285981079301", "6072827904000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["1", "14"]}], ",", 
+     FractionBox["7415581463087", "4554620928000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "14"], ",", 
+     FractionBox["7415581463087", "4554620928000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["3", "14"], ",", 
+     RowBox[{"-", 
+      FractionBox["20285981079301", "6072827904000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["5", "14"], ",", 
+     FractionBox["8014345747751", "2186218045440"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["1", "2"], ",", 
+     RowBox[{"-", 
+      FractionBox["58640454201689", "27327725568000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["9", "14"], ",", 
+     FractionBox["3524845128791", "3036413952000"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["11", "14"], ",", 
+     RowBox[{"-", 
+      FractionBox["9027946009607", "54655451136000"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["13", "14"], ",", 
+     FractionBox["10745301693637", "54655451136000"]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.444397572912081*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"NewtonCotesWeights", " ", "[", " ", 
+  RowBox[{"15", ",", " ", 
+   RowBox[{"-", "1"}], ",", " ", "1", " ", ",", " ", 
+   RowBox[{"QuadratureType", " ", "->", " ", "Open"}]}], " ", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["14", "15"]}], ",", 
+     FractionBox["22577434585", "117557952512"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["4", "5"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["146558704195", "529010786304"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "3"]}], ",", 
+     FractionBox["223958990659", "117557952512"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["8", "15"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["158615544415", "29389488128"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "5"]}], ",", 
+     FractionBox["13869105594665", "1058021572608"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["4", "15"]}], ",", 
+     RowBox[{"-", 
+      FractionBox["1372294802885", "58778976256"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox["2", "15"]}], ",", 
+     FractionBox["3932059852995", "117557952512"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"-", 
+      FractionBox["1642822255579", "44084232192"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "15"], ",", 
+     FractionBox["3932059852995", "117557952512"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["4", "15"], ",", 
+     RowBox[{"-", 
+      FractionBox["1372294802885", "58778976256"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "5"], ",", 
+     FractionBox["13869105594665", "1058021572608"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["8", "15"], ",", 
+     RowBox[{"-", 
+      FractionBox["158615544415", "29389488128"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["2", "3"], ",", 
+     FractionBox["223958990659", "117557952512"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["4", "5"], ",", 
+     RowBox[{"-", 
+      FractionBox["146558704195", "529010786304"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     FractionBox["14", "15"], ",", 
+     FractionBox["22577434585", "117557952512"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.444397573945923*^9}]
+}, Open  ]]
+},
+WindowSize->{640, 750},
+WindowMargins->{{105, Automatic}, {Automatic, 84}},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 168, 3, 27, "Input"],
+Cell[CellGroupData[{
+Cell[761, 28, 219, 4, 27, "Input"],
+Cell[983, 34, 167, 4, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1187, 43, 319, 7, 27, "Input"],
+Cell[1509, 52, 143, 4, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1689, 61, 219, 4, 27, "Input"],
+Cell[1911, 67, 283, 10, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2231, 82, 323, 7, 27, "Input"],
+Cell[2557, 91, 244, 8, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2838, 104, 219, 4, 27, "Input"],
+Cell[3060, 110, 414, 15, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3511, 130, 321, 7, 27, "Input"],
+Cell[3835, 139, 344, 10, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4216, 154, 219, 4, 27, "Input"],
+Cell[4438, 160, 575, 21, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5050, 186, 321, 7, 27, "Input"],
+Cell[5374, 195, 463, 13, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5874, 213, 219, 4, 27, "Input"],
+Cell[6096, 219, 666, 24, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6799, 248, 321, 7, 27, "Input"],
+Cell[7123, 257, 536, 15, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7696, 277, 219, 4, 27, "Input"],
+Cell[7918, 283, 827, 30, 45, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8782, 318, 321, 7, 27, "Input"],
+Cell[9106, 327, 647, 19, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9790, 351, 219, 4, 27, "Input"],
+Cell[10012, 357, 949, 34, 80, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10998, 396, 319, 7, 27, "Input"],
+Cell[11320, 405, 854, 26, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12211, 436, 214, 4, 27, "Input"],
+Cell[12428, 442, 1115, 39, 80, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13580, 486, 318, 7, 27, "Input"],
+Cell[13901, 495, 841, 24, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14779, 524, 219, 4, 27, "Input"],
+Cell[15001, 530, 1300, 46, 80, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16338, 581, 321, 7, 27, "Input"],
+Cell[16662, 590, 1119, 32, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17818, 627, 220, 4, 27, "Input"],
+Cell[18041, 633, 1489, 52, 115, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19567, 690, 320, 7, 27, "Input"],
+Cell[19890, 699, 1083, 32, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21010, 736, 220, 4, 27, "Input"],
+Cell[21233, 742, 1667, 56, 150, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22937, 803, 320, 7, 27, "Input"],
+Cell[23260, 812, 1362, 40, 73, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24659, 857, 220, 4, 27, "Input"],
+Cell[24882, 863, 1853, 63, 150, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26772, 931, 322, 7, 27, "Input"],
+Cell[27097, 940, 1450, 42, 73, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[28584, 987, 220, 4, 27, "Input"],
+Cell[28807, 993, 2070, 67, 185, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30914, 1065, 220, 4, 27, "Input"],
+Cell[31137, 1071, 2246, 73, 185, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33420, 1149, 220, 4, 27, "Input"],
+Cell[33643, 1155, 2328, 76, 185, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

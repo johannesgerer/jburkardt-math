@@ -1,0 +1,540 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     19468,        531]
+NotebookOptionsPosition[     18214,        490]
+NotebookOutlinePosition[     18621,        507]
+CellTagsIndexPosition[     18578,        504]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"arctan2_values", ".", "nb"}], " ", "*)"}], "\[IndentingNewLine]", 
+  
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "arctan2"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "function", " ", "at", " ", "selected", " ", "argument", " ", "values"}], 
+    ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"28", " ", "March", " ", "2010"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.478820840227312*^9, 3.478820844362074*^9}, {
+  3.4788211126109543`*^9, 3.478821118314994*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xvec", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yvec", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"t", "=", 
+       RowBox[{"i", " ", "2", 
+        RowBox[{"Pi", "/", "12"}]}]}], ",", 
+      RowBox[{"x", "=", 
+       RowBox[{"Cos", "[", "t", "]"}]}], ",", 
+      RowBox[{"xvec", "=", 
+       RowBox[{"Append", "[", 
+        RowBox[{"xvec", ",", "x"}], "]"}]}], ",", 
+      RowBox[{"y", "=", 
+       RowBox[{"Sin", "[", "t", "]"}]}], ",", 
+      RowBox[{"yvec", "=", 
+       RowBox[{"Append", "[", 
+        RowBox[{"yvec", ",", "y"}], "]"}]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", 
+      RowBox[{"-", "3"}], ",", "15", ",", "1"}], "}"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.4788208558328943`*^9, 3.478820867777293*^9}, {
+   3.478820984670949*^9, 3.478821094547488*^9}, {3.478821146213298*^9, 
+   3.4788212166486683`*^9}, 3.478821265054039*^9, 3.4788213179434347`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Do", " ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+       RowBox[{"x", " ", "=", " ", 
+        RowBox[{"xvec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+       RowBox[{"y", "=", 
+        RowBox[{"yvec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+       RowBox[{"f", " ", "=", " ", 
+        RowBox[{"ArcTan", "[", 
+         RowBox[{"x", ",", "y"}], "]"}]}], " ", ",", "\[IndentingNewLine]", 
+       RowBox[{"fvec", " ", "=", " ", 
+        RowBox[{"Append", " ", "[", " ", 
+         RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+       "\[IndentingNewLine]", "      ", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<  ArcTan[\>\"", ",", "x", ",", "\"\<,\>\"", ",", "y", ",", 
+         "\"\<]=\>\"", ",", 
+         RowBox[{"N", "[", 
+          RowBox[{"f", ",", "20"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.478820782646686*^9, 3.478820803068199*^9}, 
+   3.4788212968477163`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "1.5707963267948966192313216916397514420985846996875529104875`20."}]}],
+  SequenceForm[
+  "  ArcTan[", 0, ",", -1, 
+   "]=", -1.5707963267948966192313216916397514420985846996875529104875`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.4788218210000477`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SqrtBox["3"], "2"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "1.0471975511965977461542144610931676280657231331250352736582`20."}]}],
+  SequenceForm["  ArcTan[", 
+   Rational[1, 2], ",", Rational[-1, 2] 3^Rational[1, 2], 
+   "]=", -1.0471975511965977461542144610931676280657231331250352736582`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.4788218210024014`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   FractionBox[
+    SqrtBox["3"], "2"], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.5235987755982988730771072305465838140328615665625176367144`20."}]}],
+  SequenceForm["  ArcTan[", Rational[1, 2] 3^Rational[1, 2], ",", 
+   Rational[-1, 2], 
+   "]=", -0.5235987755982988730771072305465838140328615665625176367144`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.47882182100485*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  ArcTan[", 1, ",", 0, "]=", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821022811*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   FractionBox[
+    SqrtBox["3"], "2"], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   "0.5235987755982988730771072305465838140328615665625176367144`20."}],
+  SequenceForm["  ArcTan[", Rational[1, 2] 3^Rational[1, 2], ",", 
+   Rational[1, 2], "]=", 
+   0.5235987755982988730771072305465838140328615665625176367144`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821041747*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    SqrtBox["3"], "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   "1.0471975511965977461542144610931676280657231331250352734283`20."}],
+  SequenceForm["  ArcTan[", 
+   Rational[1, 2], ",", Rational[1, 2] 3^Rational[1, 2], "]=", 
+   1.0471975511965977461542144610931676280657231331250352734283`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.47882182105767*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "1.5707963267948966192313216916397514420985846996875529104875`20."}],
+  SequenceForm[
+  "  ArcTan[", 0, ",", 1, "]=", 
+   1.5707963267948966192313216916397514420985846996875529104875`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821074802*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    SqrtBox["3"], "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   "2.0943951023931954923084289221863352561314462662500705473167`20."}],
+  SequenceForm["  ArcTan[", 
+   Rational[-1, 2], ",", Rational[1, 2] 3^Rational[1, 2], "]=", 
+   2.0943951023931954923084289221863352561314462662500705473167`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821092124*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SqrtBox["3"], "2"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   "2.6179938779914943653855361527329190701643078328125881841457`20."}],
+  SequenceForm["  ArcTan[", Rational[-1, 2] 3^Rational[1, 2], ",", 
+   Rational[1, 2], "]=", 
+   2.6179938779914943653855361527329190701643078328125881841457`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821109075*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   "0", "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "3.1415926535897932384626433832795028841971693993751058209749`20."}],
+  SequenceForm[
+  "  ArcTan[", -1, ",", 0, "]=", 
+   3.1415926535897932384626433832795028841971693993751058209749`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821125332*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SqrtBox["3"], "2"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "2.6179938779914943653855361527329190701643078328125881841457`20."}]}],
+  SequenceForm["  ArcTan[", Rational[-1, 2] 3^Rational[1, 2], ",", 
+   Rational[-1, 2], 
+   "]=", -2.6179938779914943653855361527329190701643078328125881841457`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.47882182114203*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SqrtBox["3"], "2"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "2.0943951023931954923084289221863352561314462662500705473167`20."}]}],
+  SequenceForm["  ArcTan[", 
+   Rational[-1, 2], ",", Rational[-1, 2] 3^Rational[1, 2], 
+   "]=", -2.0943951023931954923084289221863352561314462662500705473167`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821158997*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1"}], "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "1.5707963267948966192313216916397514420985846996875529104875`20."}]}],
+  SequenceForm[
+  "  ArcTan[", 0, ",", -1, 
+   "]=", -1.5707963267948966192313216916397514420985846996875529104875`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.4788218211753883`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox[
+     SqrtBox["3"], "2"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "1.0471975511965977461542144610931676280657231331250352736582`20."}]}],
+  SequenceForm["  ArcTan[", 
+   Rational[1, 2], ",", Rational[-1, 2] 3^Rational[1, 2], 
+   "]=", -1.0471975511965977461542144610931676280657231331250352736582`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821195704*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   FractionBox[
+    SqrtBox["3"], "2"], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", 
+    FractionBox["1", "2"]}], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.5235987755982988730771072305465838140328615665625176367144`20."}]}],
+  SequenceForm["  ArcTan[", Rational[1, 2] 3^Rational[1, 2], ",", 
+   Rational[-1, 2], 
+   "]=", -0.5235987755982988730771072305465838140328615665625176367144`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.4788218212063017`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  ArcTan[", 1, ",", 0, "]=", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821226058*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   FractionBox[
+    SqrtBox["3"], "2"], "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   "0.5235987755982988730771072305465838140328615665625176367144`20."}],
+  SequenceForm["  ArcTan[", Rational[1, 2] 3^Rational[1, 2], ",", 
+   Rational[1, 2], "]=", 
+   0.5235987755982988730771072305465838140328615665625176367144`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821243043*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", 
+   FractionBox[
+    SqrtBox["3"], "2"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   "1.0471975511965977461542144610931676280657231331250352734283`20."}],
+  SequenceForm["  ArcTan[", 
+   Rational[1, 2], ",", Rational[1, 2] 3^Rational[1, 2], "]=", 
+   1.0471975511965977461542144610931676280657231331250352734283`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821258553*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ArcTan[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "1.5707963267948966192313216916397514420985846996875529104875`20."}],
+  SequenceForm[
+  "  ArcTan[", 0, ",", 1, "]=", 
+   1.5707963267948966192313216916397514420985846996875529104875`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.4788212748546057`*^9, 3.478821326067474*^9}, 
+   3.478821821276211*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/arctan2_values.\
+txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  arctan2_values.txt\>\""}], "]"}], 
+      ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  x  y  f\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"y", "=", 
+         RowBox[{"yvec", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "20"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"y", ",", "20"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "20"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.478288820610076*^9, {3.478820733084196*^9, 3.478820752544694*^9}, {
+   3.478820809924685*^9, 3.478820826458198*^9}, {3.478821803758657*^9, 
+   3.4788218095318737`*^9}, 3.479721365041978*^9}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 244}, {Automatic, 19}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1182, 29, 148, "Input"],
+Cell[1730, 51, 1346, 38, 118, "Input"],
+Cell[CellGroupData[{
+Cell[3101, 93, 1168, 30, 103, "Input"],
+Cell[CellGroupData[{
+Cell[4294, 127, 569, 12, 20, "Print"],
+Cell[4866, 141, 677, 16, 43, "Print"],
+Cell[5546, 159, 669, 15, 43, "Print"],
+Cell[6218, 176, 394, 8, 20, "Print"],
+Cell[6615, 186, 629, 13, 43, "Print"],
+Cell[7247, 201, 632, 14, 43, "Print"],
+Cell[7882, 217, 531, 11, 20, "Print"],
+Cell[8416, 230, 654, 15, 43, "Print"],
+Cell[9073, 247, 655, 15, 43, "Print"],
+Cell[9731, 264, 547, 11, 20, "Print"],
+Cell[10281, 277, 695, 17, 43, "Print"],
+Cell[10979, 296, 696, 17, 43, "Print"],
+Cell[11678, 315, 569, 12, 20, "Print"],
+Cell[12250, 329, 675, 16, 43, "Print"],
+Cell[12928, 347, 672, 15, 43, "Print"],
+Cell[13603, 364, 394, 8, 20, "Print"],
+Cell[14000, 374, 629, 13, 43, "Print"],
+Cell[14632, 389, 633, 14, 43, "Print"],
+Cell[15268, 405, 531, 11, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[15826, 420, 2384, 68, 268, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

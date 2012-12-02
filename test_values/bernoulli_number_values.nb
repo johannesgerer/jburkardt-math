@@ -1,0 +1,620 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     21583,        611]
+NotebookOptionsPosition[     19346,        544]
+NotebookOutlinePosition[     19753,        561]
+CellTagsIndexPosition[     19710,        558]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"bernoulli_number", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "Bernoulli", " ", "numbers"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{"at", " ", "selected", " ", "index", " ", "values", " ", "fn", 
+     RowBox[{"(", "n", ")"}]}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"02", " ", "December", " ", "2005"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"num", " ", "=", " ", "0"}], ";"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"Do", " ", "[", " ", 
+   RowBox[{
+    RowBox[{"{", " ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"BernoulliB", "[", "n", "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"num", " ", "=", " ", 
+       RowBox[{"num", " ", "+", " ", "1"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"nvec", " ", "=", " ", 
+       RowBox[{"Append", "[", 
+        RowBox[{"nvec", ",", " ", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"fvec", " ", "=", " ", 
+       RowBox[{"Append", "[", 
+        RowBox[{"fvec", ",", " ", "f"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<  B[\>\"", ",", " ", "n", ",", " ", "\"\<]=\>\"", ",", " ", 
+        RowBox[{"N", "[", 
+         RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"n", ",", "0", ",", "20", ",", "1"}], "}"}]}], "]"}], 
+  "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"n", " ", "=", " ", "30"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"f", " ", "=", " ", 
+   RowBox[{"BernoulliB", "[", "n", "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"num", " ", "+", " ", "1"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"nvec", " ", "=", " ", 
+   RowBox[{"Append", "[", 
+    RowBox[{"nvec", ",", " ", "n"}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"Append", "[", 
+    RowBox[{"fvec", ",", " ", "f"}], "]"}]}], ";"}], "\n", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<  B[\>\"", ",", " ", "n", ",", " ", "\"\<]=\>\"", ",", " ", 
+   RowBox[{"N", "[", 
+    RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "1.`16."}],
+  SequenceForm["  B[", 0, "]=", 1.`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "0.5`16."}]}],
+  SequenceForm["  B[", 1, "]=", -0.5`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.1666666666666666666666666667`16."}],
+  SequenceForm["  B[", 2, "]=", 0.1666666666666666666666666667`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 3, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "0.0333333333333333333333333333`16."}]}],
+  SequenceForm["  B[", 4, "]=", -0.0333333333333333333333333333`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 5, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0238095238095238095238095238`16."}],
+  SequenceForm["  B[", 6, "]=", 0.0238095238095238095238095238`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 7, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "0.0333333333333333333333333333`16."}]}],
+  SequenceForm["  B[", 8, "]=", -0.0333333333333333333333333333`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 9, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0757575757575757575757575758`16."}],
+  SequenceForm["  B[", 10, "]=", 0.0757575757575757575757575758`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "11", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 11, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "12", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "0.2531135531135531135531135531`16."}]}],
+  SequenceForm["  B[", 12, "]=", -0.2531135531135531135531135531`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "13", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 13, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "14", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "1.1666666666666666666666666667`16.000000000000004"}],
+  SequenceForm[
+  "  B[", 14, "]=", 1.1666666666666666666666666667`16.000000000000004],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 15, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "16", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "7.0921568627450980392156862745`15.999999999999998"}]}],
+  SequenceForm[
+  "  B[", 16, "]=", -7.0921568627450980392156862745`15.999999999999998],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "17", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 17, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "18", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "54.9711779448621553884711779449`15.999999999999998"}],
+  SequenceForm[
+  "  B[", 18, "]=", 54.9711779448621553884711779449`15.999999999999998],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "19", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  B[", 19, "]=", 0],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "20", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "529.1242424242424242424242424242`16.000000000000004"}]}],
+  SequenceForm[
+  "  B[", 20, "]=", -529.1242424242424242424242424242`16.000000000000004],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  B[\"\>", "\[InvisibleSpace]", "30", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "6.015808739006423683843038682`15.999999999999998*^8"}],
+  SequenceForm[
+  "  B[", 30, "]=", 6.015808739006423683843038682`15.999999999999998*^8],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/bernoulli_number_\
+values.txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  bernoulli_number_values.txt\>\""}], 
+       "]"}], ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  n  fn\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"n", "=", 
+          RowBox[{
+          "nvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         ";", 
+         RowBox[{"fn", "=", 
+          RowBox[{
+          "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         ";", 
+         RowBox[{"Write", "[", 
+          RowBox[{"fileout", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"n", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"fn", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+     RowBox[{"Close", "[", "fileout", "]"}]}], ";;"}]}]}]], "Input",
+ CellChangeTimes->{3.478288892665143*^9, 3.4797673702882442`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"aofil\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\\"C:\\\\\\\\Documents and Settings\\\\\\\\burkardt\
+\\\\\\\\Desktop\\\\\\\\Misc\\\\\\\\mathematica\\\\\\\\bernoulli_number_values.\
+txt\\\"\\) already open as \\!\\(\\\"C:\\\\\\\\Documents and \
+Settings\\\\\\\\burkardt\\\\\\\\Desktop\\\\\\\\Misc\\\\\\\\mathematica\\\\\\\\\
+bernoulli_number_values.txt\\\"\\). \
+\\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\
+\\\", ButtonFrame->None, ButtonData:>\\\"General::aofil\\\"]\\)\"\>"}]], \
+"Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"OpenWrite", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\(\\\"C:\\\\\\\\Documents and Settings\\\\\
+\\\\burkardt\\\\\\\\Desktop\\\\\\\\Misc\\\\\\\\mathematica\\\\\\\\bernoulli_\
+number_values.txt\\\"\\). \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SetOptions", "::", "\<\"optnf\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(FormatType\\) is not a known option for \
+\\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\
+\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"SetOptions::optnf\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"strml\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, stream, or list of \
+strings and streams. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::strml\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"strml\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, stream, or list of \
+strings and streams. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::strml\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"strml\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, stream, or list of \
+strings and streams. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::strml\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"strml\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, stream, or list of \
+strings and streams. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::strml\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"strml\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, stream, or list of \
+strings and streams. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::strml\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"strml\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, stream, or list of \
+strings and streams. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::strml\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"strml\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, stream, or list of \
+strings and streams. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::strml\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"strml\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, stream, or list of \
+strings and streams. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::strml\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stop\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \\!\\(General :: \\\"strml\\\"\\) will \
+be suppressed during this calculation. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\
+\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::stop\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Write", "::", "\<\"noopen\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Cannot open \\!\\($Failed\\). \\!\\(\\*ButtonBox[\\\"More\
+\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::noopen\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stop\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \\!\\(Write :: \\\"noopen\\\"\\) will be \
+suppressed during this calculation. \
+\\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\
+\\\", ButtonFrame->None, ButtonData:>\\\"General::stop\\\"]\\)\"\>"}]], \
+"Message"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stream\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\($Failed\\) is not a string, InputStream[ ], or \
+OutputStream[ ]. \\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::stream\\\"]\\)\"\>"}]], "Message"]
+}, Open  ]]
+},
+WindowSize->{598, 643},
+WindowMargins->{{Automatic, 158}, {Automatic, -3}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1125, 26, 148, "Input"],
+Cell[CellGroupData[{
+Cell[1695, 50, 1959, 55, 283, "Input"],
+Cell[CellGroupData[{
+Cell[3679, 109, 228, 5, 20, "Print"],
+Cell[3910, 116, 250, 6, 20, "Print"],
+Cell[4163, 124, 288, 6, 20, "Print"],
+Cell[4454, 132, 218, 5, 20, "Print"],
+Cell[4675, 139, 304, 6, 20, "Print"],
+Cell[4982, 147, 218, 5, 20, "Print"],
+Cell[5203, 154, 288, 6, 20, "Print"],
+Cell[5494, 162, 218, 5, 20, "Print"],
+Cell[5715, 169, 304, 6, 20, "Print"],
+Cell[6022, 177, 218, 5, 20, "Print"],
+Cell[6243, 184, 290, 6, 20, "Print"],
+Cell[6536, 192, 220, 5, 20, "Print"],
+Cell[6759, 199, 306, 6, 20, "Print"],
+Cell[7068, 207, 220, 5, 20, "Print"],
+Cell[7291, 214, 323, 7, 20, "Print"],
+Cell[7617, 223, 220, 5, 20, "Print"],
+Cell[7840, 230, 339, 7, 20, "Print"],
+Cell[8182, 239, 220, 5, 20, "Print"],
+Cell[8405, 246, 325, 7, 20, "Print"],
+Cell[8733, 255, 220, 5, 20, "Print"],
+Cell[8956, 262, 343, 7, 20, "Print"],
+Cell[9302, 271, 327, 7, 23, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9678, 284, 2080, 61, 223, "Input"],
+Cell[11761, 347, 586, 11, 76, "Message"],
+Cell[12350, 360, 433, 8, 48, "Message"],
+Cell[12786, 370, 337, 7, 20, "Message"],
+Cell[13126, 379, 341, 7, 34, "Message"],
+Cell[13470, 388, 295, 6, 20, "Message"],
+Cell[13768, 396, 341, 7, 34, "Message"],
+Cell[14112, 405, 295, 6, 20, "Message"],
+Cell[14410, 413, 341, 7, 34, "Message"],
+Cell[14754, 422, 295, 6, 20, "Message"],
+Cell[15052, 430, 341, 7, 34, "Message"],
+Cell[15396, 439, 295, 6, 20, "Message"],
+Cell[15694, 447, 341, 7, 34, "Message"],
+Cell[16038, 456, 295, 6, 20, "Message"],
+Cell[16336, 464, 341, 7, 34, "Message"],
+Cell[16680, 473, 295, 6, 20, "Message"],
+Cell[16978, 481, 341, 7, 34, "Message"],
+Cell[17322, 490, 295, 6, 20, "Message"],
+Cell[17620, 498, 341, 7, 34, "Message"],
+Cell[17964, 507, 361, 7, 34, "Message"],
+Cell[18328, 516, 295, 6, 20, "Message"],
+Cell[18626, 524, 362, 8, 34, "Message"],
+Cell[18991, 534, 339, 7, 34, "Message"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

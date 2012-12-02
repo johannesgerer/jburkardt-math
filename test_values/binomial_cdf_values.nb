@@ -1,0 +1,526 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     19000,        517]
+NotebookOptionsPosition[     17517,        469]
+NotebookOutlinePosition[     17862,        484]
+CellTagsIndexPosition[     17819,        481]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<Statistics`DiscreteDistributions`\>\"", 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"binomial_cdf", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "binomial", " ", "CDF"}], " ", "*)"}],
+   "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "at", " ", "selected", " ", "argument", " ", "values", " ", "fx", 
+     RowBox[{"(", 
+      RowBox[{"a", ",", "p", ",", "x"}], ")"}]}], ","}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"02", " ", "December", " ", "2005"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"nvec", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "4", ",", "4", ",", "4", 
+    ",", "4", ",", "10", ",", "10", ",", "10", ",", "10", ",", "10", ",", 
+    "10", ",", "10", ",", "10"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"pvec", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"5", "/", "100"}], ",", " ", 
+    RowBox[{"5", "/", "100"}], ",", " ", 
+    RowBox[{"5", "/", "100"}], ",", 
+    RowBox[{"5", "/", "10"}], ",", 
+    RowBox[{"5", "/", "10"}], ",", 
+    RowBox[{"1", "/", "4"}], ",", 
+    RowBox[{"1", "/", "4"}], ",", 
+    RowBox[{"1", "/", "4"}], ",", 
+    RowBox[{"1", "/", "4"}], ",", 
+    RowBox[{"5", "/", "100"}], ",", 
+    RowBox[{"10", "/", "100"}], ",", 
+    RowBox[{"15", "/", "100"}], ",", 
+    RowBox[{"20", "/", "100"}], ",", 
+    RowBox[{"25", "/", "100"}], ",", 
+    RowBox[{"30", "/", "100"}], ",", 
+    RowBox[{"40", "/", "100"}], ",", 
+    RowBox[{"50", "/", "100"}]}], " ", "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"xvec", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "0", ",", "1", ",", "2", ",", "0", ",", "1", ",", "0", ",", "1", ",", "2", 
+    ",", "3", ",", "4", ",", "4", ",", "4", ",", "4", ",", "4", ",", "4", ",",
+     "4", ",", "4"}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"fvec", " ", "=", " ", 
+  RowBox[{"{", "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"num", " ", "=", " ", 
+  RowBox[{"Length", "[", "xvec", "]"}]}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "2", ",", "2", ",", "2", ",", "2", ",", "2", ",", "4", ",", "4", ",", "4", 
+   ",", "4", ",", "10", ",", "10", ",", "10", ",", "10", ",", "10", ",", "10",
+    ",", "10", ",", "10"}], "}"}]], "Output"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"spell1\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Possible spelling error: new symbol name \\\"\\!\\(pvec\\)\
+\\\" is similar to existing symbol \\\"\\!\\(nvec\\)\\\". \\!\\(\\*ButtonBox[\
+\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", \
+ButtonFrame->None, ButtonData:>\\\"General::spell1\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "20"], ",", 
+   FractionBox["1", "20"], ",", 
+   FractionBox["1", "20"], ",", 
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "4"], ",", 
+   FractionBox["1", "4"], ",", 
+   FractionBox["1", "4"], ",", 
+   FractionBox["1", "4"], ",", 
+   FractionBox["1", "20"], ",", 
+   FractionBox["1", "10"], ",", 
+   FractionBox["3", "20"], ",", 
+   FractionBox["1", "5"], ",", 
+   FractionBox["1", "4"], ",", 
+   FractionBox["3", "10"], ",", 
+   FractionBox["2", "5"], ",", 
+   FractionBox["1", "2"]}], "}"}]], "Output"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"spell\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Possible spelling error: new symbol name \\\"\\!\\(xvec\\)\
+\\\" is similar to existing symbols \\!\\({nvec, pvec}\\). \
+\\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\
+\\\", ButtonFrame->None, ButtonData:>\\\"General::spell\\\"]\\)\"\>"}]], \
+"Message"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "1", ",", "2", ",", "0", ",", "1", ",", "0", ",", "1", ",", "2", 
+   ",", "3", ",", "4", ",", "4", ",", "4", ",", "4", ",", "4", ",", "4", ",", 
+   "4", ",", "4"}], "}"}]], "Output"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"spell\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Possible spelling error: new symbol name \\\"\\!\\(fvec\\)\
+\\\" is similar to existing symbols \\!\\({nvec, pvec, xvec}\\). \
+\\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\
+\\\", ButtonFrame->None, ButtonData:>\\\"General::spell\\\"]\\)\"\>"}]], \
+"Message"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output"],
+
+Cell[BoxData["17"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", " ", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"n", " ", "=", " ", 
+       RowBox[{"nvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"p", " ", "=", " ", 
+       RowBox[{"pvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"x", "=", " ", 
+       RowBox[{"xvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"dist", " ", "=", " ", 
+       RowBox[{"BinomialDistribution", "[", 
+        RowBox[{"n", ",", "p"}], "]"}]}], ",", " ", 
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"N", "[", 
+        RowBox[{
+         RowBox[{"CDF", "[", 
+          RowBox[{"dist", ",", "x"}], "]"}], ",", "16"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"fvec", " ", "=", " ", 
+       RowBox[{"Append", "[", 
+        RowBox[{"fvec", ",", "f"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<BinomialCDF[\>\"", ",", "n", ",", "\"\<,\>\"", ",", "p", ",", 
+        "\"\<](\>\"", ",", "x", ",", "\"\<)=\>\"", ",", "f"}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", " ", "1", ",", " ", "num", ",", "1"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "20"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "0", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.9025`16."}],
+  SequenceForm["BinomialCDF[", 2, ",", 
+   Rational[1, 20], "](", 0, ")=", 0.9025`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "20"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "1", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.9975`16."}],
+  SequenceForm["BinomialCDF[", 2, ",", 
+   Rational[1, 20], "](", 1, ")=", 0.9975`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "20"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "1.`16."}],
+  SequenceForm["BinomialCDF[", 2, ",", 
+   Rational[1, 20], "](", 2, ")=", 1.`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "0", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.25`16."}],
+  SequenceForm["BinomialCDF[", 2, ",", 
+   Rational[1, 2], "](", 0, ")=", 0.25`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "1", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.75`16.000000000000004"}],
+  SequenceForm["BinomialCDF[", 2, ",", 
+   Rational[1, 2], "](", 1, ")=", 0.75`16.000000000000004],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "4"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "0", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.31640625`16."}],
+  SequenceForm["BinomialCDF[", 4, ",", 
+   Rational[1, 4], "](", 0, ")=", 0.31640625`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "4"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "1", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.7382812499999999999724309232`16."}],
+  SequenceForm["BinomialCDF[", 4, ",", 
+   Rational[1, 4], "](", 1, ")=", 0.7382812499999999999724309232`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "4"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "2", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.949218749999999999993061658`16."}],
+  SequenceForm["BinomialCDF[", 4, ",", 
+   Rational[1, 4], "](", 2, ")=", 0.949218749999999999993061658`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "4"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "3", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.99609375`16."}],
+  SequenceForm["BinomialCDF[", 4, ",", 
+   Rational[1, 4], "](", 3, ")=", 0.99609375`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "20"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.9999363101685546875`16."}],
+  SequenceForm["BinomialCDF[", 10, ",", 
+   Rational[1, 20], "](", 4, ")=", 0.9999363101685546875`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "10"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.9983650626`16."}],
+  SequenceForm["BinomialCDF[", 10, ",", 
+   Rational[1, 10], "](", 4, ")=", 0.9983650626`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "20"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.9901259090013671875`16."}],
+  SequenceForm["BinomialCDF[", 10, ",", 
+   Rational[3, 20], "](", 4, ")=", 0.9901259090013671875`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "5"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.9672065024`16."}],
+  SequenceForm["BinomialCDF[", 10, ",", 
+   Rational[1, 5], "](", 4, ")=", 0.9672065024`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "4"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.9218730926513671874877757159`16."}],
+  SequenceForm["BinomialCDF[", 10, ",", 
+   Rational[1, 4], "](", 4, ")=", 0.9218730926513671874877757159`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "10"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.8497316674`16."}],
+  SequenceForm["BinomialCDF[", 10, ",", 
+   Rational[3, 10], "](", 4, ")=", 0.8497316674`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["2", "5"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.6331032576`16.000000000000004"}],
+  SequenceForm["BinomialCDF[", 10, ",", 
+   Rational[2, 5], "](", 4, ")=", 0.6331032576`16.000000000000004],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"BinomialCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"](\"\>", 
+   "\[InvisibleSpace]", "4", "\[InvisibleSpace]", "\<\")=\"\>", 
+   "\[InvisibleSpace]", "0.3769531250000000001772694879`16."}],
+  SequenceForm["BinomialCDF[", 10, ",", 
+   Rational[1, 2], "](", 4, ")=", 0.3769531250000000001772694879`16.],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/binomial_cdf_\
+values.txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  binomial_cdf_values.txt\>\""}], "]"}], 
+      ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  n  p  x  fx\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"n", "=", 
+         RowBox[{
+         "nvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ",", 
+        RowBox[{"p", "=", 
+         RowBox[{
+         "pvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ",", 
+        RowBox[{
+         RowBox[{"x", "=", 
+          RowBox[{
+          "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         ";", 
+         RowBox[{"f", "=", 
+          RowBox[{
+          "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         ";", 
+         RowBox[{"Write", "[", 
+          RowBox[{"fileout", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"n", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"p", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{3.478289195173255*^9, 3.479767103144575*^9}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 266}, {Automatic, -5}},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 101, 2, 27, "Input"],
+Cell[649, 24, 1163, 29, 148, "Input"],
+Cell[CellGroupData[{
+Cell[1837, 57, 1447, 36, 133, "Input"],
+Cell[3287, 95, 242, 5, 27, "Output"],
+Cell[3532, 102, 385, 7, 48, "Message"],
+Cell[3920, 111, 604, 19, 84, "Output"],
+Cell[4527, 132, 386, 8, 48, "Message"],
+Cell[4916, 142, 234, 5, 27, "Output"],
+Cell[5153, 149, 392, 8, 48, "Message"],
+Cell[5548, 159, 45, 1, 27, "Output"],
+Cell[5596, 162, 29, 0, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5662, 167, 1390, 34, 163, "Input"],
+Cell[CellGroupData[{
+Cell[7077, 205, 439, 9, 40, "Print"],
+Cell[7519, 216, 439, 9, 40, "Print"],
+Cell[7961, 227, 431, 9, 40, "Print"],
+Cell[8395, 238, 433, 9, 39, "Print"],
+Cell[8831, 249, 463, 9, 39, "Print"],
+Cell[9297, 260, 445, 9, 39, "Print"],
+Cell[9745, 271, 485, 9, 39, "Print"],
+Cell[10233, 282, 483, 9, 39, "Print"],
+Cell[10719, 293, 445, 9, 39, "Print"],
+Cell[11167, 304, 471, 9, 40, "Print"],
+Cell[11641, 315, 453, 9, 40, "Print"],
+Cell[12097, 326, 471, 9, 40, "Print"],
+Cell[12571, 337, 451, 9, 40, "Print"],
+Cell[13025, 348, 487, 9, 39, "Print"],
+Cell[13515, 359, 453, 9, 40, "Print"],
+Cell[13971, 370, 481, 9, 40, "Print"],
+Cell[14455, 381, 487, 9, 39, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[14969, 394, 2544, 73, 268, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,63 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      1549,         54]
+NotebookOptionsPosition[      1247,         39]
+NotebookOutlinePosition[      1639,         56]
+CellTagsIndexPosition[      1596,         53]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+HexaGaussRuleInfo[{rule_,numer_},point_] := Module [
+  {x,h,m,p1,p2,p3,p12,i,j,jj,k,m,w1,w2,w3,
+  info={{Null,Null,Null},0}},
+  If [ Length[rule] == 3, {p1,p2,p3} = rule, p1=p2=p3=rule];
+  If [ Length[point] == 3, {i,j,k}=point, m = point;
+      p12=p1*p2, k=Floor[(m-1)/p12]+1; jj=m-p12*(k-1);
+      j=Floor[(jj-1)/p1]+1; i=jj-p1*(j-1)];
+      {x,w1} = LineGaussRuleInfo[{p1,numer},i];
+      {h,w2} = LineGaussRuleInfo[{p2,numer},j];
+      {m,w3} = LineGaussRuleInfo[{p3,numer},k];
+      info = {{x,h,m},w1*w2*w3};
+      If [ numer, Return[N[info,20]], Return[Simplify[info]]];
+];
+\
+\>", "Input",
+ CellChangeTimes->{{3.4477668112337646`*^9, 3.447766811755643*^9}}]
+},
+WindowSize->{640, 750},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 675, 16, 196, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

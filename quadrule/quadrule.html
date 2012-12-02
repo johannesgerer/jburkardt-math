@@ -1,0 +1,182 @@
+<html>
+
+  <head>
+    <title>
+      QUADRULE - Functions for Computing Quadrature Rules
+    </title>
+  </head>
+
+  <body bgcolor="#EEEEEE" link="#CC0000" alink="#FF3300" vlink="#000055">
+
+    <h1 align = "center">
+      QUADRULE <br> Functions for Computing Quadrature Rules
+    </h1>
+
+    <hr>
+
+    <p>
+      <b>QUADRULE</b> is a collection of Mathematica scripts which 
+      can be used to compute and print certain simple quadrature rules.
+    </p>
+
+    <p>
+      Mathematica has built-in functions for Newton-Cotes and Gauss-Legendre
+      rules.  It can also be coaxed into computing Hermite and Laguerre quadrature
+      rules.  The scripts given here present the results in a form suitable
+      for copying into a program in C, FORTRAN or MATLAB.
+    </p>
+
+    <p>
+      Values computed by these scripts were, in some cases, used to define
+      quadrature lookup values in the C, C++, FORTRAN90 and MATLAB "QUADRULE"
+      libraries.
+    </p>
+
+    <h3 align = "center">
+      Licensing:
+    </h3>
+
+    <p>
+      The computer code and data files described and made available on this web page 
+      are distributed under
+      <a href = "../../txt/gnu_lgpl.txt">the GNU LGPL license.</a>
+    </p>
+
+    <h3 align = "center">
+      Languages:
+    </h3>
+
+    <p>
+      <b>QUADRULE</b> is available in
+      <a href = "../../c_src/quadrule/quadrule.html">a C version</a> and
+      <a href = "../../cpp_src/quadrule/quadrule.html">a C++ version</a> and
+      <a href = "../../f77_src/quadrule/quadrule.html">a FORTRAN77 version</a> and
+      <a href = "../../f_src/quadrule/quadrule.html">a FORTRAN90 version</a> and
+      <a href = "../../math_src/quadrule/quadrule.html">a MATHEMATICA version</a> and
+      <a href = "../../m_src/quadrule/quadrule.html">a MATLAB version</a>.
+    </p>
+
+    <h3 align = "center">
+      Related Data and Programs:
+    </h3>
+
+    <p>
+      <a href = "../../math_src/arbitrary_weight_rule/arbitrary_weight_rule.html">
+      ARBITRARY_WEIGHT_RULE</a>,
+      a MATHEMATICA program which
+      accepts a formula for an arbitrary (but nonnegative) weight function
+      over an interval, and determines the points and weights of a
+      corresponding Gaussian quadrature rule,
+      by Fukuda, Katsuya, Alt and Matveenko.
+    </p>
+
+    <p>
+      <a href = "../../math_src/newton_cotes/newton_cotes.html">
+      NEWTON_COTES</a>
+      is a MATHEMATICA library which
+      computes the points and weights for Newton-Cotes quadrature.
+    </p>
+
+    <p>
+      <a href = "../../f_src/quadrature_weights/quadrature_weights.html">
+      QUADRATURE_WEIGHTS</a>
+      a FORTRAN90 library which
+      illustrates techniques for computing the weights of a quadrature
+      rule, assuming that the points have been specified.
+    </p>
+
+    <p>
+      <a href = "../../c_src/toms655/toms655.html">
+      TOMS655</a>
+      a C library which
+      computes the weights for interpolatory quadrature rules;<br>
+      this library is commonly called <b>IQPACK</b>;<br>
+      this is a C version of ACM TOMS algorithm 655.
+    </p>
+
+    <h3 align = "center">
+      Reference:
+    </h3>
+
+    <p>
+      <ol>
+        <li>
+          Milton Abramowitz, Irene Stegun,<br>
+          Handbook of Mathematical Functions,<br>
+          National Bureau of Standards, 1964,<br>
+          ISBN: 0-486-61272-4,<br>
+          LC: QA47.A34.
+        </li>
+        <li>
+          Vladimir Krylov,<br>
+          Approximate Calculation of Integrals,<br>
+          Dover, 2006,<br>
+          ISBN: 0486445798,<br>
+          LC: QA311.K713.
+        </li>
+        <li>
+          Arthur Stroud, Don Secrest,<br>
+          Gaussian Quadrature Formulas,<br>
+          Prentice Hall, 1966,<br>
+          LC: QA299.4G3S7.
+        </li>
+        <li>
+          Stephen Wolfram,<br>
+          The Mathematica Book,<br>
+          Fourth Edition,<br>
+          Cambridge University Press, 1999,<br>
+          ISBN: 0-521-64314-7,<br>
+          LC: QA76.95.W65.
+        </li>
+      </ol>
+    </p>
+
+    <h3 align = "center">
+      Source Code:
+    </h3>
+
+    <p>
+      <ul>
+        <li>
+          <a href = "gen_laguerre_set.nb">gen_laguerre_set.nb</a>, 
+          computes a generalized Laguerre quadrature rule.
+        </li>
+        <li>
+          <a href = "hermite_set.nb">hermite_set.nb</a>, 
+          computes a Hermite quadrature rule.
+        </li>
+        <li>
+          <a href = "laguerre_set.nb">laguerre_set.nb</a>, 
+          computes a Laguerre quadrature rule.
+        </li>
+        <li>
+          <a href = "legendre_set.nb">legendre_set.nb</a>, 
+          computes a Legendre quadrature rule.
+        </li>
+        <li>
+          <a href = "ncc_set.nb">ncc_set.nb</a>, 
+          computes a Newton-Cotes closed quadrature rule.
+        </li>
+        <li>
+          <a href = "ncoh_set.nb">ncoh_set.nb</a>, 
+          computes a Newton-Cotes "open half" quadrature rule.
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      You can go up one level to <a href = "../math_src.html">
+      the Mathematica packages and notebooks</a>.
+    </p>
+
+    <hr>
+
+    <i>
+      Last revised on 07 April 2011.
+    </i>
+
+    <!-- John Burkardt -->
+ 
+  </body>
+
+</html>

@@ -1,0 +1,643 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     24301,        634]
+NotebookOptionsPosition[     22529,        579]
+NotebookOutlinePosition[     22869,        594]
+CellTagsIndexPosition[     22826,        591]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"chi_square", "_noncentral", "_cdf", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "Evaluate", " ", "the", " ", "Chi", " ", "Square", " ", "Noncentral", " ", 
+    "CDF"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{"at", " ", "selected", " ", "argument", " ", "values"}], ","}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"07", " ", "January", " ", "2006"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<Statistics`ContinuousDistributions`\>\"", 
+  "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"nvec", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "1", ",", "2", ",", "3", ",", "1", ",", "2", ",", "3", ",", "1", ",", "2", 
+    ",", "3", ",", "1", ",", "2", ",", "3", ",", "60", ",", "80", ",", "100", 
+    ",", "1", ",", "2", ",", "3", ",", "10", ",", "10", ",", "10", ",", "10", 
+    ",", "10", ",", "10", ",", "10", ",", "10", ",", "10", ",", "8"}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"lambdavec", "=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"5", "/", "10"}], ",", 
+    RowBox[{"5", "/", "10"}], ",", 
+    RowBox[{"5", "/", "10"}], ",", "1", ",", "1", ",", "1", ",", "5", ",", 
+    "5", ",", "5", ",", "20", ",", "20", ",", "20", ",", "30", ",", "30", ",",
+     "30", ",", "5", ",", "5", ",", "5", ",", "2", ",", "3", ",", "4", ",", 
+    "2", ",", "3", ",", "4", ",", "2", ",", "3", ",", "4", ",", 
+    RowBox[{"1", "/", "2"}]}], "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"xvec", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "3", ",", "3", ",", "3", ",", "3", ",", "3", ",", "3", ",", "3", ",", "3", 
+    ",", "3", ",", "3", ",", "3", ",", "3", ",", "60", ",", "60", ",", "60", 
+    ",", 
+    RowBox[{"5", "/", "100"}], ",", 
+    RowBox[{"5", "/", "100"}], ",", 
+    RowBox[{"5", "/", "100"}], ",", "4", ",", "4", ",", "4", ",", "5", ",", 
+    "5", ",", "5", ",", "6", ",", "6", ",", "6", ",", "5"}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"num", " ", "=", " ", 
+  RowBox[{
+  "Length", " ", "[", " ", "xvec", " ", 
+   "]"}]}], "\[IndentingNewLine]"}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "1", ",", "2", ",", "3", ",", "1", ",", "2", 
+   ",", "3", ",", "1", ",", "2", ",", "3", ",", "60", ",", "80", ",", "100", 
+   ",", "1", ",", "2", ",", "3", ",", "10", ",", "10", ",", "10", ",", "10", 
+   ",", "10", ",", "10", ",", "10", ",", "10", ",", "10", ",", "8"}], 
+  "}"}]], "Output"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"], ",", "1", ",", "1", ",", "1", ",", "5", ",", "5", 
+   ",", "5", ",", "20", ",", "20", ",", "20", ",", "30", ",", "30", ",", "30",
+    ",", "5", ",", "5", ",", "5", ",", "2", ",", "3", ",", "4", ",", "2", ",",
+    "3", ",", "4", ",", "2", ",", "3", ",", "4", ",", 
+   FractionBox["1", "2"]}], "}"}]], "Output"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "3", ",", "3", ",", "3", ",", "3", ",", "3", ",", "3", ",", "3", ",", "3", 
+   ",", "3", ",", "3", ",", "3", ",", "3", ",", "60", ",", "60", ",", "60", 
+   ",", 
+   FractionBox["1", "20"], ",", 
+   FractionBox["1", "20"], ",", 
+   FractionBox["1", "20"], ",", "4", ",", "4", ",", "4", ",", "5", ",", "5", 
+   ",", "5", ",", "6", ",", "6", ",", "6", ",", "5"}], "}"}]], "Output"],
+
+Cell[BoxData["28"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", " ", "[", " ", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"n", "=", 
+       RowBox[{"nvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"lambda", " ", "=", " ", 
+       RowBox[{"lambdavec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+      RowBox[{"x", "=", 
+       RowBox[{"SetPrecision", "[", 
+        RowBox[{
+         RowBox[{"xvec", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", "28"}], "]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"dist", "=", 
+       RowBox[{"NoncentralChiSquareDistribution", "[", 
+        RowBox[{"n", ",", "lambda"}], "]"}]}], ",", 
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"CDF", "[", 
+        RowBox[{"dist", ",", "x"}], "]"}]}], " ", ",", "\[IndentingNewLine]", 
+      
+      RowBox[{"fvec", " ", "=", " ", 
+       RowBox[{"Append", " ", "[", " ", 
+        RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+      "\[IndentingNewLine]", "      ", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<  NoncentralChiCDF[\>\"", ",", "n", ",", "\"\<,\>\"", ",", 
+        "lambda", ",", "\"\<,\>\"", ",", "x", ",", "\"\<]=\>\"", ",", 
+        RowBox[{"N", "[", 
+         RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "3.`28.", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.8399444269398261403542179675`16."}],
+  SequenceForm["  NoncentralChiCDF[", 1, ",", 
+   Rational[1, 2], ",", 3.`28., "]=", 0.8399444269398261403542179675`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "3.`28.", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.6959060300435138879954508823`16."}],
+  SequenceForm["  NoncentralChiCDF[", 2, ",", 
+   Rational[1, 2], ",", 3.`28., "]=", 0.6959060300435138879954508823`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "3.`28.", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.5350879697078846520077483655`16."}],
+  SequenceForm["  NoncentralChiCDF[", 3, ",", 
+   Rational[1, 2], ",", 3.`28., "]=", 0.5350879697078846520077483655`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.7647841496310312942869993519`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 1, ",", 1, ",", 3.`28., "]=", 
+   0.7647841496310312942869993519`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.6206436532195436273362302694`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 2, ",", 1, ",", 3.`28., "]=", 
+   0.6206436532195436273362302694`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.4691667375373179972022754324`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 3, ",", 1, ",", 3.`28., "]=", 
+   0.4691667375373179972022754324`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.3070884345937568993215363039`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 1, ",", 5, ",", 3.`28., "]=", 
+   0.3070884345937568993215363039`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.2203818092990902542715215871`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 2, ",", 5, ",", 3.`28., "]=", 
+   0.2203818092990902542715215871`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.1500251895581519386801370421`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 3, ",", 5, ",", 3.`28., "]=", 
+   0.1500251895581519386801370421`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "20", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0030711631943357906041471701`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 1, ",", 20, ",", 3.`28., "]=", 
+   0.0030711631943357906041471701`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "20", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0017639826701318940765777739`15.999999999999998"}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 2, ",", 20, ",", 3.`28., "]=", 
+   0.0017639826701318940765777739`15.999999999999998],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "20", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0009816792594625022155793763`15.999999999999998"}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 3, ",", 20, ",", 3.`28., "]=", 
+   0.0009816792594625022155793763`15.999999999999998],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "60", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "30", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "60.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.016517531408662081560499015`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 60, ",", 30, ",", 60.`28., "]=", 
+   0.016517531408662081560499015`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "80", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "30", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "60.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.00020234195739504512560952857152625252`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 80, ",", 30, ",", 60.`28., "]=", 
+   0.00020234195739504512560952857152625252`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "30", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "60.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "4.9844763528540740494639210645347`16.*^-7"}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 100, ",", 30, ",", 60.`28., "]=", 
+   4.9844763528540740494639210645347`16.*^-7],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0.05`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0151325240065482731668914419`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 1, ",", 5, ",", 0.05`28., "]=", 
+   0.0151325240065482731668914419`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0.05`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0020904149106143673699655054`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 2, ",", 5, ",", 0.05`28., "]=", 
+   0.0020904149106143673699655054`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0.05`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.00024650212060484517801553016261543506`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 3, ",", 5, ",", 0.05`28., "]=", 
+   0.00024650212060484517801553016261543506`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "4.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0263683505034293909215171033`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 2, ",", 4.`28., "]=", 
+   0.0263683505034293909215171033`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "4.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0185798322007921487846459167`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 3, ",", 4.`28., "]=", 
+   0.0185798322007921487846459167`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "4.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0130573659548664015750395386`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 4, ",", 4.`28., "]=", 
+   0.0130573659548664015750395386`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.058380395348193511521769263`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 2, ",", 5.`28., "]=", 
+   0.058380395348193511521769263`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0424978440246371187312592257`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 3, ",", 5.`28., "]=", 
+   0.0424978440246371187312592257`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0308213771602159594624305957`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 4, ",", 5.`28., "]=", 
+   0.0308213771602159594624305957`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "6.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.1057878223400849040216897642`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 2, ",", 6.`28., "]=", 
+   0.1057878223400849040216897642`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "6.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0794084298459850924032491583`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 3, ",", 6.`28., "]=", 
+   0.0794084298459850924032491583`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "6.`28.", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", 
+   "0.0593201089559963929400528918`16."}],
+  SequenceForm[
+  "  NoncentralChiCDF[", 10, ",", 4, ",", 6.`28., "]=", 
+   0.0593201089559963929400528918`16.],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  NoncentralChiCDF[\"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\",\"\>", 
+   "\[InvisibleSpace]", "5.`28.", "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.2110395656918683931815274688`16."}],
+  SequenceForm["  NoncentralChiCDF[", 8, ",", 
+   Rational[1, 2], ",", 5.`28., "]=", 0.2110395656918683931815274688`16.],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\<C:\\\\Documents and \
+Settings\\\\burkardt\\\\Desktop\\\\Misc\\\\mathematica\\\\chi_square_\
+noncentral_cdf_values.txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{
+      "fileout", ",", "\"\<#  chi_square_noncentral_cdf_values.txt\>\""}], 
+      "]"}], ";"}], 
+    RowBox[{
+     RowBox[{"today", "=", 
+      RowBox[{"DateList", "[", "]"}]}], ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], "]"}],
+      ";"}], 
+    RowBox[{
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  df  lambda  x  fx\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"df", "=", 
+         RowBox[{
+         "nvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ",", 
+        RowBox[{"lambda", "=", 
+         RowBox[{
+         "lambdavec", "\[LeftDoubleBracket]", "i", 
+          "\[RightDoubleBracket]"}]}], ",", 
+        RowBox[{
+         RowBox[{"x", "=", 
+          RowBox[{
+          "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         ";", 
+         RowBox[{"f", "=", 
+          RowBox[{
+          "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+         ";", 
+         RowBox[{"Write", "[", 
+          RowBox[{"fileout", ",", "df", ",", "\"\<  \>\"", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"lambda", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+           RowBox[{"N", "[", 
+            RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{3.478289279069725*^9}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 255}, {Automatic, 1}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1135, 27, 148, "Input"],
+Cell[1683, 49, 103, 2, 27, "Input"],
+Cell[CellGroupData[{
+Cell[1811, 55, 1596, 36, 163, "Input"],
+Cell[3410, 93, 364, 7, 43, "Output"],
+Cell[3777, 102, 439, 9, 81, "Output"],
+Cell[4219, 113, 420, 9, 74, "Output"],
+Cell[4642, 124, 29, 0, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4708, 129, 1465, 37, 163, "Input"],
+Cell[CellGroupData[{
+Cell[6198, 170, 507, 9, 56, "Print"],
+Cell[6708, 181, 507, 9, 56, "Print"],
+Cell[7218, 192, 507, 9, 56, "Print"],
+Cell[7728, 203, 479, 10, 36, "Print"],
+Cell[8210, 215, 479, 10, 36, "Print"],
+Cell[8692, 227, 479, 10, 36, "Print"],
+Cell[9174, 239, 479, 10, 36, "Print"],
+Cell[9656, 251, 479, 10, 36, "Print"],
+Cell[10138, 263, 479, 10, 36, "Print"],
+Cell[10620, 275, 481, 10, 36, "Print"],
+Cell[11104, 287, 511, 10, 36, "Print"],
+Cell[11618, 299, 511, 10, 36, "Print"],
+Cell[12132, 311, 483, 10, 36, "Print"],
+Cell[12618, 323, 505, 10, 36, "Print"],
+Cell[13126, 335, 501, 10, 39, "Print"],
+Cell[13630, 347, 483, 10, 36, "Print"],
+Cell[14116, 359, 483, 10, 36, "Print"],
+Cell[14602, 371, 503, 10, 36, "Print"],
+Cell[15108, 383, 481, 10, 36, "Print"],
+Cell[15592, 395, 481, 10, 36, "Print"],
+Cell[16076, 407, 481, 10, 36, "Print"],
+Cell[16560, 419, 479, 10, 36, "Print"],
+Cell[17042, 431, 481, 10, 36, "Print"],
+Cell[17526, 443, 481, 10, 36, "Print"],
+Cell[18010, 455, 481, 10, 36, "Print"],
+Cell[18494, 467, 481, 10, 36, "Print"],
+Cell[18978, 479, 481, 10, 36, "Print"],
+Cell[19462, 491, 507, 9, 56, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[19996, 504, 2529, 73, 313, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

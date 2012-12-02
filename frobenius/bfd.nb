@@ -1,0 +1,108 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      2320,         99]
+NotebookOptionsPosition[      2017,         84]
+NotebookOutlinePosition[      2409,        101]
+CellTagsIndexPosition[      2366,         98]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+(*  BFD.nb *)
+(*  *)
+(*  Example: *)
+(*  *)
+(*    BFD[ { 6, 9, 20 } ] = 43 *)
+(*  *)
+(*  Modified: *)
+(*  *)
+(*    28 November 2007 *)
+(*  *)
+(*  Author: *)
+(*  *)
+(*    Dale Beihoffer, Jemimah Hendry, Albert Nijenhuis, Stan Wagon *>
+(*  *)
+(*  Reference: *)
+(*  *)
+(*    Dale Beihoffer, Jemimah Hendry, Albert Nijenhuis, Stan Wagon *>
+(*    Faster Algorithms for Frobenius Numbers, *)
+(*    The Electronic Journal of Combinatorics, *)
+(*    Volume 12, 2005, #R27. *)
+(*  *)
+(*  Parameters: *)
+(*  *)
+(*    Input, A, a list of \"denominations\". *)
+(*  *)
+(*    Output, the Frobenius number of A. *)
+(*  *)
+
+BFD[A_] := ( 
+     Clear [ S, P ];
+     h = t = a = First [ A ];
+     b = Rest [ A ];
+   
+    Q = Array [ 0 & , a];
+   S[_] = a * A[[-1]];
+   S[a] = 0;
+   P[a] = Length[b];
+   
+     While [ h != 0,
+        { v, Q[[h]], h } = { h, 0, If [ h == t, 0, Q[[h]] ] };
+        Do [
+           e = Mod[ b[[j]] + v, a ];
+           w = b[[j]] + S[v];
+           If [ w < S[e], 
+              S[e] = w;
+              P[e] = j;
+              If [ Q[[e]] == 0,
+                 If [ h == 0,
+                    t = Q[[e]] = h = e,
+                    t = Q[[e]] = Q[[t]] = e
+                  ]
+               ]
+            ],
+           { j, P[v] }
+         ]
+      ];
+     Max [ S /@ Range [ a - 1 ] ] - a );
+\
+\>", "Input",
+ CellChangeTimes->{{3.40526777230624*^9, 3.405267845559675*^9}, {
+  3.405268686977147*^9, 3.405268689922393*^9}}]
+},
+WindowSize->{640, 750},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"6.0 for Mac OS X PowerPC (32-bit) (June 19, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[568, 21, 1445, 61, 768, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

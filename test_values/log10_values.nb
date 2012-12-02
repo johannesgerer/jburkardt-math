@@ -1,0 +1,458 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     15348,        449]
+NotebookOptionsPosition[     14006,        404]
+NotebookOutlinePosition[     14408,        421]
+CellTagsIndexPosition[     14365,        418]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"log10_values", ".", "nb"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "logarithm", " ", "base", " ", "10"}],
+    " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "function", " ", "at", " ", "selected", " ", "argument", " ", "values"}], 
+    ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"18", " ", "June", " ", "2007"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.4776047931911983`*^9, 3.4776048019397497`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xvec", " ", "=", " ", 
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"1", "/", "100000"}], ",", " ", 
+     RowBox[{"1", "/", "100"}], ",", " ", 
+     RowBox[{"1", "/", "10"}], ",", " ", 
+     RowBox[{"2", "/", "10"}], ",", " ", 
+     RowBox[{"3", "/", "10"}], ",", " ", 
+     RowBox[{"4", "/", "10"}], ",", " ", 
+     RowBox[{"5", "/", "10"}], ",", " ", 
+     RowBox[{"6", "/", "10"}], ",", " ", 
+     RowBox[{"7", "/", "10"}], ",", " ", 
+     RowBox[{"8", "/", "10"}], ",", " ", 
+     RowBox[{"9", "/", "10"}], ",", " ", "1", ",", " ", "2", ",", " ", "3", 
+     ",", " ", "Pi", ",", " ", "5", ",", " ", "10", ",", " ", "20", ",", " ", 
+     "100", ",", " ", "123456789"}], " ", "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], ";"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Do", " ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+       RowBox[{"x", " ", "=", " ", 
+        RowBox[{"xvec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+       RowBox[{"f", " ", "=", " ", 
+        RowBox[{"Log10", "[", "x", "]"}]}], ",", "\[IndentingNewLine]", 
+       RowBox[{"fvec", " ", "=", " ", 
+        RowBox[{"Append", " ", "[", " ", 
+         RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+       "\[IndentingNewLine]", "      ", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<  Log10[\>\"", ",", "x", ",", "\"\<]]=\>\"", ",", 
+         RowBox[{"N", "[", 
+          RowBox[{"f", ",", "20"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", " ", "num", ",", "1"}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.4776048077841177`*^9, 3.4776048122961082`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "100000"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", "5.`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[1, 100000], "]]=", -5.`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886576956*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "100"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", "2.`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[1, 100], "]]=", -2.`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4776048865794497`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "10"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", "1.`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[1, 10], "]]=", -1.`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886581615*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "5"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.6989700043360188047862611052755069790755404408640215923076`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[1, 5], 
+   "]]=", -0.6989700043360188047862611052755069790755404408640215923076`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886644638*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "10"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.5228787452803375627049720967448846915753478307530230339385`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[3, 10], 
+   "]]=", -0.5228787452803375627049720967448846915753478307530230339385`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886667659*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["2", "5"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.3979400086720376095725222105510139581510808817280431846155`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[2, 5], 
+   "]]=", -0.3979400086720376095725222105510139581510808817280431846155`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886677989*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["1", "2"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.3010299956639811952137388947244930209241357525454759862915`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[1, 2], 
+   "]]=", -0.3010299956639811952137388947244930209241357525454759862915`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4776048866927032`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["3", "5"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.2218487496163563674912332020203916706508882716170446262464`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[3, 5], 
+   "]]=", -0.2218487496163563674912332020203916706508882716170446262464`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886709326*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["7", "10"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.1549019599857431692877837414073643623169910629253018610738`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[7, 10], 
+   "]]=", -0.1549019599857431692877837414073643623169910629253018610738`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886725107*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.0969100130080564143587833158265209372266213225920647769232`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[4, 5], 
+   "]]=", -0.0969100130080564143587833158265209372266213225920647769232`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886742803*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", 
+   FractionBox["9", "10"], "\[InvisibleSpace]", "\<\"]]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.0457574905606751254099441934897693861942919637112856540078`20."}]}],
+  SequenceForm["  Log10[", 
+   Rational[9, 10], 
+   "]]=", -0.0457574905606751254099441934897693861942919637112856540078`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4776048867591963`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  Log10[", 1, "]]=", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886777472*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", 
+   "0.3010299956639811952137388947244930209241357525454759862915`20."}],
+  SequenceForm[
+  "  Log10[", 2, "]]=", 
+   0.3010299956639811952137388947244930209241357525454759862915`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886792334*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", 
+   "0.4771212547196624372950279032551155040309833696998723854754`20."}],
+  SequenceForm[
+  "  Log10[", 3, "]]=", 
+   0.4771212547196624372950279032551155040309833696998723854754`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4776048868095217`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "\[Pi]", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", 
+   "0.4971498726941338543512682882908988965996185477913973292759`20."}],
+  SequenceForm[
+  "  Log10[", Pi, "]]=", 
+   0.4971498726941338543512682882908988965996185477913973292759`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.47760488682889*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", 
+   "0.6989700043360188047862611052755069790755404408640215923076`20."}],
+  SequenceForm[
+  "  Log10[", 5, "]]=", 
+   0.6989700043360188047862611052755069790755404408640215923076`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886843692*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", "1.`20."}],
+  SequenceForm["  Log10[", 10, "]]=", 1.`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.47760488686025*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "20", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", 
+   "1.3010299956639811952137388947244930209244595591359784076919`20."}],
+  SequenceForm[
+  "  Log10[", 20, "]]=", 
+   1.3010299956639811952137388947244930209244595591359784076919`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.477604886877122*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "100", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", "2.`20."}],
+  SequenceForm["  Log10[", 100, "]]=", 2.`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4776048869047422`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Log10[\"\>", "\[InvisibleSpace]", "123456789", 
+   "\[InvisibleSpace]", "\<\"]]=\"\>", "\[InvisibleSpace]", 
+   "8.09151497716927044751833362305954710244`20."}],
+  SequenceForm[
+  "  Log10[", 123456789, "]]=", 8.09151497716927044751833362305954710244`20.],
+  
+  Editable->False]], "Print",
+ CellChangeTimes->{3.4776048869249067`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/log10_values.txt\>\
+\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", "\"\<#  log10_values.txt\>\""}], "]"}], 
+        ";"}], 
+       RowBox[{
+        RowBox[{"today", "=", 
+         RowBox[{"DateList", "[", "]"}]}], ";"}], 
+       RowBox[{"Write", "[", 
+        RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+        "]"}]}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  x  fx\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "20"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "20"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.4776048175949*^9, 3.477604866359482*^9}, 
+   3.4782916006103363`*^9}],
+
+Cell[BoxData[
+ SuperscriptBox["Null", "2"]], "Output",
+ CellChangeTimes->{3.477604895891469*^9}]
+}, Open  ]]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 254}, {Automatic, 2}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1157, 27, 148, "Input"],
+Cell[1705, 49, 978, 24, 88, "Input"],
+Cell[CellGroupData[{
+Cell[2708, 77, 956, 23, 103, "Input"],
+Cell[CellGroupData[{
+Cell[3689, 104, 349, 9, 40, "Print"],
+Cell[4041, 115, 345, 9, 40, "Print"],
+Cell[4389, 126, 341, 9, 40, "Print"],
+Cell[4733, 137, 463, 11, 40, "Print"],
+Cell[5199, 150, 465, 11, 40, "Print"],
+Cell[5667, 163, 463, 11, 40, "Print"],
+Cell[6133, 176, 465, 11, 39, "Print"],
+Cell[6601, 189, 463, 11, 40, "Print"],
+Cell[7067, 202, 465, 11, 40, "Print"],
+Cell[7535, 215, 463, 11, 40, "Print"],
+Cell[8001, 228, 467, 11, 40, "Print"],
+Cell[8471, 241, 270, 6, 20, "Print"],
+Cell[8744, 249, 407, 9, 20, "Print"],
+Cell[9154, 260, 409, 9, 20, "Print"],
+Cell[9566, 271, 411, 9, 20, "Print"],
+Cell[9980, 282, 407, 9, 20, "Print"],
+Cell[10390, 293, 281, 6, 20, "Print"],
+Cell[10674, 301, 409, 9, 20, "Print"],
+Cell[11086, 312, 286, 6, 20, "Print"],
+Cell[11375, 320, 384, 9, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11808, 335, 2083, 62, 268, "Input"],
+Cell[13894, 399, 96, 2, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

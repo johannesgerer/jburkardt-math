@@ -1,0 +1,460 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     16556,        451]
+NotebookOptionsPosition[     15210,        407]
+NotebookOutlinePosition[     15613,        424]
+CellTagsIndexPosition[     15570,        421]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"cos_degree", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "cosine", " ", 
+    RowBox[{"(", "degree", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "function", " ", "at", " ", "selected", " ", "argument", " ", "values"}], 
+    ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"22", " ", "March", " ", "2010"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.4782625075264177`*^9, 3.4782625080472193`*^9}, {
+  3.4782626868524313`*^9, 3.478262711187376*^9}, {3.47826278438953*^9, 
+  3.478262784724177*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xvec", " ", "=", " ", 
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"-", "5"}], ",", " ", "0", ",", " ", "1", ",", " ", "2", ",", 
+     " ", "3", ",", " ", "4", ",", " ", "5", ",", " ", "10", ",", " ", "15", 
+     ",", " ", "30", ",", " ", "45", ",", " ", "60", ",", " ", "75", ",", " ",
+      "85", ",", " ", "86", ",", " ", "87", ",", " ", "88", ",", " ", "89", 
+     ",", " ", "90", ",", " ", "91", ",", " ", "105", ",", " ", "180"}], " ", 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.478262516160177*^9, 3.478262562052845*^9}, {
+  3.478262606510118*^9, 3.478262622894971*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Do", " ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+       RowBox[{"x", " ", "=", " ", 
+        RowBox[{"xvec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+       RowBox[{"f", " ", "=", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"x", " ", "Degree"}], "]"}]}], " ", ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"fvec", " ", "=", " ", 
+        RowBox[{"Append", " ", "[", " ", 
+         RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+       "\[IndentingNewLine]", "      ", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<  Cos[\>\"", ",", "x", ",", "\"\< Degrees]=\>\"", ",", 
+         RowBox[{"N", "[", 
+          RowBox[{"f", ",", "20"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.478262635491652*^9, 3.478262644067068*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "5"}], "\[InvisibleSpace]", "\<\" Degrees]=\"\>", 
+   "\[InvisibleSpace]", 
+   "0.9961946980917455322950104024738880461835626726458509745225`20."}],
+  SequenceForm[
+  "  Cos[", -5, " Degrees]=", 
+   0.9961946980917455322950104024738880461835626726458509745225`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886773498793`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", "1.`20."}],
+  
+  SequenceForm["  Cos[", 0, " Degrees]=", 1.`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677351757*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9998476951563912391570115588139148516927403105831859396584`20."}],
+  SequenceForm[
+  "  Cos[", 1, " Degrees]=", 
+   0.9998476951563912391570115588139148516927403105831859396584`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886773537292`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9993908270190957300062434400439299644952363066699967731041`20."}],
+  SequenceForm[
+  "  Cos[", 2, " Degrees]=", 
+   0.9993908270190957300062434400439299644952363066699967731041`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677355466*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9986295347545738737844920584394365805909522907677855324421`20."}],
+  SequenceForm[
+  "  Cos[", 3, " Degrees]=", 
+   0.9986295347545738737844920584394365805909522907677855324421`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886773572206`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9975640502598242476131626806442550263693776603842215362268`20."}],
+  SequenceForm[
+  "  Cos[", 4, " Degrees]=", 
+   0.9975640502598242476131626806442550263693776603842215362268`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886773592157`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9961946980917455322950104024738880461835626726458509745225`20."}],
+  SequenceForm[
+  "  Cos[", 5, " Degrees]=", 
+   0.9961946980917455322950104024738880461835626726458509745225`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886773749933`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9848077530122080593667430245895230136706432517198424187783`20."}],
+  SequenceForm[
+  "  Cos[", 10, " Degrees]=", 
+   0.9848077530122080593667430245895230136706432517198424187783`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886773910418`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9659258262890682867497431997288973676339048390084045504022`20."}],
+  SequenceForm[
+  "  Cos[", 15, " Degrees]=", 
+   0.9659258262890682867497431997288973676339048390084045504022`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.47828867741014*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "30", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.8660254037844386467637231707529361834714026269051903140278`20."}],
+  SequenceForm[
+  "  Cos[", 30, " Degrees]=", 
+   0.8660254037844386467637231707529361834714026269051903140278`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677425302*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "45", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.7071067811865475244008443621048490392848359376884740365884`20."}],
+  SequenceForm[
+  "  Cos[", 45, " Degrees]=", 
+   0.7071067811865475244008443621048490392848359376884740365884`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677442108*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "60", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", "0.5`20."}],
+  SequenceForm["  Cos[", 60, " Degrees]=", 0.5`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677459032*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "75", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.258819045102520762348898837624048328349068901319930513814`20."}],
+  SequenceForm[
+  "  Cos[", 75, " Degrees]=", 
+   0.258819045102520762348898837624048328349068901319930513814`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886774765368`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "85", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0871557427476581735580642708374735513777011561497026726476`20."}],
+  SequenceForm[
+  "  Cos[", 85, " Degrees]=", 
+   0.0871557427476581735580642708374735513777011561497026726476`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677492826*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "86", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0697564737441253007759588351941433286009032016527965250321`20."}],
+  SequenceForm[
+  "  Cos[", 86, " Degrees]=", 
+   0.0697564737441253007759588351941433286009032016527965250321`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677510647*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "87", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0523359562429438327221186296090784187310182539401649204716`20."}],
+  SequenceForm[
+  "  Cos[", 87, " Degrees]=", 
+   0.0523359562429438327221186296090784187310182539401649204716`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886775270357`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "88", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0348994967025009716459951816253329373548245760432968714192`20."}],
+  SequenceForm[
+  "  Cos[", 88, " Degrees]=", 
+   0.0348994967025009716459951816253329373548245760432968714192`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677543702*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "89", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0174524064372835128194189785163161924722527203071396426803`20."}],
+  SequenceForm[
+  "  Cos[", 89, " Degrees]=", 
+   0.0174524064372835128194189785163161924722527203071396426803`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677560638*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  Cos[", 90, " Degrees]=", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677577578*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "91", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.0174524064372835128194189785163161924722527203071396426893`20."}]}],
+  SequenceForm[
+  "  Cos[", 91, 
+   " Degrees]=", \
+-0.0174524064372835128194189785163161924722527203071396426893`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677593706*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "105", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.258819045102520762348898837624048328349068901319930513814`20."}]}],
+  
+  SequenceForm[
+  "  Cos[", 105, 
+   " Degrees]=", \
+-0.258819045102520762348898837624048328349068901319930513814`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782886776111593`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Cos[\"\>", "\[InvisibleSpace]", "180", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "1.`20."}]}],
+  SequenceForm["  Cos[", 180, " Degrees]=", -1.`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288677627714*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/cos_degree_values.\
+txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  cos_degree_values.txt\>\""}], "]"}], 
+      ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  x  f\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "20"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "20"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.478262647087553*^9, 3.478262673977298*^9}, 
+   3.4782886677722073`*^9}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{260, Automatic}, {Automatic, 14}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1290, 30, 148, "Input"],
+Cell[1838, 52, 886, 19, 88, "Input"],
+Cell[CellGroupData[{
+Cell[2749, 75, 1003, 25, 103, "Input"],
+Cell[CellGroupData[{
+Cell[3777, 104, 461, 10, 20, "Print"],
+Cell[4241, 116, 315, 7, 20, "Print"],
+Cell[4559, 125, 441, 9, 20, "Print"],
+Cell[5003, 136, 439, 9, 20, "Print"],
+Cell[5445, 147, 441, 9, 20, "Print"],
+Cell[5889, 158, 441, 9, 20, "Print"],
+Cell[6333, 169, 441, 9, 20, "Print"],
+Cell[6777, 180, 443, 9, 20, "Print"],
+Cell[7223, 191, 440, 9, 20, "Print"],
+Cell[7666, 202, 441, 9, 20, "Print"],
+Cell[8110, 213, 441, 9, 20, "Print"],
+Cell[8554, 224, 316, 6, 20, "Print"],
+Cell[8873, 232, 441, 9, 20, "Print"],
+Cell[9317, 243, 441, 9, 20, "Print"],
+Cell[9761, 254, 441, 9, 20, "Print"],
+Cell[10205, 265, 443, 9, 20, "Print"],
+Cell[10651, 276, 441, 9, 20, "Print"],
+Cell[11095, 287, 441, 9, 20, "Print"],
+Cell[11539, 298, 304, 6, 20, "Print"],
+Cell[11846, 306, 463, 11, 20, "Print"],
+Cell[12312, 319, 468, 12, 20, "Print"],
+Cell[12783, 333, 336, 7, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[13146, 344, 2060, 61, 268, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

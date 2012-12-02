@@ -1,0 +1,392 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     13566,        383]
+NotebookOptionsPosition[     12557,        348]
+NotebookOutlinePosition[     12960,        365]
+CellTagsIndexPosition[     12917,        362]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"chebyshev_w", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "Evaluate", " ", "the", " ", "Chebyshev", " ", "W", " ", "polynomial"}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{"at", " ", "selected", " ", "argument", " ", "values"}], ","}], 
+   " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"23", " ", "April", " ", "2012"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.544198769088705*^9, 3.544198776896756*^9}, {
+  3.544198974802932*^9, 3.544198977040984*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"nvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Do", " ", "[", " ", 
+  RowBox[{
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"n", " ", "=", " ", 
+      RowBox[{"i", " ", "-", " ", "1"}]}], ",", " ", "\[IndentingNewLine]", 
+     RowBox[{"x", " ", "=", " ", 
+      RowBox[{"8", "/", "10"}]}], ",", " ", "\[IndentingNewLine]", 
+     RowBox[{"u", " ", "=", " ", 
+      RowBox[{"Sqrt", " ", "[", " ", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"x", "+", "1"}], ")"}], "/", "2"}], "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"f", " ", "=", " ", 
+      RowBox[{"ChebyshevU", "[", 
+       RowBox[{
+        RowBox[{"2", "*", "n"}], ",", "u"}], " ", "]"}]}], " ", ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"nvec", " ", "=", " ", 
+      RowBox[{"Append", " ", "[", " ", 
+       RowBox[{"nvec", ",", " ", "n"}], " ", "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"xvec", " ", "=", " ", 
+      RowBox[{"Append", " ", "[", " ", 
+       RowBox[{"xvec", ",", " ", "x"}], " ", "]"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"fvec", " ", "=", " ", 
+      RowBox[{"Append", " ", "[", " ", 
+       RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+     "\[IndentingNewLine]", "      ", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "\"\<  ChebyshevW[\>\"", ",", "n", ",", "\"\<,\>\"", ",", "x", ",", 
+       "\"\<]=\>\"", ",", 
+       RowBox[{"N", "[", 
+        RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "13", ",", "1"}], "}"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"num", " ", "=", " ", 
+  RowBox[{
+  "Length", " ", "[", " ", "xvec", " ", 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5441987651935673`*^9, 3.544198840707384*^9}, {
+  3.5441989223559628`*^9, 3.5441989250749083`*^9}, {3.544198981779171*^9, 
+  3.544199005378969*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.`16."}],
+  SequenceForm["  ChebyshevW[", 0, ",", 
+   Rational[4, 5], "]=", 1.`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018753085*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "2.6`16."}],
+  SequenceForm["  ChebyshevW[", 1, ",", 
+   Rational[4, 5], "]=", 2.6`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.5441990187545958`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "3.16`16."}],
+  SequenceForm["  ChebyshevW[", 2, ",", 
+   Rational[4, 5], "]=", 3.16`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018755908*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "2.456`16."}],
+  SequenceForm["  ChebyshevW[", 3, ",", 
+   Rational[4, 5], "]=", 2.456`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.54419901875729*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "0.7696`16."}],
+  SequenceForm["  ChebyshevW[", 4, ",", 
+   Rational[4, 5], "]=", 0.7696`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018773497*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", "1.22464`16."}]}],
+  SequenceForm["  ChebyshevW[", 5, ",", 
+   Rational[4, 5], "]=", -1.22464`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018789876*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", "2.729024`16."}]}],
+  SequenceForm["  ChebyshevW[", 6, ",", 
+   Rational[4, 5], "]=", -2.729024`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018806302*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", "3.1417984`16."}]}],
+  SequenceForm["  ChebyshevW[", 7, ",", 
+   Rational[4, 5], "]=", -3.1417984`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018823986*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "8", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", "2.29785344`16."}]}],
+  SequenceForm["  ChebyshevW[", 8, ",", 
+   Rational[4, 5], "]=", -2.29785344`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018840829*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"-", "0.534767104`16."}]}],
+  SequenceForm["  ChebyshevW[", 9, ",", 
+   Rational[4, 5], "]=", -0.534767104`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018856835*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "1.4422260736`16."}],
+  SequenceForm["  ChebyshevW[", 10, ",", 
+   Rational[4, 5], "]=", 1.4422260736`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.5441990188739557`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "11", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "2.84232882176`16."}],
+  SequenceForm["  ChebyshevW[", 11, ",", 
+   Rational[4, 5], "]=", 2.84232882176`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.544199018890459*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  ChebyshevW[\"\>", "\[InvisibleSpace]", "12", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", 
+   FractionBox["4", "5"], "\[InvisibleSpace]", "\<\"]=\"\>", 
+   "\[InvisibleSpace]", "3.105500041216`16."}],
+  SequenceForm["  ChebyshevW[", 12, ",", 
+   Rational[4, 5], "]=", 3.105500041216`16.],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.5441989077686377`*^9, 3.544198928329371*^9}, 
+   3.54419901890755*^9}]
+}, Open  ]],
+
+Cell[BoxData["13"], "Output",
+ CellChangeTimes->{{3.544198907958647*^9, 3.544198928516309*^9}, 
+   3.544199018923546*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/jburkardt/public_html/math_src/test_values/chebyshev_w_\
+values.txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  chebyshev_w_values.txt\>\""}], "]"}], 
+      ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  n  x  fx\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"n", "=", 
+         RowBox[{
+         "nvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", "n", ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.47828925121069*^9, {3.544198855971855*^9, 3.544198886179698*^9}, {
+   3.544198986387332*^9, 3.544198988259329*^9}}]
+},
+WindowSize->{496, 537},
+WindowMargins->{{Automatic, 280}, {Automatic, 63}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1214, 29, 148, "Input"],
+Cell[CellGroupData[{
+Cell[1784, 53, 2153, 56, 223, "Input"],
+Cell[CellGroupData[{
+Cell[3962, 113, 451, 10, 40, "Print"],
+Cell[4416, 125, 455, 10, 40, "Print"],
+Cell[4874, 137, 455, 10, 40, "Print"],
+Cell[5332, 149, 456, 10, 40, "Print"],
+Cell[5791, 161, 459, 10, 40, "Print"],
+Cell[6253, 173, 481, 11, 40, "Print"],
+Cell[6737, 186, 483, 11, 40, "Print"],
+Cell[7223, 199, 485, 11, 40, "Print"],
+Cell[7711, 212, 487, 11, 40, "Print"],
+Cell[8201, 225, 489, 11, 40, "Print"],
+Cell[8693, 238, 475, 10, 40, "Print"],
+Cell[9171, 250, 475, 10, 40, "Print"],
+Cell[9649, 262, 476, 10, 40, "Print"]
+}, Open  ]],
+Cell[10140, 275, 121, 2, 27, "Output"]
+}, Open  ]],
+Cell[10276, 280, 2277, 66, 268, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

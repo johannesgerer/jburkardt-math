@@ -1,0 +1,434 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     15308,        425]
+NotebookOptionsPosition[     13836,        377]
+NotebookOutlinePosition[     14180,        392]
+CellTagsIndexPosition[     14137,        389]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"binomial_values", ".", "nb"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "Binomial", " ", "function"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{"values", " ", "fx", 
+     RowBox[{"(", 
+      RowBox[{"a", ",", "b"}], ")"}]}], ","}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"02", " ", "December", " ", "2005"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"avec", " ", "=", " ", 
+    RowBox[{"{", " ", 
+     RowBox[{
+     "1", ",", " ", "6", ",", " ", "6", ",", " ", "6", ",", " ", "15", ",", 
+      " ", "15", ",", " ", "15", ",", " ", "15", ",", " ", "15", ",", " ", 
+      "15", ",", "\[IndentingNewLine]", "15", ",", " ", "25", ",", " ", "25", 
+      ",", " ", "25", ",", " ", "25", ",", " ", "25", ",", " ", "25", ",", 
+      " ", "25", ",", " ", "25", ",", " ", "25"}], "}"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"bvec", " ", "=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "0", ",", " ", "1", ",", " ", "3", ",", " ", "5", ",", " ", "1", ",", 
+      " ", "3", ",", " ", "5", ",", " ", "7", ",", " ", "9", ",", " ", "11", 
+      ",", "\[IndentingNewLine]", "13", ",", " ", "1", ",", " ", "3", ",", 
+      " ", "5", ",", " ", "7", ",", " ", "9", ",", " ", "11", ",", " ", "13", 
+      ",", " ", "15", ",", " ", "17"}], " ", "}"}]}], "\[IndentingNewLine]", 
+   RowBox[{"fvec", " ", "=", " ", 
+    RowBox[{"{", "}"}]}], "\[IndentingNewLine]", 
+   RowBox[{"num", " ", "=", " ", 
+    RowBox[{"Length", " ", "[", " ", "avec", "]"}]}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "6", ",", "6", ",", "6", ",", "15", ",", "15", ",", "15", ",", 
+   "15", ",", "15", ",", "15", ",", "15", ",", "25", ",", "25", ",", "25", 
+   ",", "25", ",", "25", ",", "25", ",", "25", ",", "25", ",", "25"}], 
+  "}"}]], "Output"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"spell1\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Possible spelling error: new symbol name \\\"\\!\\(bvec\\)\
+\\\" is similar to existing symbol \\\"\\!\\(avec\\)\\\". \\!\\(\\*ButtonBox[\
+\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\\\", \
+ButtonFrame->None, ButtonData:>\\\"General::spell1\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "1", ",", "3", ",", "5", ",", "1", ",", "3", ",", "5", ",", "7", 
+   ",", "9", ",", "11", ",", "13", ",", "1", ",", "3", ",", "5", ",", "7", 
+   ",", "9", ",", "11", ",", "13", ",", "15", ",", "17"}], "}"}]], "Output"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"spell\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"Possible spelling error: new symbol name \\\"\\!\\(fvec\\)\
+\\\" is similar to existing symbols \\!\\({avec, bvec}\\). \
+\\!\\(\\*ButtonBox[\\\"More\[Ellipsis]\\\", ButtonStyle->\\\"RefGuideLinkText\
+\\\", ButtonFrame->None, ButtonData:>\\\"General::spell\\\"]\\)\"\>"}]], \
+"Message"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output"],
+
+Cell[BoxData["20"], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", " ", 
+     RowBox[{
+      RowBox[{"a", " ", "=", " ", 
+       RowBox[{"avec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"b", " ", "=", " ", 
+       RowBox[{"bvec", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"f", " ", "=", " ", 
+       RowBox[{"Binomial", "[", 
+        RowBox[{"a", ",", "b"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"fvec", " ", "=", " ", 
+       RowBox[{"Append", "[", 
+        RowBox[{"fvec", ",", "f"}], "]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{
+       "\"\<Binomial[\>\"", ",", "a", ",", "\"\<,\>\"", ",", "b", ",", 
+        "\"\<]=\>\"", ",", "f"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+    " ", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", " ", "1", ",", " ", "num", ",", "1"}], "}"}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "1"}],
+  SequenceForm["Binomial[", 1, ",", 0, "]=", 1],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "6"}],
+  SequenceForm["Binomial[", 6, ",", 1, "]=", 6],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "20"}],
+  SequenceForm["Binomial[", 6, ",", 3, "]=", 20],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "6", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "6"}],
+  SequenceForm["Binomial[", 6, ",", 5, "]=", 6],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "15"}],
+  SequenceForm["Binomial[", 15, ",", 1, "]=", 15],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "455"}],
+  SequenceForm["Binomial[", 15, ",", 3, "]=", 455],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "3003"}],
+  SequenceForm["Binomial[", 15, ",", 5, "]=", 3003],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "6435"}],
+  SequenceForm["Binomial[", 15, ",", 7, "]=", 6435],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "5005"}],
+  SequenceForm["Binomial[", 15, ",", 9, "]=", 5005],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "11", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "1365"}],
+  SequenceForm["Binomial[", 15, ",", 11, "]=", 1365],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "13", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "105"}],
+  SequenceForm["Binomial[", 15, ",", 13, "]=", 105],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "25"}],
+  SequenceForm["Binomial[", 25, ",", 1, "]=", 25],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "2300"}],
+  SequenceForm["Binomial[", 25, ",", 3, "]=", 2300],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "53130"}],
+  SequenceForm["Binomial[", 25, ",", 5, "]=", 53130],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "7", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "480700"}],
+  SequenceForm["Binomial[", 25, ",", 7, "]=", 480700],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "9", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "2042975"}],
+  SequenceForm["Binomial[", 25, ",", 9, "]=", 2042975],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "11", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "4457400"}],
+  SequenceForm["Binomial[", 25, ",", 11, "]=", 4457400],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "13", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "5200300"}],
+  SequenceForm["Binomial[", 25, ",", 13, "]=", 5200300],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "3268760"}],
+  SequenceForm["Binomial[", 25, ",", 15, "]=", 3268760],
+  Editable->False]], "Print"],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Binomial[\"\>", "\[InvisibleSpace]", "25", 
+   "\[InvisibleSpace]", "\<\",\"\>", "\[InvisibleSpace]", "17", 
+   "\[InvisibleSpace]", "\<\"]=\"\>", "\[InvisibleSpace]", "1081575"}],
+  SequenceForm["Binomial[", 25, ",", 17, "]=", 1081575],
+  Editable->False]], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/binomial_values.\
+txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  binomial_values.txt\>\""}], "]"}], 
+      ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  a  b  fx\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"a", "=", 
+         RowBox[{
+         "avec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"b", "=", 
+         RowBox[{
+         "bvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"a", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"b", ",", "16"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "16"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{3.478289204012554*^9, 3.479767091790119*^9}]
+},
+WindowSize->{533, 537},
+WindowMargins->{{Automatic, 219}, {Automatic, 2}},
+FrontEndVersion->"7.0 for Mac OS X PowerPC (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1086, 27, 148, "Input"],
+Cell[CellGroupData[{
+Cell[1656, 51, 1166, 23, 118, "Input"],
+Cell[2825, 76, 283, 6, 43, "Output"],
+Cell[3111, 84, 385, 7, 48, "Message"],
+Cell[3499, 93, 270, 5, 27, "Output"],
+Cell[3772, 100, 386, 8, 48, "Message"],
+Cell[4161, 110, 45, 1, 27, "Output"],
+Cell[4209, 113, 29, 0, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4275, 118, 1019, 25, 133, "Input"],
+Cell[CellGroupData[{
+Cell[5319, 147, 300, 6, 20, "Print"],
+Cell[5622, 155, 300, 6, 20, "Print"],
+Cell[5925, 163, 302, 6, 20, "Print"],
+Cell[6230, 171, 300, 6, 20, "Print"],
+Cell[6533, 179, 304, 6, 20, "Print"],
+Cell[6840, 187, 306, 6, 20, "Print"],
+Cell[7149, 195, 308, 6, 20, "Print"],
+Cell[7460, 203, 308, 6, 20, "Print"],
+Cell[7771, 211, 308, 6, 20, "Print"],
+Cell[8082, 219, 310, 6, 20, "Print"],
+Cell[8395, 227, 308, 6, 20, "Print"],
+Cell[8706, 235, 304, 6, 20, "Print"],
+Cell[9013, 243, 308, 6, 20, "Print"],
+Cell[9324, 251, 310, 6, 20, "Print"],
+Cell[9637, 259, 312, 6, 20, "Print"],
+Cell[9952, 267, 314, 6, 20, "Print"],
+Cell[10269, 275, 316, 6, 20, "Print"],
+Cell[10588, 283, 316, 6, 20, "Print"],
+Cell[10907, 291, 316, 6, 20, "Print"],
+Cell[11226, 299, 316, 6, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[11569, 309, 2263, 66, 268, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

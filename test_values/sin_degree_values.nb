@@ -1,0 +1,467 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     16858,        458]
+NotebookOptionsPosition[     15441,        411]
+NotebookOutlinePosition[     15844,        428]
+CellTagsIndexPosition[     15801,        425]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "  ", 
+   RowBox[{"sin_degree", 
+    RowBox[{"_values", ".", "nb"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Purpose", ":"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{"Evaluate", " ", "the", " ", "sine", " ", 
+    RowBox[{"(", "degree", ")"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+    RowBox[{
+    "function", " ", "at", " ", "selected", " ", "argument", " ", "values"}], 
+    ","}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "    ", 
+   RowBox[{
+   "and", " ", "write", " ", "the", " ", "data", " ", "to", " ", "a", " ", 
+    RowBox[{"file", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Modified", ":", "  ", 
+    RowBox[{"22", " ", "March", " ", "2010"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "  ", 
+   RowBox[{"Author", ":", "  ", 
+    RowBox[{"John", " ", "Burkardt"}]}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.4782625075264177`*^9, 3.4782625080472193`*^9}, {
+  3.4782626868524313`*^9, 3.478262711187376*^9}, {3.47826278438953*^9, 
+  3.478262784724177*^9}, {3.478288331263212*^9, 3.478288334739995*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"xvec", " ", "=", " ", 
+   RowBox[{"{", " ", 
+    RowBox[{
+     RowBox[{"-", "5"}], ",", " ", "0", ",", " ", "1", ",", " ", "2", ",", 
+     " ", "3", ",", " ", "4", ",", " ", "5", ",", " ", "10", ",", " ", "15", 
+     ",", " ", "30", ",", " ", "45", ",", " ", "60", ",", " ", "75", ",", " ",
+      "85", ",", " ", "86", ",", " ", "87", ",", " ", "88", ",", " ", "89", 
+     ",", " ", "90", ",", " ", "91", ",", " ", "105", ",", " ", "180"}], " ", 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fvec", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", " ", "=", " ", 
+   RowBox[{"Length", " ", "[", " ", "xvec", " ", "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.478262516160177*^9, 3.478262562052845*^9}, {
+  3.478262606510118*^9, 3.478262622894971*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Do", " ", "[", " ", 
+    RowBox[{
+     RowBox[{"{", " ", 
+      RowBox[{
+       RowBox[{"x", " ", "=", " ", 
+        RowBox[{"xvec", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", " ", 
+       RowBox[{"f", " ", "=", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"x", " ", "Degree"}], "]"}]}], " ", ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"fvec", " ", "=", " ", 
+        RowBox[{"Append", " ", "[", " ", 
+         RowBox[{"fvec", ",", " ", "f"}], " ", "]"}]}], ",", 
+       "\[IndentingNewLine]", "      ", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<  Sin[\>\"", ",", "x", ",", "\"\< Degrees]=\>\"", ",", 
+         RowBox[{"N", "[", 
+          RowBox[{"f", ",", "20"}], "]"}]}], "]"}]}], " ", "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.478262635491652*^9, 3.478262644067068*^9}, {
+  3.478288342435535*^9, 3.4782883469657097`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", 
+   RowBox[{"-", "5"}], "\[InvisibleSpace]", "\<\" Degrees]=\"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{
+   "-", "0.0871557427476581735580642708374735513777011561497026726476`20."}]}],
+  SequenceForm[
+  "  Sin[", -5, 
+   " Degrees]=", \
+-0.0871557427476581735580642708374735513777011561497026726476`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389409947*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "0", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  Sin[", 0, " Degrees]=", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389413151*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "1", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0174524064372835128194189785163161924722527203071396426803`20."}],
+  SequenceForm[
+  "  Sin[", 1, " Degrees]=", 
+   0.0174524064372835128194189785163161924722527203071396426803`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782883894147873`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "2", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0348994967025009716459951816253329373548245760432968714192`20."}],
+  SequenceForm[
+  "  Sin[", 2, " Degrees]=", 
+   0.0348994967025009716459951816253329373548245760432968714192`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389416481*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "3", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0523359562429438327221186296090784187310182539401649204716`20."}],
+  SequenceForm[
+  "  Sin[", 3, " Degrees]=", 
+   0.0523359562429438327221186296090784187310182539401649204716`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389418261*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "4", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0697564737441253007759588351941433286009032016527965250321`20."}],
+  SequenceForm[
+  "  Sin[", 4, " Degrees]=", 
+   0.0697564737441253007759588351941433286009032016527965250321`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389420138*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "5", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.0871557427476581735580642708374735513777011561497026726476`20."}],
+  SequenceForm[
+  "  Sin[", 5, " Degrees]=", 
+   0.0871557427476581735580642708374735513777011561497026726476`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.4782883894351254`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "10", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.173648177666930348851716626769314796000375677184069387303`20."}],
+  SequenceForm[
+  "  Sin[", 10, " Degrees]=", 
+   0.173648177666930348851716626769314796000375677184069387303`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.47828838945127*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "15", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.258819045102520762348898837624048328349068901319930513814`20."}],
+  SequenceForm[
+  "  Sin[", 15, " Degrees]=", 
+   0.258819045102520762348898837624048328349068901319930513814`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389469488*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "30", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", "0.5`20."}],
+  SequenceForm["  Sin[", 30, " Degrees]=", 0.5`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389484845*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "45", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.7071067811865475244008443621048490392848359376884740365884`20."}],
+  SequenceForm[
+  "  Sin[", 45, " Degrees]=", 
+   0.7071067811865475244008443621048490392848359376884740365884`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389502802*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "60", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.8660254037844386467637231707529361834714026269051903140278`20."}],
+  SequenceForm[
+  "  Sin[", 60, " Degrees]=", 
+   0.8660254037844386467637231707529361834714026269051903140278`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389519891*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "75", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9659258262890682867497431997288973676339048390084045504022`20."}],
+  SequenceForm[
+  "  Sin[", 75, " Degrees]=", 
+   0.9659258262890682867497431997288973676339048390084045504022`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389535809*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "85", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9961946980917455322950104024738880461835626726458509745225`20."}],
+  SequenceForm[
+  "  Sin[", 85, " Degrees]=", 
+   0.9961946980917455322950104024738880461835626726458509745225`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389553323*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "86", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9975640502598242476131626806442550263693776603842215362268`20."}],
+  SequenceForm[
+  "  Sin[", 86, " Degrees]=", 
+   0.9975640502598242476131626806442550263693776603842215362268`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389569948*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "87", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9986295347545738737844920584394365805909522907677855324421`20."}],
+  SequenceForm[
+  "  Sin[", 87, " Degrees]=", 
+   0.9986295347545738737844920584394365805909522907677855324421`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389586568*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "88", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9993908270190957300062434400439299644952363066699967731041`20."}],
+  SequenceForm[
+  "  Sin[", 88, " Degrees]=", 
+   0.9993908270190957300062434400439299644952363066699967731041`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389603178*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "89", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9998476951563912391570115588139148516927403105831859396584`20."}],
+  SequenceForm[
+  "  Sin[", 89, " Degrees]=", 
+   0.9998476951563912391570115588139148516927403105831859396584`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389621998*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "90", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", "1.`20."}],
+  
+  SequenceForm["  Sin[", 90, " Degrees]=", 1.`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389637528*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "91", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9998476951563912391570115588139148516927403105831859396584`20."}],
+  SequenceForm[
+  "  Sin[", 91, " Degrees]=", 
+   0.9998476951563912391570115588139148516927403105831859396584`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389655323*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "105", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", 
+   "0.9659258262890682867497431997288973676339048390084045504022`20."}],
+  SequenceForm[
+  "  Sin[", 105, " Degrees]=", 
+   0.9659258262890682867497431997288973676339048390084045504022`20.],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389671958*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  Sin[\"\>", "\[InvisibleSpace]", "180", 
+   "\[InvisibleSpace]", "\<\" Degrees]=\"\>", "\[InvisibleSpace]", "0"}],
+  SequenceForm["  Sin[", 180, " Degrees]=", 0],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.478262720075162*^9, 3.478288389688295*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\n", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"fileout", "=", 
+     RowBox[{
+     "OpenWrite", "[", 
+      "\"\</Users/burkardt/public_html/math_src/test_values/sin_degree_values.\
+txt\>\"", "]"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"SetOptions", "[", 
+     RowBox[{"fileout", ",", 
+      RowBox[{"FormatType", "\[Rule]", "TextForm"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  sin_degree_values.txt\>\""}], "]"}], 
+      ";"}], 
+     RowBox[{
+      RowBox[{"today", "=", 
+       RowBox[{"DateList", "[", "]"}]}], ";"}], 
+     RowBox[{
+      RowBox[{"Write", "[", 
+       RowBox[{"fileout", ",", "\"\<#  Created on \>\"", ",", "today"}], 
+       "]"}], ";"}], 
+     RowBox[{"Write", "[", 
+      RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#  x  f\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Write", "[", 
+     RowBox[{"fileout", ",", "\"\<#\>\""}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Do", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x", "=", 
+         RowBox[{
+         "xvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"f", "=", 
+         RowBox[{
+         "fvec", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}]}], 
+        ";", 
+        RowBox[{"Write", "[", 
+         RowBox[{"fileout", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"x", ",", "20"}], "]"}], ",", "\"\<  \>\"", ",", 
+          RowBox[{"N", "[", 
+           RowBox[{"f", ",", "20"}], "]"}]}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "num", ",", "1"}], "}"}]}], "]"}], ";", 
+    RowBox[{"Close", "[", "fileout", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.478262647087553*^9, 3.478262673977298*^9}, {
+   3.478288351414802*^9, 3.4782883562535954`*^9}, 3.478291853146513*^9}],
+
+Cell[BoxData[
+ SuperscriptBox["Null", "2"]], "Output",
+ CellChangeTimes->{3.4782627367051153`*^9, 3.4782883975429697`*^9}]
+}, Open  ]]
+},
+WindowSize->{496, 537},
+WindowMargins->{{260, Automatic}, {Automatic, 14}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 1334, 30, 148, "Input"],
+Cell[1882, 52, 886, 19, 88, "Input"],
+Cell[CellGroupData[{
+Cell[2793, 75, 1054, 26, 103, "Input"],
+Cell[CellGroupData[{
+Cell[3872, 105, 481, 12, 20, "Print"],
+Cell[4356, 119, 302, 6, 20, "Print"],
+Cell[4661, 127, 441, 9, 20, "Print"],
+Cell[5105, 138, 439, 9, 20, "Print"],
+Cell[5547, 149, 439, 9, 20, "Print"],
+Cell[5989, 160, 439, 9, 20, "Print"],
+Cell[6431, 171, 441, 9, 20, "Print"],
+Cell[6875, 182, 438, 9, 20, "Print"],
+Cell[7316, 193, 439, 9, 20, "Print"],
+Cell[7758, 204, 316, 6, 20, "Print"],
+Cell[8077, 212, 441, 9, 20, "Print"],
+Cell[8521, 223, 441, 9, 20, "Print"],
+Cell[8965, 234, 441, 9, 20, "Print"],
+Cell[9409, 245, 441, 9, 20, "Print"],
+Cell[9853, 256, 441, 9, 20, "Print"],
+Cell[10297, 267, 441, 9, 20, "Print"],
+Cell[10741, 278, 441, 9, 20, "Print"],
+Cell[11185, 289, 441, 9, 20, "Print"],
+Cell[11629, 300, 317, 7, 20, "Print"],
+Cell[11949, 309, 441, 9, 20, "Print"],
+Cell[12393, 320, 443, 9, 20, "Print"],
+Cell[12839, 331, 306, 6, 20, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13194, 343, 2106, 61, 268, "Input"],
+Cell[15303, 406, 122, 2, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
